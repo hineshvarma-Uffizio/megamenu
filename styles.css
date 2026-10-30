@@ -52,17 +52,65 @@ html {
   box-shadow: 0 4px 24px -2px rgba(0, 0, 0, 0.3);
 }
 
-/* ================= UFFIZIO MEGA MENU SEAMLESS FLUSH ATTACHMENT (ZERO GAP) ================= */
-.mega-menu > div {
-  position: relative;
-  z-index: 2;
+/* ================= UFFIZIO MEGA MENU FLOATING GAP FADED BLUR ================= */
+/* Fills the gap with a soft frosted glass blur that feathers seamlessly at the left & right curves */
+.mega-menu::before {
+  content: '';
+  position: absolute;
+  top: -2px;
+  left: 0;
+  right: 0;
+  height: 22px;
+  border-radius: 24px 24px 0 0;
+  background: linear-gradient(to bottom, rgba(255, 255, 255, 0.45) 0%, rgba(248, 250, 252, 0.2) 65%, transparent 100%);
+  backdrop-filter: blur(20px) saturate(180%);
+  -webkit-backdrop-filter: blur(20px) saturate(180%);
+  -webkit-mask-image: linear-gradient(
+    to right,
+    transparent 0px,
+    rgba(0, 0, 0, 0.25) 12px,
+    rgba(0, 0, 0, 0.85) 32px,
+    black 48px,
+    black calc(100% - 48px),
+    rgba(0, 0, 0, 0.85) calc(100% - 32px),
+    rgba(0, 0, 0, 0.25) calc(100% - 12px),
+    transparent 100%
+  );
+  mask-image: linear-gradient(
+    to right,
+    transparent 0px,
+    rgba(0, 0, 0, 0.25) 12px,
+    rgba(0, 0, 0, 0.85) 32px,
+    black 48px,
+    black calc(100% - 48px),
+    rgba(0, 0, 0, 0.85) calc(100% - 32px),
+    rgba(0, 0, 0, 0.25) calc(100% - 12px),
+    transparent 100%
+  );
+  border: none !important;
+  outline: none !important;
+  pointer-events: none;
+  z-index: 1;
 }
 
-/* Header enhancement when mega menu is open - seamless connection, no bottom outline */
+.dark .mega-menu::before {
+  background: linear-gradient(to bottom, rgba(2, 6, 23, 0.45) 0%, rgba(15, 23, 42, 0.2) 65%, transparent 100%);
+  backdrop-filter: blur(20px) saturate(180%);
+  -webkit-backdrop-filter: blur(20px) saturate(180%);
+  border: none !important;
+  outline: none !important;
+}
+
+.mega-menu > div {
+  position: relative;
+  z-index: 2; /* Ensures the card and its 1px traveling border beam float above the blur layer */
+}
+
+/* Header enhancement when mega menu is open - seamless, no bottom outline */
 body.has-megamenu-open #site-header {
-  background-color: rgba(255, 255, 255, 0.96) !important;
-  backdrop-filter: blur(20px) !important;
-  -webkit-backdrop-filter: blur(20px) !important;
+  background-color: rgba(255, 255, 255, 0.75) !important;
+  backdrop-filter: blur(20px) saturate(180%) !important;
+  -webkit-backdrop-filter: blur(20px) saturate(180%) !important;
   box-shadow: none !important;
   border: none !important;
   border-bottom: none !important;
@@ -70,9 +118,9 @@ body.has-megamenu-open #site-header {
 }
 
 .dark body.has-megamenu-open #site-header {
-  background-color: rgba(2, 6, 23, 0.96) !important;
-  backdrop-filter: blur(20px) !important;
-  -webkit-backdrop-filter: blur(20px) !important;
+  background-color: rgba(2, 6, 23, 0.72) !important;
+  backdrop-filter: blur(20px) saturate(180%) !important;
+  -webkit-backdrop-filter: blur(20px) saturate(180%) !important;
   box-shadow: none !important;
   border: none !important;
   border-bottom: none !important;
