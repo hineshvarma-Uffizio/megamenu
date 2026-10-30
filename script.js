@@ -279,17 +279,14 @@ document.addEventListener('DOMContentLoaded', () => {
     });
   });
 
-  // Dynamic Header Blur & Shadow on scroll (matches live Uffizio & Instagram)
+  // Dynamic Header Blur & Shadow on scroll (matches live Uffizio)
   const siteHeader = document.getElementById('site-header');
-  const siteHeaderBlur = document.getElementById('site-header-blur');
   if (siteHeader) {
     const handleHeaderScroll = () => {
       if (window.scrollY > 15) {
         siteHeader.classList.add('scrolled');
-        if (siteHeaderBlur) siteHeaderBlur.classList.add('scrolled');
       } else {
         siteHeader.classList.remove('scrolled');
-        if (siteHeaderBlur) siteHeaderBlur.classList.remove('scrolled');
       }
     };
     window.addEventListener('scroll', handleHeaderScroll, { passive: true });
