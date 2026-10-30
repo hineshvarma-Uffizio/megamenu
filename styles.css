@@ -1,0 +1,484 @@
+/* ========================================================
+   Uffizio Mega Menu - Custom Styles & Micro-Animations
+   Supports: Light Mode & Dark Mode
+   ======================================================== */
+
+html {
+  scroll-behavior: smooth;
+  scroll-padding-top: 5.5rem;
+}
+
+/* ================= UFFIZIO SIGNATURE BLUR EFFECT HEADER (BORDERLESS) ================= */
+#site-header {
+  background-color: rgba(248, 250, 252, 0.45) !important; /* Seamless match with bg-slate-50 */
+  backdrop-filter: blur(20px) saturate(160%) !important;
+  -webkit-backdrop-filter: blur(20px) saturate(160%) !important;
+  border: none !important;
+  border-bottom: none !important;
+  outline: none !important;
+  box-shadow: none;
+  transition: background-color 0.25s cubic-bezier(0.16, 1, 0.3, 1),
+              box-shadow 0.25s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.dark #site-header {
+  /* Exactly matches the website's bg-slate-950 (rgb(2, 6, 23)) with soft opacity so the blur shines through */
+  background-color: rgba(2, 6, 23, 0.38) !important;
+  backdrop-filter: blur(20px) saturate(160%) !important;
+  -webkit-backdrop-filter: blur(20px) saturate(160%) !important;
+  border: none !important;
+  border-bottom: none !important;
+  outline: none !important;
+}
+
+#site-header:focus,
+#site-header:focus-visible {
+  outline: none !important;
+}
+
+#site-header.scrolled {
+  background-color: rgba(248, 250, 252, 0.65) !important;
+  border: none !important;
+  border-bottom: none !important;
+  outline: none !important;
+  box-shadow: 0 4px 20px -2px rgba(0, 0, 0, 0.04);
+}
+
+.dark #site-header.scrolled {
+  background-color: rgba(2, 6, 23, 0.58) !important;
+  border: none !important;
+  border-bottom: none !important;
+  outline: none !important;
+  box-shadow: 0 4px 24px -2px rgba(0, 0, 0, 0.3);
+}
+
+/* Mega Menu Dropdown Visibility & Animations */
+.mega-menu {
+  transition: opacity 0.25s cubic-bezier(0.16, 1, 0.3, 1),
+              transform 0.25s cubic-bezier(0.16, 1, 0.3, 1),
+              visibility 0.25s ease;
+  transform: translateY(6px);
+  will-change: opacity, transform;
+}
+
+.mega-menu.is-active {
+  opacity: 1 !important;
+  visibility: visible !important;
+  pointer-events: auto !important;
+  transform: translateY(0) !important;
+}
+
+/* Full-width Mega Menu (Products & Software) spans left-0 to right-0 */
+#products-dropdown {
+  left: 0 !important;
+  right: 0 !important;
+  width: 100% !important;
+  transform: translateY(6px) !important;
+}
+
+#products-dropdown.is-active {
+  transform: translateY(0) !important;
+}
+
+/* Right-aligned dropdown menus (for Discover & Resource) flush with Contact Us button */
+.mega-menu-right {
+  left: auto !important;
+  right: 0 !important;
+  width: 55rem !important;
+  max-width: calc(100vw - 2rem) !important;
+  transform: translateY(6px) !important;
+}
+
+.mega-menu-right.is-active {
+  opacity: 1 !important;
+  visibility: visible !important;
+  pointer-events: auto !important;
+  transform: translateY(0) !important;
+}
+
+/* Language Dropdown Menu (aligned flush below header, matches Mega Menu animation) */
+#lang-dropdown {
+  transition: opacity 0.25s cubic-bezier(0.16, 1, 0.3, 1),
+              transform 0.25s cubic-bezier(0.16, 1, 0.3, 1),
+              visibility 0.25s ease;
+  transform: translateY(6px);
+  will-change: opacity, transform;
+}
+
+#lang-selector-group:hover #lang-dropdown,
+#lang-selector-group:focus-within #lang-dropdown {
+  opacity: 1 !important;
+  visibility: visible !important;
+  pointer-events: auto !important;
+  transform: translateY(0) !important;
+}
+
+/* Hover rotation for nav chevron icons */
+.nav-item .chevron-icon,
+#lang-selector-group .chevron-icon {
+  transition: transform 0.28s cubic-bezier(0.16, 1, 0.3, 1), color 0.22s ease !important;
+}
+.nav-item.is-active .chevron-icon,
+.nav-item:hover .chevron-icon,
+#lang-selector-group:hover .chevron-icon,
+#lang-selector-group:focus-within .chevron-icon {
+  transform: rotate(180deg);
+}
+
+/* ================= GLOBAL SILKY-SMOOTH HOVER TRANSITIONS ================= */
+.nav-link,
+.mega-item,
+.category-header-wrap,
+.btn-uffizio-contact,
+.uffizio-group-strip,
+#theme-toggle,
+#lang-btn,
+.mobile-accordion-btn,
+.featured-card-body,
+.promo-cards-col > div {
+  transition: color 0.22s cubic-bezier(0.16, 1, 0.3, 1),
+              background-color 0.22s cubic-bezier(0.16, 1, 0.3, 1),
+              border-color 0.22s cubic-bezier(0.16, 1, 0.3, 1),
+              box-shadow 0.22s cubic-bezier(0.16, 1, 0.3, 1),
+              opacity 0.22s cubic-bezier(0.16, 1, 0.3, 1) !important;
+}
+
+/* Ensure all child icons, text spans, paths, and labels inside items transition in sync */
+.mega-item *,
+.category-header-wrap *,
+.nav-link *,
+.uffizio-group-strip * {
+  transition: color 0.22s cubic-bezier(0.16, 1, 0.3, 1),
+              fill 0.22s cubic-bezier(0.16, 1, 0.3, 1),
+              stroke 0.22s cubic-bezier(0.16, 1, 0.3, 1),
+              background-color 0.22s cubic-bezier(0.16, 1, 0.3, 1),
+              border-color 0.22s cubic-bezier(0.16, 1, 0.3, 1),
+              opacity 0.22s cubic-bezier(0.16, 1, 0.3, 1),
+              transform 0.22s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+/* Mega item hover micro-interaction & Top Alignment */
+.mega-item {
+  transition: background-color 0.18s ease-in-out, color 0.18s ease-in-out;
+  align-items: flex-start !important;
+  transform: none !important;
+}
+
+.mega-item:hover {
+  transform: none !important;
+}
+
+.mega-item > div:first-child {
+  margin-top: 2px;
+}
+
+.mega-item .active-green-dot {
+  margin-top: 6px;
+}
+
+/* Standardized 30px Text-to-Text spacing between mega items (8px padding + 14px gap + 8px padding = 30px) */
+.space-y-\[14px\] > * + * {
+  margin-top: 14px;
+}
+
+/* Standardized Typography: Title (14px, 500) & Subtitle (13px, 500) */
+.mega-item .font-heading {
+  font-size: 14px;
+  font-weight: 500;
+}
+
+.mega-item span.text-slate-500,
+.mega-item span.dark\:text-slate-400 {
+  font-size: 13px;
+  font-weight: 500;
+}
+
+/* Featured Card Exact Dimensions & Text Alignment: Width 224px, Height 120px */
+.featured-card-body {
+  width: 224px !important;
+  max-width: 224px !important;
+}
+
+.featured-card-img-wrap {
+  width: 224px !important;
+  height: 120px !important;
+}
+
+.featured-card-img {
+  width: 224px !important;
+  height: 120px !important;
+  object-fit: cover !important;
+  object-position: top !important;
+}
+
+/* Products & Software Featured Promo Cards: Exact 20px gap */
+.promo-cards-col {
+  display: flex !important;
+  flex-direction: column !important;
+  justify-content: flex-start !important;
+  gap: 20px !important;
+}
+
+/* ================= ACTIVE STATE INDICATORS ================= */
+
+/* 1. Top Nav Trigger Active State */
+.nav-link {
+  border-radius: 9999px !important;
+}
+.nav-link.is-current-page {
+  color: #2563eb !important;
+  background-color: rgba(37, 99, 235, 0.08) !important;
+  font-weight: 700 !important;
+  position: relative;
+  border-radius: 9999px !important;
+}
+.dark .nav-link.is-current-page {
+  color: #60a5fa !important;
+  background-color: rgba(30, 41, 59, 0.8) !important;
+}
+.nav-link::after,
+.nav-link.is-current-page::after {
+  display: none !important;
+  content: none !important;
+}
+
+/* 2. Mega Menu Category Header Active State */
+.category-header-wrap {
+  transition: all 0.2s ease;
+  border-radius: 1rem;
+  padding: 0.35rem 0.65rem;
+  margin: -0.25rem -0.5rem;
+}
+.category-header-wrap.is-active {
+  background-color: rgba(37, 99, 235, 0.08);
+  border: 1px solid rgba(37, 99, 235, 0.25);
+}
+.dark .category-header-wrap.is-active {
+  background-color: rgba(30, 58, 138, 0.28);
+  border-color: rgba(96, 165, 250, 0.35);
+}
+.category-header-wrap.is-active h3 {
+  color: #2563eb !important;
+  font-weight: 800 !important;
+}
+.dark .category-header-wrap.is-active h3 {
+  color: #60a5fa !important;
+}
+
+/* 3. Mega Item (Product Link) Active State: Green Dot Only, No Box */
+.mega-item {
+  position: relative;
+}
+.mega-item.is-active {
+  background-color: transparent !important;
+  border-color: transparent !important;
+  box-shadow: none !important;
+  transform: none !important;
+}
+.mega-item.is-active .font-heading {
+  color: #0f172a !important;
+  font-weight: 700 !important;
+}
+.dark .mega-item.is-active .font-heading {
+  color: #f8fafc !important;
+}
+.mega-item .active-green-dot {
+  display: none;
+}
+.mega-item.is-active .active-green-dot {
+  display: inline-flex !important;
+}
+
+/* 4. Mobile Drawer Active State: Green Dot Only, No Box */
+.mobile-product-link.is-active {
+  background-color: transparent !important;
+  border-left: none !important;
+  padding-left: 0.25rem !important;
+}
+.mobile-product-link .mobile-active-green-dot {
+  display: none;
+}
+.mobile-product-link.is-active .mobile-active-green-dot {
+  display: inline-flex !important;
+}
+.mobile-category-header.is-active {
+  color: #2563eb !important;
+  font-weight: 800 !important;
+}
+.dark .mobile-category-header.is-active {
+  color: #60a5fa !important;
+}
+.mobile-sub-accordion {
+  transition: all 0.2s ease-in-out;
+}
+.mobile-sub-accordion-btn.is-active {
+  background-color: rgba(37, 99, 235, 0.05);
+}
+.dark .mobile-sub-accordion-btn.is-active {
+  background-color: rgba(30, 58, 138, 0.2);
+}
+
+/* Clean custom scrollbar for mobile drawer */
+#mobile-drawer::-webkit-scrollbar {
+  width: 5px;
+}
+#mobile-drawer::-webkit-scrollbar-track {
+  background: #f1f5f9;
+}
+#mobile-drawer::-webkit-scrollbar-thumb {
+  background: #cbd5e1;
+  border-radius: 4px;
+}
+#mobile-drawer::-webkit-scrollbar-thumb:hover {
+  background: #94a3b8;
+}
+
+/* Dark mode scrollbars */
+.dark #mobile-drawer::-webkit-scrollbar-track {
+  background: #0f172a;
+}
+.dark #mobile-drawer::-webkit-scrollbar-thumb {
+  background: #334155;
+}
+.dark #mobile-drawer::-webkit-scrollbar-thumb:hover {
+  background: #475569;
+}
+
+/* Accordion expand/collapse transition */
+.mobile-accordion-content {
+  transition: max-height 0.3s ease-out;
+}
+
+/* ================= UFFIZIO SIGNATURE "CONTACT US" PILL BUTTON ================= */
+.btn-uffizio-contact {
+  border-radius: 9999px;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.75rem;
+  height: 40px !important;
+  box-sizing: border-box;
+  padding: 4px 4px 4px 1.25rem;
+  font-family: 'Inter', sans-serif;
+  font-weight: 700;
+  font-size: 0.875rem;
+  line-height: 1.25rem;
+  transition: all 0.25s cubic-bezier(0.16, 1, 0.3, 1);
+  text-decoration: none;
+  user-select: none;
+}
+
+/* Light Mode: Follows existing brand blue theme */
+.btn-uffizio-contact {
+  background-color: #0052cc;
+  color: #ffffff;
+  border: 1px solid transparent;
+  box-shadow: 0 4px 12px rgba(0, 82, 204, 0.25);
+}
+.btn-uffizio-contact:hover {
+  background-color: #0043a8;
+  transform: translateY(-1px);
+  box-shadow: 0 6px 18px rgba(0, 82, 204, 0.35);
+}
+.btn-uffizio-contact .arrow-badge {
+  width: 32px !important;
+  height: 32px !important;
+  border-radius: 9999px;
+  background-color: #ffffff;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #0052cc;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.15);
+  transition: transform 0.25s ease;
+  flex-shrink: 0;
+}
+.btn-uffizio-contact:hover .arrow-badge {
+  transform: scale(1.06);
+}
+.btn-uffizio-contact .arrow-badge svg {
+  transition: transform 0.25s ease;
+}
+.btn-uffizio-contact:hover .arrow-badge svg {
+  transform: translate(1.5px, -1.5px);
+}
+
+/* Dark Mode: Matches exact Uffizio screenshot (White pill on Dark navbar) */
+.dark .btn-uffizio-contact {
+  background-color: #ffffff;
+  color: #0f172a;
+  border: 1px solid transparent;
+  box-shadow: 0 4px 14px rgba(0, 0, 0, 0.35);
+}
+.dark .btn-uffizio-contact:hover {
+  background-color: #f8fafc;
+  transform: translateY(-1px);
+  box-shadow: 0 6px 20px rgba(0, 102, 255, 0.25);
+}
+.dark .btn-uffizio-contact .arrow-badge {
+  background-color: #0066FF;
+  color: #ffffff;
+  box-shadow: 0 3px 10px rgba(0, 102, 255, 0.4);
+}
+.dark .btn-uffizio-contact:hover .arrow-badge {
+  background-color: #0052cc;
+}
+
+/* ================= UFFIZIO GROUP REDIRECT STRIP (~30px Footer) ================= */
+.uffizio-group-strip {
+  min-height: 34px;
+  background-color: #f8fafc;
+  transition: background-color 0.2s ease, border-color 0.2s ease;
+}
+.dark .uffizio-group-strip {
+  background-color: #0b1329;
+  border-color: #1e293b;
+}
+.uffizio-group-strip:hover {
+  background-color: #f1f5f9;
+}
+.dark .uffizio-group-strip:hover {
+  background-color: #0e172e;
+}
+
+/* ================= ACCESSIBILITY: WCAG 2.1 AA FOCUS-VISIBLE ================= */
+:focus-visible {
+  outline: 2px solid #0066FF !important;
+  outline-offset: 2px !important;
+}
+
+.nav-link:focus-visible,
+.btn-uffizio-contact:focus-visible,
+#theme-toggle:focus-visible,
+#mobile-toggle:focus-visible,
+#lang-btn:focus-visible,
+.mobile-accordion-btn:focus-visible {
+  outline: 2px solid #0066FF !important;
+  outline-offset: 2px !important;
+  border-radius: 9999px;
+}
+
+.mega-item:focus-visible {
+  outline: 2px solid #0066FF !important;
+  outline-offset: 2px !important;
+  border-radius: 1rem;
+}
+
+.category-header-wrap a:focus-visible {
+  outline: 2px solid #0066FF !important;
+  outline-offset: 2px !important;
+  border-radius: 0.5rem;
+}
+
+.dark :focus-visible,
+.dark .nav-link:focus-visible,
+.dark .btn-uffizio-contact:focus-visible,
+.dark #theme-toggle:focus-visible,
+.dark #mobile-toggle:focus-visible,
+.dark #lang-btn:focus-visible,
+.dark .mobile-accordion-btn:focus-visible,
+.dark .mega-item:focus-visible,
+.dark .category-header-wrap a:focus-visible {
+  outline-color: #60a5fa !important;
+}
+
+

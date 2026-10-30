@@ -1,0 +1,1481 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Uffizio - Modern Mega Menu (Light & Dark Mode)</title>
+  <!-- Google Fonts: Inter -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+  <!-- Tailwind CSS CDN with darkMode: 'class' -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      darkMode: 'class',
+      theme: {
+        extend: {
+          fontFamily: {
+            sans: ['Inter', 'sans-serif'],
+            heading: ['Inter', 'sans-serif'],
+          },
+          colors: {
+            brand: {
+              50: '#eff6ff',
+              100: '#dbeafe',
+              200: '#bfdbfe',
+              300: '#93c5fd',
+              400: '#60a5fa',
+              500: '#3b82f6',
+              600: '#0052cc', // Uffizio Primary Blue
+              700: '#0043a8',
+              800: '#1e40af',
+              900: '#172554',
+              accent: '#00D084',
+              dark: '#0B132B',
+            }
+          }
+        }
+      }
+    }
+  </script>
+  <!-- Script to ensure Dark Mode as default matching Uffizio's signature brand theme -->
+  <script>
+    if (localStorage.getItem('theme') === 'light') {
+      document.documentElement.classList.remove('dark');
+    } else {
+      document.documentElement.classList.add('dark');
+    }
+  </script>
+  <!-- Custom Stylesheet -->
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body class="bg-slate-50 dark:bg-slate-950 text-slate-800 dark:text-slate-100 antialiased font-sans min-h-screen flex flex-col transition-colors duration-200">
+
+  <!-- ================= MAIN HEADER & NAVIGATION ================= -->
+  <header id="site-header" class="sticky top-0 z-50 transition-all duration-300">
+    <div class="max-w-[1440px] mx-auto px-4 sm:px-6 lg:px-[50px]">
+      <div class="flex items-center justify-between h-16 relative">
+        
+        <!-- Brand Logo -->
+        <div class="flex-shrink-0 flex items-center gap-2">
+          <a href="#" class="flex items-center gap-2 group" aria-label="Uffizio Home">
+            <!-- Modern SVG Logo -->
+            <div class="w-10 h-10 rounded-2xl bg-gradient-to-tr from-brand-600 to-blue-400 flex items-center justify-center shadow-md shadow-brand-600/20 group-hover:scale-105 transition-transform duration-300">
+              <svg class="w-6 h-6 text-white" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5"/>
+              </svg>
+            </div>
+            <div class="flex flex-col">
+              <span class="font-heading font-extrabold text-2xl tracking-tight text-slate-900 dark:text-white group-hover:text-brand-600 dark:group-hover:text-brand-400 transition-colors">
+                Uffizio<span class="text-brand-600 dark:text-brand-400">.</span>
+              </span>
+              <span class="text-[10px] tracking-wider uppercase font-semibold text-slate-500 dark:text-slate-400 -mt-1">Telematics & IoT</span>
+            </div>
+          </a>
+        </div>
+
+        <!-- Right-aligned Header Wrapper (Navigation + Actions as on existing site) -->
+        <div class="hidden lg:flex items-center gap-5 ml-auto h-full">
+          
+          <!-- Desktop Navigation Items (Right-aligned) -->
+          <nav class="flex items-center space-x-1.5 h-full" aria-label="Main Navigation">
+
+            <!-- 1. MEGA MENU TRIGGER: Products & Software -->
+            <div class="nav-item group h-full flex items-center" data-dropdown="products-dropdown">
+            <button id="nav-products-btn" class="nav-link flex items-center gap-1.5 px-4 py-2 rounded-full text-sm font-semibold text-slate-700 dark:text-slate-200 hover:text-brand-600 dark:hover:text-brand-400 hover:bg-slate-100/70 dark:hover:bg-slate-800 transition-all focus:outline-none" aria-expanded="false" aria-haspopup="true" aria-controls="products-dropdown">
+              <span>Products & Software</span>
+              <svg class="chevron-icon w-4 h-4 text-slate-400 dark:text-slate-500 group-hover:text-brand-600 dark:group-hover:text-brand-400 transition-transform duration-200" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" />
+              </svg>
+            </button>
+
+            <!-- ================= MEGA MENU CONTAINER: 3-COL + 1 FEATURED CARD ================= -->
+            <div id="products-dropdown" class="mega-menu absolute left-0 right-0 top-full w-full pt-2 pointer-events-none opacity-0 invisible transition-all duration-200">
+              <div class="bg-white dark:bg-slate-900 rounded-3xl shadow-2xl border border-slate-200/90 dark:border-slate-800 overflow-hidden pointer-events-auto">
+                <div class="p-6 lg:p-8 grid grid-cols-12 gap-8">
+                
+                <!-- COLUMN 1: Uffizio Group (White-Label & Hardware Platform Showcase) -->
+                <div class="col-span-3 flex flex-col h-full border-r border-slate-100 dark:border-slate-800 pr-3">
+                  <div class="category-header-wrap flex items-center justify-between pb-2 mb-3 border-b border-slate-100 dark:border-slate-800 group/catheader" data-category="uffizio-group">
+                    <a href="#home" class="flex items-center gap-2 group-hover/catheader:text-brand-600 dark:group-hover/catheader:text-blue-400 transition-colors" title="Uffizio Group Corporate Overview">
+                      <span class="w-6 h-6 rounded-full bg-blue-100 dark:bg-blue-900/50 text-brand-600 dark:text-blue-400 flex items-center justify-center">
+                        <svg class="w-3.5 h-3.5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                          <path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5"/>
+                        </svg>
+                      </span>
+                      <h3 class="font-heading font-bold text-xs uppercase tracking-wider text-slate-800 dark:text-slate-200">Uffizio Group</h3>
+                    </a>
+                    <a href="https://www.uffizio.com" target="_blank" rel="noopener noreferrer" class="text-[12px] font-semibold text-brand-600 dark:text-blue-400 hover:text-brand-800 dark:hover:text-blue-300 flex items-center gap-1 group/link" title="Visit uffizio.com">
+                      <span>uffizio.com</span>
+                      <svg class="w-3 h-3 group-hover/link:translate-x-0.5 group-hover/link:-translate-y-0.5 transition-transform" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                        <path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"></path>
+                        <polyline points="15 3 21 3 21 9"></polyline>
+                        <line x1="10" y1="14" x2="21" y2="3"></line>
+                      </svg>
+                    </a>
+                  </div>
+
+                  <!-- Unified High-End Platform Card (Light & Dark Mode Adaptive with Generous Breathing Spacing) -->
+                  <div class="flex-1 flex flex-col justify-between p-5 rounded-2xl bg-gradient-to-b from-blue-200/60 via-blue-50/60 to-white dark:bg-gradient-to-b dark:from-[#0e2246] dark:via-[#091730] dark:to-[#061022] border border-blue-200/90 dark:border-blue-500/30 shadow-sm hover:shadow-md dark:shadow-xl relative overflow-hidden group/platform transition-all">
+                    <!-- Subtle ambient lighting glow -->
+                    <div class="absolute -top-10 -right-10 w-32 h-32 bg-blue-500/15 dark:bg-blue-500/20 rounded-full blur-xl pointer-events-none"></div>
+
+                    <!-- Top: White Label Engine Highlight -->
+                    <div class="relative z-10">
+                      <div class="flex items-center justify-between mb-3.5">
+                        <span class="inline-flex items-center gap-1.5 text-[10px] font-bold uppercase tracking-wider bg-emerald-50 text-emerald-700 border border-emerald-200 dark:bg-emerald-500/15 dark:text-emerald-400 dark:border-emerald-500/30 px-2.5 py-0.5 rounded-full whitespace-nowrap">
+                          <span class="w-1.5 h-1.5 rounded-full bg-emerald-600 dark:bg-emerald-400 animate-pulse"></span>
+                          White Label Ready
+                        </span>
+                        <span class="text-[11px] font-semibold text-slate-500 dark:text-blue-300/70 whitespace-nowrap">B2B Platform</span>
+                      </div>
+
+                      <h4 class="font-heading font-bold text-base text-slate-900 dark:text-white leading-snug mb-2.5">
+                        Launch Your GPS & Telematics Brand
+                      </h4>
+                      <p class="text-[13px] text-slate-600 dark:text-slate-300 leading-relaxed">
+                        100% white-label software — your logo, your custom domain, and branded mobile apps powered by Uffizio's rock-solid engine.
+                      </p>
+                    </div>
+
+                    <!-- Middle: 1500+ Hardware Compatibility Box (Enhanced Padding & Spacing) -->
+                    <div class="relative z-10 my-4 p-4 rounded-xl bg-white/90 dark:bg-[#061226]/85 border border-slate-200/90 dark:border-blue-500/25 shadow-xs">
+                      <div class="mb-2.5">
+                        <h5 class="text-[13px] font-bold text-slate-900 dark:text-white leading-tight">Hardware Compatibility</h5>
+                        <div class="mt-1.5 inline-flex items-center gap-1.5 px-2.5 py-0.5 rounded-full bg-blue-50 dark:bg-blue-900/40 border border-blue-200/80 dark:border-blue-700/50">
+                          <span class="w-1.5 h-1.5 rounded-full bg-brand-600 dark:bg-blue-400"></span>
+                          <span class="text-[11px] font-bold text-brand-700 dark:text-blue-300 whitespace-nowrap">1,500+ Devices Supported</span>
+                        </div>
+                      </div>
+                      <p class="text-[13px] text-slate-500 dark:text-slate-400 leading-relaxed mb-3">
+                        Teltonika, Ruptela, Queclink, JimiIoT, Concox & more integrated out-of-the-box.
+                      </p>
+                      <a href="#" class="inline-flex items-center gap-1 text-[13px] font-semibold text-brand-600 dark:text-blue-400 hover:text-brand-700 dark:hover:text-blue-300 group/link">
+                        <span>Explore Compatible Hardware</span>
+                        <svg class="w-3.5 h-3.5 group-hover/link:translate-x-0.5 transition-transform" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"/></svg>
+                      </a>
+                    </div>
+
+                    <!-- Bottom: Primary Action Button with Breathing Room -->
+                    <div class="relative z-10 pt-2">
+                      <a href="#demo" class="inline-flex items-center justify-center w-full px-4 py-2.5 rounded-full bg-brand-600 hover:bg-brand-500 text-white font-semibold text-[13px] transition-all shadow-md shadow-brand-500/20 dark:shadow-blue-600/30 gap-1.5 group/btn">
+                        <span>Schedule a 1-on-1 Demo</span>
+                        <svg class="w-3.5 h-3.5 group-hover/btn:translate-x-0.5 transition-transform" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.5"><path stroke-linecap="round" stroke-linejoin="round" d="M14 5l7 7m0 0l-7 7m7-7H3"/></svg>
+                      </a>
+                    </div>
+                  </div>
+                </div>
+
+                <!-- COLUMN 2: Telematics (3 Columns wide) -->
+                <div class="col-span-3 space-y-3 border-r border-slate-100 dark:border-slate-800 pr-3">
+                  <div class="category-header-wrap flex items-center justify-between pb-2 border-b border-slate-100 dark:border-slate-800 group/catheader" data-category="telematics">
+                    <a href="#telematics" class="flex items-center gap-2 group-hover/catheader:text-brand-600 dark:group-hover/catheader:text-blue-400 transition-colors" title="Go to Telematics Category Page">
+                      <span class="w-6 h-6 rounded-full bg-blue-100 dark:bg-blue-900/50 text-brand-600 dark:text-blue-400 flex items-center justify-center">
+                        <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 17a2 2 0 11-4 0 2 2 0 014 0zM19 17a2 2 0 11-4 0 2 2 0 014 0z"/><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 16V6a1 1 0 00-1-1H4a1 1 0 00-1 1v10a1 1 0 001 1h1m8-1a1 1 0 01-1 1H9m4-1V8a1 1 0 011-1h2.586a1 1 0 01.707.293l3.414 3.414a1 1 0 01.293.707V16a1 1 0 01-1 1h-1m-6-1a1 1 0 001 1h1M5 17a2 2 0 104 0m-4 0a2 2 0 114 0m6 0a2 2 0 104 0m-4 0a2 2 0 114 0"/></svg>
+                      </span>
+                      <h3 class="font-heading font-bold text-xs uppercase tracking-wider text-slate-800 dark:text-slate-200">Telematics</h3>
+                    </a>
+                    <a href="#telematics" class="text-[12px] font-semibold text-brand-600 dark:text-blue-400 hover:text-brand-800 dark:hover:text-blue-300 flex items-center gap-1 group/link" title="Explore Telematics Domain">
+                      <span>Explore</span>
+                      <svg class="w-3 h-3 group-hover/link:translate-x-0.5 group-hover/link:-translate-y-0.5 transition-transform" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                        <path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"></path>
+                        <polyline points="15 3 21 3 21 9"></polyline>
+                        <line x1="10" y1="14" x2="21" y2="3"></line>
+                      </svg>
+                    </a>
+                  </div>
+
+                  <ul class="space-y-[14px]">
+                    <!-- 1. Trakzee -->
+                    <li>
+                      <a href="#trakzee" data-product="trakzee" data-category="telematics" class="mega-item group/item flex items-start gap-3 p-2 rounded-2xl hover:bg-slate-100/70 dark:hover:bg-slate-800/60 transition-all">
+                        <div class="w-7 h-7 flex items-center justify-center flex-shrink-0">
+                          <svg class="w-6 h-6" viewBox="0 0 32 32" fill="none">
+                            <circle cx="15" cy="15" r="9" stroke="#EA4335" stroke-width="3.5"/>
+                            <path d="M21 21L26 26" stroke="#EA4335" stroke-width="3.5" stroke-linecap="round"/>
+                          </svg>
+                        </div>
+                        <div class="flex flex-col min-w-0">
+                          <span class="font-heading font-medium text-[14px] text-slate-900 dark:text-slate-100 group-hover/item:text-brand-600 dark:group-hover/item:text-brand-400 leading-tight">Trakzee</span>
+                          <span class="text-[13px] font-medium text-slate-500 dark:text-slate-400 leading-tight mt-0.5">Fleet Management</span>
+                        </div>
+                        <span class="active-green-dot hidden ml-auto shrink-0 w-2 h-2 rounded-full bg-emerald-500 ring-4 ring-emerald-500/20" title="Active Page"></span>
+                      </a>
+                    </li>
+
+                    <!-- 2. Smart Waste -->
+                    <li>
+                      <a href="#smart-waste" data-product="smart-waste" data-category="telematics" class="mega-item group/item flex items-start gap-3 p-2 rounded-2xl hover:bg-slate-100/70 dark:hover:bg-slate-800/60 transition-all">
+                        <div class="w-7 h-7 flex items-center justify-center flex-shrink-0">
+                          <svg class="w-6 h-6" viewBox="0 0 32 32" fill="none">
+                            <path d="M16 3C10.48 3 6 7.48 6 13c0 7.5 10 16 10 16s10-8.5 10-16c0-5.52-4.48-10-10-10z" fill="#48BB78"/>
+                            <path d="M12 17l4.5-6.5 1.8 2.5-4.5 5.5h-1.8z" fill="#FFFFFF"/>
+                            <path d="M18 10l-1-2" stroke="#FFFFFF" stroke-width="1.5" stroke-linecap="round"/>
+                          </svg>
+                        </div>
+                        <div class="flex flex-col min-w-0">
+                          <span class="font-heading font-medium text-[14px] text-slate-900 dark:text-slate-100 group-hover/item:text-brand-600 dark:group-hover/item:text-brand-400 leading-tight">Smart Waste</span>
+                          <span class="text-[13px] font-medium text-slate-500 dark:text-slate-400 leading-tight mt-0.5">Waste Collection Software</span>
+                        </div>
+                        <span class="active-green-dot hidden ml-auto shrink-0 w-2 h-2 rounded-full bg-emerald-500 ring-4 ring-emerald-500/20" title="Active Page"></span>
+                      </a>
+                    </li>
+
+                    <!-- 3. Gridzee -->
+                    <li>
+                      <a href="#gridzee" data-product="gridzee" data-category="telematics" class="mega-item group/item flex items-start gap-3 p-2 rounded-2xl hover:bg-slate-100/70 dark:hover:bg-slate-800/60 transition-all">
+                        <div class="w-7 h-7 flex items-center justify-center flex-shrink-0">
+                          <svg class="w-6 h-6" viewBox="0 0 32 32" fill="none">
+                            <path d="M23 9H9V23H23V16H16" stroke="#F97316" stroke-width="3.5" stroke-linecap="square" stroke-linejoin="miter"/>
+                          </svg>
+                        </div>
+                        <div class="flex flex-col min-w-0">
+                          <span class="font-heading font-medium text-[14px] text-slate-900 dark:text-slate-100 group-hover/item:text-brand-600 dark:group-hover/item:text-brand-400 leading-tight">Gridzee</span>
+                          <span class="text-[13px] font-medium text-slate-500 dark:text-slate-400 leading-tight mt-0.5">Indoor Tracking Software</span>
+                        </div>
+                        <span class="active-green-dot hidden ml-auto shrink-0 w-2 h-2 rounded-full bg-emerald-500 ring-4 ring-emerald-500/20" title="Active Page"></span>
+                      </a>
+                    </li>
+
+                    <!-- 4. Petzee -->
+                    <li>
+                      <a href="#petzee" data-product="petzee" data-category="telematics" class="mega-item group/item flex items-start gap-3 p-2 rounded-2xl hover:bg-slate-100/70 dark:hover:bg-slate-800/60 transition-all">
+                        <div class="w-7 h-7 flex items-center justify-center flex-shrink-0">
+                          <svg class="w-6 h-6" viewBox="0 0 32 32" fill="none">
+                            <circle cx="16" cy="16" r="12" fill="#0080FF"/>
+                            <ellipse cx="16" cy="18" rx="4.5" ry="3.5" fill="#FFFFFF"/>
+                            <circle cx="11.5" cy="13.5" r="1.6" fill="#FFFFFF"/>
+                            <circle cx="14.2" cy="11.2" r="1.6" fill="#FFFFFF"/>
+                            <circle cx="17.8" cy="11.2" r="1.6" fill="#FFFFFF"/>
+                            <circle cx="20.5" cy="13.5" r="1.6" fill="#FFFFFF"/>
+                          </svg>
+                        </div>
+                        <div class="flex flex-col min-w-0">
+                          <span class="font-heading font-medium text-[14px] text-slate-900 dark:text-slate-100 group-hover/item:text-brand-600 dark:group-hover/item:text-brand-400 leading-tight">Petzee</span>
+                          <span class="text-[13px] font-medium text-slate-500 dark:text-slate-400 leading-tight mt-0.5">Smart Pet Tracking Software</span>
+                        </div>
+                        <span class="active-green-dot hidden ml-auto shrink-0 w-2 h-2 rounded-full bg-emerald-500 ring-4 ring-emerald-500/20" title="Active Page"></span>
+                      </a>
+                    </li>
+
+                    <!-- 5. Elexee -->
+                    <li>
+                      <a href="#elexee" data-product="elexee" data-category="telematics" class="mega-item group/item flex items-start gap-3 p-2 rounded-2xl hover:bg-slate-100/70 dark:hover:bg-slate-800/60 transition-all">
+                        <div class="w-7 h-7 flex items-center justify-center flex-shrink-0">
+                          <svg class="w-6 h-6" viewBox="0 0 32 32" fill="none">
+                            <path d="M17 4L8 17H16L15 28L24 13H16L17 4Z" fill="#10B981" stroke="#059669" stroke-width="1.5" stroke-linejoin="round"/>
+                          </svg>
+                        </div>
+                        <div class="flex flex-col min-w-0">
+                          <span class="font-heading font-medium text-[14px] text-slate-900 dark:text-slate-100 group-hover/item:text-brand-600 dark:group-hover/item:text-brand-400 leading-tight">Elexee</span>
+                          <span class="text-[13px] font-medium text-slate-500 dark:text-slate-400 leading-tight mt-0.5">Electric Vehicle Management</span>
+                        </div>
+                        <span class="active-green-dot hidden ml-auto shrink-0 w-2 h-2 rounded-full bg-emerald-500 ring-4 ring-emerald-500/20" title="Active Page"></span>
+                      </a>
+                    </li>
+
+                    <!-- 6. Trakzee Mini -->
+                    <li>
+                      <a href="#trakzee-mini" data-product="trakzee-mini" data-category="telematics" class="mega-item group/item flex items-start gap-3 p-2 rounded-2xl hover:bg-slate-100/70 dark:hover:bg-slate-800/60 transition-all">
+                        <div class="w-7 h-7 flex items-center justify-center flex-shrink-0">
+                          <svg class="w-6 h-6" viewBox="0 0 32 32" fill="none">
+                            <circle cx="15" cy="15" r="8" stroke="#EA4335" stroke-width="3"/>
+                            <path d="M20 20L24 24" stroke="#EA4335" stroke-width="3" stroke-linecap="round"/>
+                          </svg>
+                        </div>
+                        <div class="flex flex-col min-w-0">
+                          <span class="font-heading font-medium text-[14px] text-slate-900 dark:text-slate-100 group-hover/item:text-brand-600 dark:group-hover/item:text-brand-400 leading-tight">Trakzee Mini</span>
+                          <span class="text-[13px] font-medium text-slate-500 dark:text-slate-400 leading-tight mt-0.5">Personal Vehicle Tracking</span>
+                        </div>
+                        <span class="active-green-dot hidden ml-auto shrink-0 w-2 h-2 rounded-full bg-emerald-500 ring-4 ring-emerald-500/20" title="Active Page"></span>
+                      </a>
+                    </li>
+
+                    <!-- 7. Trakzee GSM -->
+                    <li>
+                      <a href="#trakzee-gsm" data-product="trakzee-gsm" data-category="telematics" class="mega-item group/item flex items-start gap-3 p-2 rounded-2xl hover:bg-slate-100/70 dark:hover:bg-slate-800/60 transition-all">
+                        <div class="w-7 h-7 flex items-center justify-center flex-shrink-0">
+                          <svg class="w-6 h-6" viewBox="0 0 32 32" fill="none">
+                            <circle cx="16" cy="16" r="12" fill="#2563EB"/>
+                            <path d="M16 11V21M13 21H19M14.5 17.5L17.5 17.5M16 11L14 13.5H18L16 11Z" stroke="#FFFFFF" stroke-width="1.6" stroke-linecap="round"/>
+                            <path d="M11 13.5C9.8 14.8 9.8 17.2 11 18.5M21 13.5C22.2 14.8 22.2 17.2 21 18.5" stroke="#FFFFFF" stroke-width="1.6" stroke-linecap="round"/>
+                          </svg>
+                        </div>
+                        <div class="flex flex-col min-w-0">
+                          <span class="font-heading font-medium text-[14px] text-slate-900 dark:text-slate-100 group-hover/item:text-brand-600 dark:group-hover/item:text-brand-400 leading-tight">Trakzee GSM</span>
+                          <span class="text-[13px] font-medium text-slate-500 dark:text-slate-400 leading-tight mt-0.5">Sim Based Tracking Software</span>
+                        </div>
+                        <span class="active-green-dot hidden ml-auto shrink-0 w-2 h-2 rounded-full bg-emerald-500 ring-4 ring-emerald-500/20" title="Active Page"></span>
+                      </a>
+                    </li>
+                  </ul>
+                </div>
+
+                <!-- COLUMN 2: Commute (3 Columns wide) -->
+                <div class="col-span-3 space-y-3 border-r border-slate-100 dark:border-slate-800 pr-3">
+                  <div class="category-header-wrap flex items-center justify-between pb-2 border-b border-slate-100 dark:border-slate-800 group/catheader" data-category="commute">
+                    <a href="#commute" class="flex items-center gap-2 group-hover/catheader:text-indigo-600 dark:group-hover/catheader:text-indigo-400 transition-colors" title="Go to Commute Category Page">
+                      <span class="w-6 h-6 rounded-full bg-indigo-100 dark:bg-indigo-900/50 text-indigo-600 dark:text-indigo-400 flex items-center justify-center">
+                        <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 7h12m0 0l-4-4m4 4l-4 4m0 6H4m0 0l4 4m-4-4l4-4"/></svg>
+                      </span>
+                      <h3 class="font-heading font-bold text-xs uppercase tracking-wider text-slate-800 dark:text-slate-200">Commute</h3>
+                    </a>
+                    <a href="#commute" class="text-[12px] font-semibold text-indigo-600 dark:text-indigo-400 hover:text-indigo-800 dark:hover:text-indigo-300 flex items-center gap-1 group/link" title="Explore Commute Domain">
+                      <span>Explore</span>
+                      <svg class="w-3 h-3 group-hover/link:translate-x-0.5 group-hover/link:-translate-y-0.5 transition-transform" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                        <path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"></path>
+                        <polyline points="15 3 21 3 21 9"></polyline>
+                        <line x1="10" y1="14" x2="21" y2="3"></line>
+                      </svg>
+                    </a>
+                  </div>
+
+                  <ul class="space-y-[14px]">
+                    <!-- Smartbus -->
+                    <li>
+                      <a href="#smartbus" data-product="smartbus" data-category="commute" class="mega-item group/item flex items-start gap-3 p-2 rounded-2xl hover:bg-slate-100/70 dark:hover:bg-slate-800/60 transition-all">
+                        <div class="w-7 h-7 flex items-center justify-center flex-shrink-0">
+                          <svg class="w-6 h-6" viewBox="0 0 32 32" fill="none">
+                            <rect x="5" y="8" width="22" height="15" rx="3" fill="#EAB308"/>
+                            <rect x="8" y="11" width="4" height="4" rx="1" fill="#FFFFFF"/>
+                            <rect x="14" y="11" width="4" height="4" rx="1" fill="#FFFFFF"/>
+                            <rect x="20" y="11" width="4" height="4" rx="1" fill="#FFFFFF"/>
+                            <circle cx="10" cy="23" r="2.5" fill="#1E293B"/>
+                            <circle cx="22" cy="23" r="2.5" fill="#1E293B"/>
+                          </svg>
+                        </div>
+                        <div class="flex flex-col min-w-0">
+                          <span class="font-heading font-medium text-[14px] text-slate-900 dark:text-slate-100 group-hover/item:text-indigo-600 dark:group-hover/item:text-indigo-400 leading-tight">Smartbus</span>
+                          <span class="text-[13px] font-medium text-slate-500 dark:text-slate-400 leading-tight mt-0.5">School Bus Tracking Software</span>
+                        </div>
+                        <span class="active-green-dot hidden ml-auto shrink-0 w-2 h-2 rounded-full bg-emerald-500 ring-4 ring-emerald-500/20" title="Active Page"></span>
+                      </a>
+                    </li>
+
+                    <!-- Rosterz -->
+                    <li>
+                      <a href="#rosterz" data-product="rosterz" data-category="commute" class="mega-item group/item flex items-start gap-3 p-2 rounded-2xl hover:bg-slate-100/70 dark:hover:bg-slate-800/60 transition-all">
+                        <div class="w-7 h-7 flex items-center justify-center flex-shrink-0">
+                          <svg class="w-6 h-6" viewBox="0 0 32 32" fill="none">
+                            <circle cx="16" cy="16" r="12" fill="#0284C7"/>
+                            <path d="M12 21C12 18 14 16 16 16C18 16 20 18 20 21" stroke="#FFFFFF" stroke-width="2" stroke-linecap="round"/>
+                            <circle cx="16" cy="12" r="2.5" fill="#FFFFFF"/>
+                          </svg>
+                        </div>
+                        <div class="flex flex-col min-w-0">
+                          <span class="font-heading font-medium text-[14px] text-slate-900 dark:text-slate-100 group-hover/item:text-indigo-600 dark:group-hover/item:text-indigo-400 leading-tight">Rosterz</span>
+                          <span class="text-[13px] font-medium text-slate-500 dark:text-slate-400 leading-tight mt-0.5">Employee Transportation Software</span>
+                        </div>
+                        <span class="active-green-dot hidden ml-auto shrink-0 w-2 h-2 rounded-full bg-emerald-500 ring-4 ring-emerald-500/20" title="Active Page"></span>
+                      </a>
+                    </li>
+
+                    <!-- SmartTranzit -->
+                    <li>
+                      <a href="#smarttranzit" data-product="smarttranzit" data-category="commute" class="mega-item group/item flex items-start gap-3 p-2 rounded-2xl hover:bg-slate-100/70 dark:hover:bg-slate-800/60 transition-all">
+                        <div class="w-7 h-7 flex items-center justify-center flex-shrink-0">
+                          <svg class="w-6 h-6" viewBox="0 0 32 32" fill="none">
+                            <circle cx="16" cy="16" r="12" fill="#06B6D4"/>
+                            <path d="M10 16H22M17 11L22 16L17 21" stroke="#FFFFFF" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                          </svg>
+                        </div>
+                        <div class="flex flex-col min-w-0">
+                          <span class="font-heading font-medium text-[14px] text-slate-900 dark:text-slate-100 group-hover/item:text-indigo-600 dark:group-hover/item:text-indigo-400 leading-tight">SmartTranzit</span>
+                          <span class="text-[13px] font-medium text-slate-500 dark:text-slate-400 leading-tight mt-0.5">Public Transportation Software</span>
+                        </div>
+                        <span class="active-green-dot hidden ml-auto shrink-0 w-2 h-2 rounded-full bg-emerald-500 ring-4 ring-emerald-500/20" title="Active Page"></span>
+                      </a>
+                    </li>
+                  </ul>
+                </div>
+
+                <!-- COLUMN 4: IoTech (3 Columns wide) -->
+                <div class="col-span-3 space-y-3">
+                  <div class="category-header-wrap flex items-center justify-between pb-2 border-b border-slate-100 dark:border-slate-800 group/catheader" data-category="iotech">
+                    <a href="#iotech" class="flex items-center gap-2 group-hover/catheader:text-purple-600 dark:group-hover/catheader:text-purple-400 transition-colors" title="Go to IoTech Category Page">
+                      <span class="w-6 h-6 rounded-full bg-purple-100 dark:bg-purple-900/50 text-purple-600 dark:text-purple-400 flex items-center justify-center">
+                        <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 3v2m6-2v2M9 19v2m6-2v2M5 9H3m2 6H3m18-6h-2m2 6h-2M7 19h10a2 2 0 002-2V7a2 2 0 00-2-2H7a2 2 0 00-2 2v10a2 2 0 002 2zM9 9h6v6H9V9z"/></svg>
+                      </span>
+                      <h3 class="font-heading font-bold text-xs uppercase tracking-wider text-slate-800 dark:text-slate-200">IoTech</h3>
+                    </a>
+                    <a href="#iotech" class="text-[12px] font-semibold text-purple-600 dark:text-purple-400 hover:text-purple-800 dark:hover:text-purple-300 flex items-center gap-1 group/link" title="Explore IoTech Domain">
+                      <span>Explore</span>
+                      <svg class="w-3 h-3 group-hover/link:translate-x-0.5 group-hover/link:-translate-y-0.5 transition-transform" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                        <path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"></path>
+                        <polyline points="15 3 21 3 21 9"></polyline>
+                        <line x1="10" y1="14" x2="21" y2="3"></line>
+                      </svg>
+                    </a>
+                  </div>
+
+                  <ul class="space-y-[14px]">
+                    <!-- Taskeye -->
+                    <li>
+                      <a href="#taskeye" data-product="taskeye" data-category="iotech" class="mega-item group/item flex items-start gap-3 p-2 rounded-2xl hover:bg-slate-100/70 dark:hover:bg-slate-800/60 transition-all">
+                        <div class="w-7 h-7 flex items-center justify-center flex-shrink-0">
+                          <svg class="w-6 h-6" viewBox="0 0 32 32" fill="none">
+                            <circle cx="16" cy="16" r="12" fill="#8B5CF6"/>
+                            <path d="M11 16L15 20L21 12" stroke="#FFFFFF" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/>
+                          </svg>
+                        </div>
+                        <div class="flex flex-col min-w-0">
+                          <span class="font-heading font-medium text-[14px] text-slate-900 dark:text-slate-100 group-hover/item:text-purple-600 dark:group-hover/item:text-purple-400 leading-tight">Taskeye</span>
+                          <span class="text-[13px] font-medium text-slate-500 dark:text-slate-400 leading-tight mt-0.5">Field Employee Tracking Software</span>
+                        </div>
+                        <span class="active-green-dot hidden ml-auto shrink-0 w-2 h-2 rounded-full bg-emerald-500 ring-4 ring-emerald-500/20" title="Active Page"></span>
+                      </a>
+                    </li>
+
+                    <!-- Enarzee -->
+                    <li>
+                      <a href="#enarzee" data-product="enarzee" data-category="iotech" class="mega-item group/item flex items-start gap-3 p-2 rounded-2xl hover:bg-slate-100/70 dark:hover:bg-slate-800/60 transition-all">
+                        <div class="w-7 h-7 flex items-center justify-center flex-shrink-0">
+                          <svg class="w-6 h-6" viewBox="0 0 32 32" fill="none">
+                            <circle cx="16" cy="16" r="12" fill="#14B8A6"/>
+                            <path d="M16 8V16L21 21" stroke="#FFFFFF" stroke-width="2" stroke-linecap="round"/>
+                            <path d="M12 12L10 10M20 12L22 10" stroke="#FFFFFF" stroke-width="1.8" stroke-linecap="round"/>
+                          </svg>
+                        </div>
+                        <div class="flex flex-col min-w-0">
+                          <span class="font-heading font-medium text-[14px] text-slate-900 dark:text-slate-100 group-hover/item:text-purple-600 dark:group-hover/item:text-purple-400 leading-tight">Enarzee</span>
+                          <span class="text-[13px] font-medium text-slate-500 dark:text-slate-400 leading-tight mt-0.5">Energy Monitoring System</span>
+                        </div>
+                        <span class="active-green-dot hidden ml-auto shrink-0 w-2 h-2 rounded-full bg-emerald-500 ring-4 ring-emerald-500/20" title="Active Page"></span>
+                      </a>
+                    </li>
+                  </ul>
+                </div>
+
+              </div>
+
+            </div>
+            </div>
+          </div>
+
+          <!-- 2. DISCOVER (Dropdown) -->
+          <div class="nav-item group h-full flex items-center" data-dropdown="discover-dropdown">
+            <button id="nav-discover-btn" class="nav-link flex items-center gap-1.5 px-3.5 py-2 rounded-full text-sm font-semibold text-slate-700 dark:text-slate-200 hover:text-brand-600 dark:hover:text-brand-400 hover:bg-slate-100/70 dark:hover:bg-slate-800 transition-all focus:outline-none" aria-expanded="false" aria-haspopup="true" aria-controls="discover-dropdown">
+              <span>Discover</span>
+              <svg class="chevron-icon w-4 h-4 text-slate-400 dark:text-slate-500 group-hover:text-brand-600 dark:group-hover:text-brand-400 transition-transform duration-200" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" />
+              </svg>
+            </button>
+
+            <!-- Discover Dropdown Menu -->
+            <div id="discover-dropdown" class="mega-menu mega-menu-right absolute right-0 top-full w-[55rem] max-w-[calc(100vw-2rem)] pt-2 pointer-events-none opacity-0 invisible transition-all duration-200">
+              <div class="bg-white dark:bg-slate-900 rounded-3xl shadow-2xl border border-slate-200 dark:border-slate-800 p-6 flex gap-6 pointer-events-auto">
+                
+                <!-- Left Links (2 Columns) -->
+                <div class="flex-1 grid grid-cols-2 gap-5 pr-6 border-r border-slate-100 dark:border-slate-800">
+                  
+                  <!-- Column 1 -->
+                  <div class="space-y-[14px]">
+                    <!-- 1. About Us -->
+                    <a href="#" class="mega-item group/item flex items-start gap-3 p-2 rounded-2xl hover:bg-slate-100/70 dark:hover:bg-slate-800/60 transition-all">
+                      <div class="w-6 h-6 flex items-center justify-center shrink-0 mt-0.5">
+                        <svg class="w-6 h-6 text-slate-700 dark:text-slate-300 group-hover/item:text-brand-600 dark:group-hover/item:text-blue-400 transition-colors" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.8">
+                          <path stroke-linecap="round" stroke-linejoin="round" d="M12 21v-8.25M15.75 21v-8.25M8.25 21v-8.25M3 9l9-6 9 6m-1.5 12V10.333A1.5 1.5 0 0018 9H6a1.5 1.5 0 00-1.5 1.333V21h15z" />
+                        </svg>
+                      </div>
+                      <div class="flex flex-col min-w-0">
+                        <span class="font-heading font-medium text-[14px] text-slate-900 dark:text-slate-100 group-hover/item:text-brand-600 dark:group-hover/item:text-brand-400 leading-tight">About Us</span>
+                        <span class="text-[13px] font-medium text-slate-500 dark:text-slate-400 leading-tight mt-0.5">20+ years in telematics & IoT</span>
+                      </div>
+                    </a>
+
+                    <!-- 2. Careers -->
+                    <a href="#" class="mega-item group/item flex items-start gap-3 p-2 rounded-2xl hover:bg-slate-100/70 dark:hover:bg-slate-800/60 transition-all">
+                      <div class="w-6 h-6 flex items-center justify-center shrink-0 mt-0.5">
+                        <svg class="w-6 h-6 text-slate-700 dark:text-slate-300 group-hover/item:text-brand-600 dark:group-hover/item:text-blue-400 transition-colors" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.8">
+                          <path stroke-linecap="round" stroke-linejoin="round" d="M20.25 14.15v4.25c0 1.094-.787 2.036-1.872 2.18-2.087.277-4.216.42-6.378.42s-4.291-.143-6.378-.42c-1.085-.144-1.872-1.086-1.872-2.18v-4.25m16.5 0a2.18 2.18 0 00.75-1.661V8.706c0-1.081-.768-2.015-1.837-2.175a48.114 48.114 0 00-3.413-.387m4.5 8.006c-.194.165-.42.295-.673.38A23.978 23.978 0 0112 15.75c-2.648 0-5.195-.429-7.577-1.22a2.016 2.016 0 01-.673-.38m0 0A2.18 2.18 0 013 12.489V8.706c0-1.081.768-2.015 1.837-2.175a48.111 48.111 0 013.413-.387m7.5 0V5.25A2.25 2.25 0 0013.5 3h-3a2.25 2.25 0 00-2.25 2.25v.894m7.5 0a48.667 48.667 0 00-7.5 0M12 12.75h.008v.008H12v-.008z" />
+                        </svg>
+                      </div>
+                      <div class="flex flex-col min-w-0">
+                        <span class="font-heading font-medium text-[14px] text-slate-900 dark:text-slate-100 group-hover/item:text-brand-600 dark:group-hover/item:text-brand-400 leading-tight">Careers</span>
+                        <span class="text-[13px] font-medium text-slate-500 dark:text-slate-400 leading-tight mt-0.5">Join our engineering team</span>
+                      </div>
+                    </a>
+
+                    <!-- 3. Exhibitions & Events -->
+                    <a href="#" class="mega-item group/item flex items-start gap-3 p-2 rounded-2xl hover:bg-slate-100/70 dark:hover:bg-slate-800/60 transition-all">
+                      <div class="w-6 h-6 flex items-center justify-center shrink-0 mt-0.5">
+                        <svg class="w-6 h-6 text-slate-700 dark:text-slate-300 group-hover/item:text-brand-600 dark:group-hover/item:text-blue-400 transition-colors" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.8">
+                          <path stroke-linecap="round" stroke-linejoin="round" d="M6.75 3v2.25M17.25 3v2.25M3 18.75V7.5a2.25 2.25 0 012.25-2.25h13.5A2.25 2.25 0 0121 7.5v11.25m-18 0A2.25 2.25 0 005.25 21h13.5A2.25 2.25 0 0021 18.75m-18 0v-7.5A2.25 2.25 0 015.25 9h13.5A2.25 2.25 0 0121 11.25v7.5" />
+                        </svg>
+                      </div>
+                      <div class="flex flex-col min-w-0">
+                        <span class="font-heading font-medium text-[14px] text-slate-900 dark:text-slate-100 group-hover/item:text-brand-600 dark:group-hover/item:text-brand-400 leading-tight">Exhibitions & Events</span>
+                        <span class="text-[13px] font-medium text-slate-500 dark:text-slate-400 leading-tight mt-0.5">Meet Uffizio at global summits</span>
+                      </div>
+                    </a>
+                  </div>
+
+                  <!-- Column 2 -->
+                  <div class="space-y-[14px]">
+                    <!-- 4. Helpdesk & Support -->
+                    <a href="#" class="mega-item group/item flex items-start gap-3 p-2 rounded-2xl hover:bg-slate-100/70 dark:hover:bg-slate-800/60 transition-all">
+                      <div class="w-6 h-6 flex items-center justify-center shrink-0 mt-0.5">
+                        <svg class="w-6 h-6 text-slate-700 dark:text-slate-300 group-hover/item:text-brand-600 dark:group-hover/item:text-blue-400 transition-colors" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.8">
+                          <path stroke-linecap="round" stroke-linejoin="round" d="M9.879 7.519c1.171-1.025 3.071-1.025 4.242 0 1.172 1.025 1.172 2.687 0 3.712-.203.179-.43.326-.67.442-.745.361-1.45.999-1.45 1.827v.75M21 12a9 9 0 11-18 0 9 9 0 0118 0zm-9 5.25h.008v.008H12v-.008z" />
+                        </svg>
+                      </div>
+                      <div class="flex flex-col min-w-0">
+                        <span class="font-heading font-medium text-[14px] text-slate-900 dark:text-slate-100 group-hover/item:text-brand-600 dark:group-hover/item:text-brand-400 leading-tight">Helpdesk & Support</span>
+                        <span class="text-[13px] font-medium text-slate-500 dark:text-slate-400 leading-tight mt-0.5">Developer docs & 24/7 support</span>
+                      </div>
+                    </a>
+
+                    <!-- 5. Contact Us -->
+                    <a href="#contact" class="mega-item group/item flex items-start gap-3 p-2 rounded-2xl hover:bg-slate-100/70 dark:hover:bg-slate-800/60 transition-all">
+                      <div class="w-6 h-6 flex items-center justify-center shrink-0 mt-0.5">
+                        <svg class="w-6 h-6 text-slate-700 dark:text-slate-300 group-hover/item:text-brand-600 dark:group-hover/item:text-blue-400 transition-colors" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.8">
+                          <path stroke-linecap="round" stroke-linejoin="round" d="M2.25 6.75c0 8.284 6.716 15 15 15h2.25a2.25 2.25 0 002.25-2.25v-1.372c0-.516-.351-.966-.852-1.091l-4.423-1.106c-.44-.11-.902.055-1.173.417l-.97 1.293c-.282.376-.769.542-1.21.38a12.035 12.035 0 01-7.143-7.143c-.162-.441.004-.928.38-1.21l1.293-.97c.363-.271.527-.734.417-1.173L6.963 3.102a1.125 1.125 0 00-1.091-.852H4.5A2.25 2.25 0 002.25 4.5v2.25z" />
+                        </svg>
+                      </div>
+                      <div class="flex flex-col min-w-0">
+                        <span class="font-heading font-medium text-[14px] text-slate-900 dark:text-slate-100 group-hover/item:text-brand-600 dark:group-hover/item:text-brand-400 leading-tight">Contact Us</span>
+                        <span class="text-[13px] font-medium text-slate-500 dark:text-slate-400 leading-tight mt-0.5">Connect with our global offices</span>
+                      </div>
+                    </a>
+
+                    <!-- 6. Partner With Us -->
+                    <a href="#contact" class="mega-item group/item flex items-start gap-3 p-2 rounded-2xl hover:bg-slate-100/70 dark:hover:bg-slate-800/60 transition-all">
+                      <div class="w-6 h-6 flex items-center justify-center shrink-0 mt-0.5">
+                        <svg class="w-6 h-6 text-slate-700 dark:text-slate-300 group-hover/item:text-brand-600 dark:group-hover/item:text-blue-400 transition-colors" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.8">
+                          <path stroke-linecap="round" stroke-linejoin="round" d="M18 18.72a9.094 9.094 0 003.741-.479 3 3 0 00-4.682-2.72m.94 3.198l.001.031c0 .225-.012.447-.037.666A11.944 11.944 0 0112 21c-2.17 0-4.207-.576-5.963-1.584A6.062 6.062 0 016 18.719m12 0a5.971 5.971 0 00-.941-3.197m0 0A5.995 5.995 0 0012 12.75a5.995 5.995 0 00-5.058 2.772m0 0a3 3 0 00-4.681 2.72 8.986 8.986 0 003.74.477m.94-3.197a5.971 5.971 0 00-.94 3.197M15 6.75a3 3 0 11-6 0 3 3 0 016 0zm6 3a2.25 2.25 0 11-4.5 0 2.25 2.25 0 014.5 0zm-13.5 0a2.25 2.25 0 11-4.5 0 2.25 2.25 0 014.5 0z" />
+                        </svg>
+                      </div>
+                      <div class="flex flex-col min-w-0">
+                        <span class="font-heading font-medium text-[14px] text-slate-900 dark:text-slate-100 group-hover/item:text-brand-600 dark:group-hover/item:text-brand-400 leading-tight">Partner With Us</span>
+                        <span class="text-[13px] font-medium text-slate-500 dark:text-slate-400 leading-tight mt-0.5">Join our global partner network</span>
+                      </div>
+                    </a>
+                  </div>
+
+                </div>
+
+                <!-- Right Column: Featured Card -->
+                <div class="w-[224px] shrink-0 flex flex-col justify-between">
+                  <div class="featured-card-body w-[224px]">
+                    <div class="featured-card-img-wrap w-[224px] h-[120px] rounded-2xl overflow-hidden bg-slate-950 shadow-sm border border-slate-200/60 dark:border-slate-800">
+                      <img src="assets/handshake.png" alt="Start your journey with us" class="featured-card-img w-[224px] h-[120px] object-cover object-top">
+                    </div>
+                    <h4 class="font-heading font-medium text-[14px] text-slate-900 dark:text-white mt-3 leading-snug">Start your journey with us</h4>
+                    <p class="text-[13px] font-medium text-slate-500 dark:text-slate-400 mt-1 leading-relaxed">Take the first step toward smarter solutions. Explore new features, and opportunities.</p>
+                  </div>
+                  <a href="#contact" class="mt-3.5 inline-flex items-center gap-1.5 text-xs font-bold text-blue-600 dark:text-blue-400 hover:text-blue-700 dark:hover:text-blue-300 transition-colors group/link">
+                    <span>Explore Opportunities</span>
+                    <svg class="w-4 h-4 text-blue-600 dark:text-blue-400 group-hover/link:translate-x-0.5 transition-transform shrink-0" viewBox="0 0 24 24" fill="none" stroke="currentColor">
+                      <circle cx="12" cy="12" r="9" stroke-width="1.8"/>
+                      <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M11 8l4 4-4 4M8 12h7" />
+                    </svg>
+                  </a>
+                </div>
+
+              </div>
+            </div>
+          </div>
+
+          <!-- 4. RESOURCE (Dropdown) -->
+          <div class="nav-item group h-full flex items-center" data-dropdown="resource-dropdown">
+            <button id="nav-resource-btn" class="nav-link flex items-center gap-1.5 px-3.5 py-2 rounded-full text-sm font-semibold text-slate-700 dark:text-slate-200 hover:text-brand-600 dark:hover:text-brand-400 hover:bg-slate-100/70 dark:hover:bg-slate-800 transition-all focus:outline-none" aria-expanded="false" aria-haspopup="true" aria-controls="resource-dropdown">
+              <span>Resource</span>
+              <svg class="chevron-icon w-4 h-4 text-slate-400 dark:text-slate-500 group-hover:text-brand-600 dark:group-hover:text-brand-400 transition-transform duration-200" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" />
+              </svg>
+            </button>
+
+            <!-- Resource Dropdown Menu -->
+            <div id="resource-dropdown" class="mega-menu mega-menu-right absolute right-0 top-full w-[55rem] max-w-[calc(100vw-2rem)] pt-2 pointer-events-none opacity-0 invisible transition-all duration-200">
+              <div class="bg-white dark:bg-slate-900 rounded-3xl shadow-2xl border border-slate-200 dark:border-slate-800 p-6 flex gap-6 pointer-events-auto">
+                
+                <!-- Left Links (2 Columns) -->
+                <div class="flex-1 grid grid-cols-2 gap-5 pr-6 border-r border-slate-100 dark:border-slate-800">
+                  
+                  <!-- Column 1 (4 items) -->
+                  <div class="space-y-[14px]">
+                    <!-- 1. Blog -->
+                    <a href="#blog" class="mega-item group/item flex items-start gap-3 p-2 rounded-2xl hover:bg-slate-100/70 dark:hover:bg-slate-800/60 transition-all">
+                      <div class="w-6 h-6 flex items-center justify-center shrink-0 mt-0.5">
+                        <svg class="w-6 h-6 text-slate-700 dark:text-slate-300 group-hover/item:text-brand-600 dark:group-hover/item:text-blue-400 transition-colors" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.8">
+                          <path stroke-linecap="round" stroke-linejoin="round" d="M16.862 4.487l1.687-1.688a1.875 1.875 0 112.652 2.652L10.582 16.07a4.5 4.5 0 01-1.897 1.13L6 18l.8-2.685a4.5 4.5 0 011.13-1.897l8.932-8.931zm0 0L19.5 7.125M18 14v4.75A2.25 2.25 0 0115.75 21H5.25A2.25 2.25 0 013 18.75V8.25A2.25 2.25 0 015.25 6H10" />
+                        </svg>
+                      </div>
+                      <div class="flex flex-col min-w-0">
+                        <span class="font-heading font-medium text-[14px] text-slate-900 dark:text-slate-100 group-hover/item:text-brand-600 dark:group-hover/item:text-brand-400 leading-tight">Blog</span>
+                        <span class="text-[13px] font-medium text-slate-500 dark:text-slate-400 leading-tight mt-0.5">Insights, updates, and solutions</span>
+                      </div>
+                    </a>
+
+                    <!-- 2. Marketing Material -->
+                    <a href="#marketing" class="mega-item group/item flex items-start gap-3 p-2 rounded-2xl hover:bg-slate-100/70 dark:hover:bg-slate-800/60 transition-all">
+                      <div class="w-6 h-6 flex items-center justify-center shrink-0 mt-0.5">
+                        <svg class="w-6 h-6 text-slate-700 dark:text-slate-300 group-hover/item:text-brand-600 dark:group-hover/item:text-blue-400 transition-colors" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.8">
+                          <path stroke-linecap="round" stroke-linejoin="round" d="M9 13.5l3 3m0 0l3-3m-3 3v-9m10.5 9v3.75A2.25 2.25 0 0119.5 21H4.5A2.25 2.25 0 012.25 18.75V13.5M21.75 13.5l-3.375-4.5H5.625L2.25 13.5" />
+                        </svg>
+                      </div>
+                      <div class="flex flex-col min-w-0">
+                        <span class="font-heading font-medium text-[14px] text-slate-900 dark:text-slate-100 group-hover/item:text-brand-600 dark:group-hover/item:text-brand-400 leading-tight">Marketing Material</span>
+                        <span class="text-[13px] font-medium text-slate-500 dark:text-slate-400 leading-tight mt-0.5">Explore eBooks, PPTs, & resources</span>
+                      </div>
+                    </a>
+
+                    <!-- 3. Industries We Serve -->
+                    <a href="#industries" class="mega-item group/item flex items-start gap-3 p-2 rounded-2xl hover:bg-slate-100/70 dark:hover:bg-slate-800/60 transition-all">
+                      <div class="w-6 h-6 flex items-center justify-center shrink-0 mt-0.5">
+                        <svg class="w-6 h-6 text-slate-700 dark:text-slate-300 group-hover/item:text-brand-600 dark:group-hover/item:text-blue-400 transition-colors" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.8">
+                          <path stroke-linecap="round" stroke-linejoin="round" d="M3 21h18M3 10l6 4V8l6 4V4l6 4v13H3V10z" />
+                        </svg>
+                      </div>
+                      <div class="flex flex-col min-w-0">
+                        <span class="font-heading font-medium text-[14px] text-slate-900 dark:text-slate-100 group-hover/item:text-brand-600 dark:group-hover/item:text-brand-400 leading-tight">Industries We Serve</span>
+                        <span class="text-[13px] font-medium text-slate-500 dark:text-slate-400 leading-tight mt-0.5">Tailored solutions for your business</span>
+                      </div>
+                    </a>
+
+                    <!-- 4. What's New -->
+                    <a href="#whats-new" class="mega-item group/item flex items-start gap-3 p-2 rounded-2xl hover:bg-slate-100/70 dark:hover:bg-slate-800/60 transition-all">
+                      <div class="w-6 h-6 flex items-center justify-center shrink-0 mt-0.5">
+                        <svg class="w-6 h-6 text-slate-700 dark:text-slate-300 group-hover/item:text-brand-600 dark:group-hover/item:text-blue-400 transition-colors" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.8">
+                          <path stroke-linecap="round" stroke-linejoin="round" d="M11 5.882V19.24a1.76 1.76 0 01-3.417.592l-2.147-6.15M18 13a3 3 0 100-6M5.436 13.683A4.001 4.001 0 017 6h1.832c4.1 0 7.625-1.234 9.168-3v14c-1.543-1.766-5.067-3-9.168-3H7a3.988 3.988 0 01-1.564-.317z" />
+                        </svg>
+                      </div>
+                      <div class="flex flex-col min-w-0">
+                        <span class="font-heading font-medium text-[14px] text-slate-900 dark:text-slate-100 group-hover/item:text-brand-600 dark:group-hover/item:text-brand-400 leading-tight">What's New</span>
+                        <span class="text-[13px] font-medium text-slate-500 dark:text-slate-400 leading-tight mt-0.5">Track our latest product updates</span>
+                      </div>
+                    </a>
+                  </div>
+
+                  <!-- Column 2 (4 items) -->
+                  <div class="space-y-[14px]">
+                    <!-- 5. UffiTALKS -->
+                    <a href="#uffitalks" class="mega-item group/item flex items-start gap-3 p-2 rounded-2xl hover:bg-slate-100/70 dark:hover:bg-slate-800/60 transition-all">
+                      <div class="w-6 h-6 flex items-center justify-center shrink-0 mt-0.5">
+                        <svg class="w-6 h-6 text-slate-700 dark:text-slate-300 group-hover/item:text-brand-600 dark:group-hover/item:text-blue-400 transition-colors" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.8">
+                          <path stroke-linecap="round" stroke-linejoin="round" d="M8.625 12a.375.375 0 11-.75 0 .375.375 0 01.75 0zm4.125 0a.375.375 0 11-.75 0 .375.375 0 01.75 0zm4.125 0a.375.375 0 11-.75 0 .375.375 0 01.75 0z" />
+                          <path stroke-linecap="round" stroke-linejoin="round" d="M7.5 8.25h9a3.75 3.75 0 013.75 3.75v3a3.75 3.75 0 01-3.75 3.75h-2.25l-3 3v-3H7.5A3.75 3.75 0 013.75 15v-3A3.75 3.75 0 017.5 8.25z" />
+                        </svg>
+                      </div>
+                      <div class="flex flex-col min-w-0">
+                        <span class="font-heading font-medium text-[14px] text-slate-900 dark:text-slate-100 group-hover/item:text-brand-600 dark:group-hover/item:text-brand-400 leading-tight">UffiTALKS</span>
+                        <span class="text-[13px] font-medium text-slate-500 dark:text-slate-400 leading-tight mt-0.5">Our latest talks and updates</span>
+                      </div>
+                    </a>
+
+                    <!-- 6. Use Case -->
+                    <a href="#use-cases" class="mega-item group/item flex items-start gap-3 p-2 rounded-2xl hover:bg-slate-100/70 dark:hover:bg-slate-800/60 transition-all">
+                      <div class="w-6 h-6 flex items-center justify-center shrink-0 mt-0.5">
+                        <svg class="w-6 h-6 text-slate-700 dark:text-slate-300 group-hover/item:text-brand-600 dark:group-hover/item:text-blue-400 transition-colors" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.8">
+                          <path stroke-linecap="round" stroke-linejoin="round" d="M19.5 14.25v-2.625a3.375 3.375 0 00-3.375-3.375h-1.5A1.125 1.125 0 0113.5 7.125v-1.5a3.375 3.375 0 00-3.375-3.375H8.25m0 12.75h7.5m-7.5 3H12M10.5 2.25H5.625c-.621 0-1.125.504-1.125 1.125v17.25c0 .621.504 1.125 1.125 1.125h12.75c.621 0 1.125-.504 1.125-1.125V11.25a9 9 0 00-9-9z" />
+                        </svg>
+                      </div>
+                      <div class="flex flex-col min-w-0">
+                        <span class="font-heading font-medium text-[14px] text-slate-900 dark:text-slate-100 group-hover/item:text-brand-600 dark:group-hover/item:text-brand-400 leading-tight">Use Case</span>
+                        <span class="text-[13px] font-medium text-slate-500 dark:text-slate-400 leading-tight mt-0.5">Explore Practical Use Cases</span>
+                      </div>
+                    </a>
+
+                    <!-- 7. Integrated Devices -->
+                    <a href="#devices" class="mega-item group/item flex items-start gap-3 p-2 rounded-2xl hover:bg-slate-100/70 dark:hover:bg-slate-800/60 transition-all">
+                      <div class="w-6 h-6 flex items-center justify-center shrink-0 mt-0.5">
+                        <svg class="w-6 h-6 text-slate-700 dark:text-slate-300 group-hover/item:text-brand-600 dark:group-hover/item:text-blue-400 transition-colors" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.8">
+                          <path stroke-linecap="round" stroke-linejoin="round" d="M8.288 15.038a5.25 5.25 0 017.424 0M5.106 11.856c3.807-3.808 9.98-3.808 13.788 0M1.924 8.674c5.565-5.565 14.587-5.565 20.152 0M12.53 18.22l-.53.53-.53-.53a.75.75 0 011.06 0z" />
+                        </svg>
+                      </div>
+                      <div class="flex flex-col min-w-0">
+                        <span class="font-heading font-medium text-[14px] text-slate-900 dark:text-slate-100 group-hover/item:text-brand-600 dark:group-hover/item:text-brand-400 leading-tight">Integrated Devices</span>
+                        <span class="text-[13px] font-medium text-slate-500 dark:text-slate-400 leading-tight mt-0.5">1500+ device integrated</span>
+                      </div>
+                    </a>
+
+                    <!-- 8. Hardware Manufacturer -->
+                    <a href="#hardware" class="mega-item group/item flex items-start gap-3 p-2 rounded-2xl hover:bg-slate-100/70 dark:hover:bg-slate-800/60 transition-all">
+                      <div class="w-6 h-6 flex items-center justify-center shrink-0 mt-0.5">
+                        <svg class="w-6 h-6 text-slate-700 dark:text-slate-300 group-hover/item:text-brand-600 dark:group-hover/item:text-blue-400 transition-colors" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.8">
+                          <rect x="6" y="6" width="12" height="12" rx="2" stroke-width="1.8" />
+                          <path stroke-linecap="round" stroke-linejoin="round" d="M9 2v4M15 2v4M9 18v4M15 18v4M2 9h4M2 15h4M18 9h4M18 15h4M10 10h4v4h-4z" />
+                        </svg>
+                      </div>
+                      <div class="flex flex-col min-w-0">
+                        <span class="font-heading font-medium text-[14px] text-slate-900 dark:text-slate-100 group-hover/item:text-brand-600 dark:group-hover/item:text-brand-400 leading-tight">Hardware Manufacturer</span>
+                        <span class="text-[13px] font-medium text-slate-500 dark:text-slate-400 leading-tight mt-0.5">Wide range of top manufacturers</span>
+                      </div>
+                    </a>
+                  </div>
+
+                </div>
+
+                <!-- Right Column: Featured Card -->
+                <div class="w-[224px] shrink-0 flex flex-col justify-between">
+                  <div class="featured-card-body w-[224px]">
+                    <div class="featured-card-img-wrap w-[224px] h-[120px] rounded-2xl overflow-hidden bg-slate-950 shadow-sm border border-slate-200/60 dark:border-slate-800">
+                      <img src="assets/whats-new.png" alt="What's New" class="featured-card-img w-[224px] h-[120px] object-cover object-top">
+                    </div>
+                    <h4 class="font-heading font-medium text-[14px] text-slate-900 dark:text-white mt-3 leading-snug">What's New</h4>
+                    <p class="text-[13px] font-medium text-slate-500 dark:text-slate-400 mt-1 leading-relaxed">Discover the recent enhancements and features in one place.</p>
+                  </div>
+                  <a href="#whats-new" class="mt-3.5 inline-flex items-center gap-1.5 text-xs font-bold text-blue-600 dark:text-blue-400 hover:text-blue-700 dark:hover:text-blue-300 transition-colors group/link">
+                    <span>Latest Updates</span>
+                    <svg class="w-4 h-4 text-blue-600 dark:text-blue-400 group-hover/link:translate-x-0.5 transition-transform shrink-0" viewBox="0 0 24 24" fill="none" stroke="currentColor">
+                      <circle cx="12" cy="12" r="9" stroke-width="1.8"/>
+                      <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M11 8l4 4-4 4M8 12h7" />
+                    </svg>
+                  </a>
+                </div>
+
+              </div>
+            </div>
+          </div>
+
+        </nav>
+
+        <!-- Right Action Buttons -->
+        <div class="flex items-center space-x-2.5 h-full">
+          
+          <!-- Dark / Light Mode Toggle Button -->
+          <button id="theme-toggle" class="w-10 h-10 flex items-center justify-center rounded-full text-slate-600 dark:text-slate-300 hover:bg-slate-100 dark:hover:bg-slate-800 transition-colors border border-slate-200/80 dark:border-slate-700/80 focus:outline-none" aria-label="Toggle Dark/Light Mode" title="Toggle Theme">
+            <!-- Sun Icon (for dark mode) -->
+            <svg id="theme-toggle-light-icon" class="w-4 h-4 hidden" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 3v1m0 16v1m9-9h-1M4 12H3m15.364 6.364l-.707-.707M6.343 6.343l-.707-.707m12.728 0l-.707.707M6.343 17.657l-.707.707M16 12a4 4 0 11-8 0 4 4 0 018 0z" />
+            </svg>
+            <!-- Moon Icon (for light mode) -->
+            <svg id="theme-toggle-dark-icon" class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M20.354 15.354A9 9 0 018.646 3.646 9.003 9.003 0 0012 21a9.003 9.003 0 008.354-5.646z" />
+            </svg>
+          </button>
+
+          <!-- Language Selector (Aligned with All Other Menus: h-full container ensures dropdown opens flush below header) -->
+          <div class="relative group h-full flex items-center" id="lang-selector-group">
+            <button id="lang-btn" class="h-10 flex items-center gap-1.5 px-3.5 text-xs font-semibold text-slate-600 dark:text-slate-300 hover:text-slate-900 dark:hover:text-white rounded-full hover:bg-slate-100 dark:hover:bg-slate-800 transition-colors border border-slate-200/80 dark:border-slate-700/80 focus:outline-none" aria-label="Select Language" aria-expanded="false" aria-haspopup="true" aria-controls="lang-dropdown">
+              <svg class="w-4 h-4 text-slate-500 dark:text-slate-400" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3.055 11H5a2 2 0 012 2v1a2 2 0 002 2 2 2 0 012 2v2.945M8 3.935V5.5A2.5 2.5 0 0010.5 8h.5a2 2 0 012 2 2 2 0 104 0 2 2 0 012-2h1.064M15 20.488V18a2 2 0 012-2h3.064M21 12a9 9 0 11-18 0 9 9 0 0118 0z"/></svg>
+              <span id="lang-btn-text">EN</span>
+              <svg class="chevron-icon w-3.5 h-3.5 text-slate-400 group-hover:rotate-180 group-focus-within:rotate-180 transition-transform duration-200" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/></svg>
+            </button>
+            <!-- Dropdown Container: top-full (flush with header bottom) + pt-2 matches all mega-menus -->
+            <div id="lang-dropdown" class="absolute right-0 top-full pt-2 w-52 pointer-events-none opacity-0 invisible group-hover:pointer-events-auto group-hover:opacity-100 group-hover:visible group-focus-within:pointer-events-auto group-focus-within:opacity-100 group-focus-within:visible transition-all duration-200 z-50">
+              <div class="bg-white dark:bg-[#0d1521] rounded-2xl shadow-2xl border border-slate-200/90 dark:border-slate-800 p-2 overflow-hidden space-y-0.5">
+                <!-- 0. English -->
+                <a href="#lang-en" data-lang-code="EN" class="flex items-center gap-3.5 px-3 py-2 text-sm font-medium text-slate-700 dark:text-slate-200 hover:text-slate-950 dark:hover:text-white hover:bg-slate-100/80 dark:hover:bg-slate-800/80 rounded-xl transition-colors group/item">
+                  <svg class="w-5 h-5 rounded-full overflow-hidden shrink-0 shadow-xs ring-1 ring-black/10 dark:ring-white/10" viewBox="0 0 32 32" aria-hidden="true">
+                    <rect width="32" height="32" fill="#012169"/>
+                    <path d="M0 0L32 32M32 0L0 32" stroke="#FFFFFF" stroke-width="5"/>
+                    <path d="M0 0L32 32M32 0L0 32" stroke="#C8102E" stroke-width="2.5"/>
+                    <path d="M16 0v32M0 16h32" stroke="#FFFFFF" stroke-width="7"/>
+                    <path d="M16 0v32M0 16h32" stroke="#C8102E" stroke-width="4.2"/>
+                  </svg>
+                  <span>English</span>
+                </a>
+
+                <!-- 1. Spanish -->
+                <a href="#lang-es" data-lang-code="ES" class="flex items-center gap-3.5 px-3 py-2 text-sm font-medium text-slate-700 dark:text-slate-200 hover:text-slate-950 dark:hover:text-white hover:bg-slate-100/80 dark:hover:bg-slate-800/80 rounded-xl transition-colors group/item">
+                  <svg class="w-5 h-5 rounded-full overflow-hidden shrink-0 shadow-xs ring-1 ring-black/10 dark:ring-white/10" viewBox="0 0 32 32" aria-hidden="true">
+                    <rect width="10.67" height="32" fill="#006847"/>
+                    <rect x="10.67" width="10.66" height="32" fill="#FFFFFF"/>
+                    <rect x="21.33" width="10.67" height="32" fill="#CE1126"/>
+                    <circle cx="16" cy="16" r="3.2" fill="#8B5E3C"/>
+                    <path d="M14 17.5c1 1 3 1 4 0M15 14.5l1-1 1 1M16 13v3" stroke="#4A3525" stroke-width="0.7" fill="none"/>
+                    <path d="M13.5 16.5c0 1.5 1.5 2.5 2.5 2.5s2.5-1 2.5-2.5" stroke="#2E7D32" stroke-width="0.6" fill="none"/>
+                  </svg>
+                  <span>Spanish</span>
+                </a>
+
+                <!-- 2. Portuguese -->
+                <a href="#lang-pt" data-lang-code="PT" class="flex items-center gap-3.5 px-3 py-2 text-sm font-medium text-slate-700 dark:text-slate-200 hover:text-slate-950 dark:hover:text-white hover:bg-slate-100/80 dark:hover:bg-slate-800/80 rounded-xl transition-colors group/item">
+                  <svg class="w-5 h-5 rounded-full overflow-hidden shrink-0 shadow-xs ring-1 ring-black/10 dark:ring-white/10" viewBox="0 0 32 32" aria-hidden="true">
+                    <rect width="13" height="32" fill="#046A38"/>
+                    <rect x="13" width="19" height="32" fill="#DA291C"/>
+                    <circle cx="13" cy="16" r="5" fill="#FFC72C"/>
+                    <circle cx="13" cy="16" r="4.2" fill="none" stroke="#B28800" stroke-width="0.6"/>
+                    <path d="M11 13.5h4v3.5c0 1.5-2 3-2 3s-2-1.5-2-3v-3.5z" fill="#FFFFFF"/>
+                    <path d="M11 13.5h4v3.5c0 1.5-2 3-2 3s-2-1.5-2-3v-3.5z" fill="none" stroke="#DA291C" stroke-width="0.7"/>
+                    <circle cx="13" cy="15.5" r="0.8" fill="#003399"/>
+                  </svg>
+                  <span>Portuguese</span>
+                </a>
+
+                <!-- 3. Turkish -->
+                <a href="#lang-tr" data-lang-code="TR" class="flex items-center gap-3.5 px-3 py-2 text-sm font-medium text-slate-700 dark:text-slate-200 hover:text-slate-950 dark:hover:text-white hover:bg-slate-100/80 dark:hover:bg-slate-800/80 rounded-xl transition-colors group/item">
+                  <svg class="w-5 h-5 rounded-full overflow-hidden shrink-0 shadow-xs ring-1 ring-black/10 dark:ring-white/10" viewBox="0 0 32 32" aria-hidden="true">
+                    <rect width="32" height="32" fill="#E30A17"/>
+                    <circle cx="13" cy="16" r="6" fill="#FFFFFF"/>
+                    <circle cx="14.8" cy="16" r="4.8" fill="#E30A17"/>
+                    <polygon points="19.5,13.5 20.3,15.2 22.2,15.2 20.7,16.3 21.2,18.1 19.5,17 17.8,18.1 18.3,16.3 16.8,15.2 18.7,15.2" fill="#FFFFFF"/>
+                  </svg>
+                  <span>Turkish</span>
+                </a>
+
+                <!-- 4. Indonesian -->
+                <a href="#lang-id" data-lang-code="ID" class="flex items-center gap-3.5 px-3 py-2 text-sm font-medium text-slate-700 dark:text-slate-200 hover:text-slate-950 dark:hover:text-white hover:bg-slate-100/80 dark:hover:bg-slate-800/80 rounded-xl transition-colors group/item">
+                  <svg class="w-5 h-5 rounded-full overflow-hidden shrink-0 shadow-xs ring-1 ring-black/10 dark:ring-white/10" viewBox="0 0 32 32" aria-hidden="true">
+                    <rect width="32" height="16" fill="#CE1126"/>
+                    <rect y="16" width="32" height="16" fill="#FFFFFF"/>
+                  </svg>
+                  <span>Indonesian</span>
+                </a>
+
+                <!-- 5. Thai -->
+                <a href="#lang-th" data-lang-code="TH" class="flex items-center gap-3.5 px-3 py-2 text-sm font-medium text-slate-700 dark:text-slate-200 hover:text-slate-950 dark:hover:text-white hover:bg-slate-100/80 dark:hover:bg-slate-800/80 rounded-xl transition-colors group/item">
+                  <svg class="w-5 h-5 rounded-full overflow-hidden shrink-0 shadow-xs ring-1 ring-black/10 dark:ring-white/10" viewBox="0 0 32 32" aria-hidden="true">
+                    <rect width="32" height="32" fill="#A51931"/>
+                    <rect y="5.33" width="32" height="21.34" fill="#FFFFFF"/>
+                    <rect y="10.67" width="32" height="10.66" fill="#2D2A4A"/>
+                  </svg>
+                  <span>Thai</span>
+                </a>
+
+                <!-- 6. French -->
+                <a href="#lang-fr" data-lang-code="FR" class="flex items-center gap-3.5 px-3 py-2 text-sm font-medium text-slate-700 dark:text-slate-200 hover:text-slate-950 dark:hover:text-white hover:bg-slate-100/80 dark:hover:bg-slate-800/80 rounded-xl transition-colors group/item">
+                  <svg class="w-5 h-5 rounded-full overflow-hidden shrink-0 shadow-xs ring-1 ring-black/10 dark:ring-white/10" viewBox="0 0 32 32" aria-hidden="true">
+                    <rect width="10.67" height="32" fill="#002395"/>
+                    <rect x="10.67" width="10.66" height="32" fill="#FFFFFF"/>
+                    <rect x="21.33" width="10.67" height="32" fill="#ED2939"/>
+                  </svg>
+                  <span>French</span>
+                </a>
+
+                <!-- 7. Arabic -->
+                <a href="#lang-ar" data-lang-code="AR" class="flex items-center gap-3.5 px-3 py-2 text-sm font-medium text-slate-700 dark:text-slate-200 hover:text-slate-950 dark:hover:text-white hover:bg-slate-100/80 dark:hover:bg-slate-800/80 rounded-xl transition-colors group/item">
+                  <svg class="w-5 h-5 rounded-full overflow-hidden shrink-0 shadow-xs ring-1 ring-black/10 dark:ring-white/10" viewBox="0 0 32 32" aria-hidden="true">
+                    <rect width="32" height="32" fill="#006C35"/>
+                    <path d="M7 13.5h18M8 12h3M13 12h6M21 12h3M9 15h14" stroke="#FFFFFF" stroke-width="1" stroke-linecap="round"/>
+                    <path d="M7 18.5h18M7 17.5v2M9 17.5v2" stroke="#FFFFFF" stroke-width="0.9" stroke-linecap="round"/>
+                  </svg>
+                  <span>Arabic</span>
+                </a>
+
+                <!-- 8. German -->
+                <a href="#lang-de" data-lang-code="DE" class="flex items-center gap-3.5 px-3 py-2 text-sm font-medium text-slate-700 dark:text-slate-200 hover:text-slate-950 dark:hover:text-white hover:bg-slate-100/80 dark:hover:bg-slate-800/80 rounded-xl transition-colors group/item">
+                  <svg class="w-5 h-5 rounded-full overflow-hidden shrink-0 shadow-xs ring-1 ring-black/10 dark:ring-white/10" viewBox="0 0 32 32" aria-hidden="true">
+                    <rect width="32" height="10.67" fill="#000000"/>
+                    <rect y="10.67" width="32" height="10.66" fill="#DD0000"/>
+                    <rect y="21.33" width="32" height="10.67" fill="#FFCC00"/>
+                  </svg>
+                  <span>German</span>
+                </a>
+
+                <!-- 9. Italian -->
+                <a href="#lang-it" data-lang-code="IT" class="flex items-center gap-3.5 px-3 py-2 text-sm font-medium text-slate-700 dark:text-slate-200 hover:text-slate-950 dark:hover:text-white hover:bg-slate-100/80 dark:hover:bg-slate-800/80 rounded-xl transition-colors group/item">
+                  <svg class="w-5 h-5 rounded-full overflow-hidden shrink-0 shadow-xs ring-1 ring-black/10 dark:ring-white/10" viewBox="0 0 32 32" aria-hidden="true">
+                    <rect width="10.67" height="32" fill="#009246"/>
+                    <rect x="10.67" width="10.66" height="32" fill="#FFFFFF"/>
+                    <rect x="21.33" width="10.67" height="32" fill="#CE2B37"/>
+                  </svg>
+                  <span>Italian</span>
+                </a>
+              </div>
+            </div>
+          </div>
+
+          <!-- Contact Us Pill Button (Uffizio Brand Theme - Exactly 40px Height) -->
+          <a href="#contact" class="btn-uffizio-contact group h-10" aria-label="Contact Us">
+            <span>Contact Us</span>
+            <span class="arrow-badge">
+              <svg class="w-3.5 h-3.5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M7 17L17 7M17 7H9M17 7V15" />
+              </svg>
+            </span>
+          </a>
+
+        </div>
+      </div>
+
+        <!-- Mobile Controls (Theme Toggle + Hamburger) -->
+        <div class="lg:hidden flex items-center gap-2">
+          <button id="mobile-theme-toggle" class="p-2.5 rounded-full text-slate-700 dark:text-slate-300 hover:bg-slate-100 dark:hover:bg-slate-800 border border-slate-200/80 dark:border-slate-700/80" aria-label="Toggle Theme">
+            <svg class="w-5 h-5 theme-mobile-icon" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M20.354 15.354A9 9 0 018.646 3.646 9.003 9.003 0 0012 21a9.003 9.003 0 008.354-5.646z" />
+            </svg>
+          </button>
+          <a href="#contact" class="btn-uffizio-contact text-xs py-1 pl-2.5 pr-1 gap-1.5 shadow-xs">
+            <span>Contact</span>
+            <span class="arrow-badge !w-6 !h-6">
+              <svg class="w-2.5 h-2.5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M7 17L17 7M17 7H9M17 7V15" />
+              </svg>
+            </span>
+          </a>
+          <button id="mobile-toggle" class="p-2.5 rounded-full text-slate-700 dark:text-slate-300 hover:bg-slate-100 dark:hover:bg-slate-800 border border-slate-200/80 dark:border-slate-700/80 focus:outline-none" aria-label="Toggle Navigation Menu">
+            <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path id="hamburger-icon" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16" />
+              <path id="close-icon" class="hidden" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12" />
+            </svg>
+          </button>
+        </div>
+
+      </div>
+    </div>
+
+    <!-- ================= MOBILE DRAWER MENU ================= -->
+    <div id="mobile-drawer" class="lg:hidden hidden border-t border-slate-200 dark:border-slate-800 bg-white dark:bg-slate-900 max-h-[calc(100vh-5rem)] overflow-y-auto px-4 py-6 space-y-4">
+      
+      <!-- Mobile Accordion 1: Products & Software -->
+      <div class="border-b border-slate-100 dark:border-slate-800 pb-3">
+        <button class="mobile-accordion-btn flex items-center justify-between w-full font-heading font-bold text-base text-slate-900 dark:text-white py-2" aria-expanded="false" aria-controls="mobile-accordion-products">
+          <span class="flex items-center gap-2">
+            <span>Products & Software</span>
+            <span class="px-2 py-0.5 rounded-full text-[11px] font-semibold bg-blue-50 text-brand-700 dark:bg-blue-900/50 dark:text-blue-300 border border-blue-200/60 dark:border-blue-700/50">12</span>
+          </span>
+          <svg class="w-4 h-4 text-slate-500 transition-transform duration-200" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/></svg>
+        </button>
+        <div id="mobile-accordion-products" class="mobile-accordion-content hidden pl-2 pt-2 space-y-3">
+          
+          <!-- Mobile Uffizio Group Header & Overview Card -->
+          <div class="mobile-uffizio-group-strip p-3 bg-blue-50/70 dark:bg-slate-800/80 rounded-2xl border border-blue-100 dark:border-slate-700 flex items-center justify-between">
+            <a href="https://www.uffizio.com" target="_blank" rel="noopener noreferrer" class="group/corp flex flex-col text-left">
+              <div class="flex items-center gap-1.5 text-xs font-bold text-slate-900 dark:text-slate-100">
+                <span class="w-5 h-5 rounded-full bg-blue-100 dark:bg-blue-900/60 text-brand-600 dark:text-blue-400 flex items-center justify-center shrink-0">
+                  <svg class="w-3 h-3" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5"/>
+                  </svg>
+                </span>
+                <span>Uffizio Group</span>
+              </div>
+              <span class="text-[11px] text-slate-500 dark:text-slate-400 font-normal pl-6">www.uffizio.com</span>
+            </a>
+            <a href="https://www.uffizio.com" target="_blank" rel="noopener noreferrer" class="text-xs font-semibold text-brand-600 dark:text-blue-400 flex items-center gap-1">
+              <span>Explore</span>
+              <svg class="w-3 h-3" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"></path><polyline points="15 3 21 3 21 9"></polyline><line x1="10" y1="14" x2="21" y2="3"></line></svg>
+            </a>
+          </div>
+
+          <!-- Sub-Accordion 1: Telematics -->
+          <div class="mobile-sub-accordion rounded-2xl border border-slate-200/90 dark:border-slate-800 overflow-hidden bg-slate-50/60 dark:bg-slate-800/40 transition-colors">
+            <button class="mobile-sub-accordion-btn mobile-category-header flex items-center justify-between w-full p-3 text-left transition-colors" data-mobile-category="telematics" aria-expanded="false" aria-controls="mobile-sub-telematics">
+              <div class="flex items-center gap-2.5">
+                <span class="w-6 h-6 rounded-full bg-blue-100 dark:bg-blue-900/60 text-brand-600 dark:text-blue-400 flex items-center justify-center shrink-0">
+                  <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 17a2 2 0 11-4 0 2 2 0 014 0zM19 17a2 2 0 11-4 0 2 2 0 014 0z"/><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 16V6a1 1 0 00-1-1H4a1 1 0 00-1 1v10a1 1 0 001 1h1m8-1a1 1 0 01-1 1H9m4-1V8a1 1 0 011-1h2.586a1 1 0 01.707.293l3.414 3.414a1 1 0 01.293.707V16a1 1 0 01-1 1h-1m-6-1a1 1 0 001 1h1M5 17a2 2 0 104 0m-4 0a2 2 0 114 0m6 0a2 2 0 104 0m-4 0a2 2 0 114 0"/></svg>
+                </span>
+                <span class="text-xs font-bold uppercase tracking-wider text-slate-800 dark:text-slate-200">Telematics</span>
+                <span class="inline-flex items-center justify-center px-1.5 py-0.5 rounded-full text-[10px] font-bold bg-blue-100 text-brand-700 dark:bg-blue-900/60 dark:text-blue-300">7</span>
+              </div>
+              <svg class="sub-chevron-icon w-4 h-4 text-slate-400 dark:text-slate-500 transition-transform duration-200" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/>
+              </svg>
+            </button>
+            <div id="mobile-sub-telematics" class="mobile-sub-accordion-content hidden px-3 pb-3 pt-1 space-y-1 border-t border-slate-100 dark:border-slate-800 bg-white dark:bg-slate-900">
+              <div class="flex items-center justify-between py-1.5 mb-1 border-b border-slate-100 dark:border-slate-800">
+                <span class="text-[11px] font-semibold text-slate-400 dark:text-slate-500 uppercase tracking-wider">7 Products</span>
+                <a href="#telematics" class="text-[11px] font-bold text-brand-600 dark:text-blue-400 hover:underline flex items-center gap-1">
+                  <span>Explore Telematics</span>
+                  <svg class="w-3 h-3" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+                </a>
+              </div>
+              <a href="#trakzee" data-mobile-product="trakzee" data-mobile-category="telematics" class="mobile-product-link flex items-center justify-between p-2 rounded-xl text-sm font-semibold text-slate-800 dark:text-slate-200 hover:bg-slate-50 dark:hover:bg-slate-800/50">
+                <span>Trakzee <span class="text-xs font-normal text-slate-500 dark:text-slate-400 block">Fleet Management</span></span>
+                <span class="mobile-active-green-dot hidden ml-auto shrink-0 w-2 h-2 rounded-full bg-emerald-500 ring-4 ring-emerald-500/20" title="Active Page"></span>
+              </a>
+              <a href="#smart-waste" data-mobile-product="smart-waste" data-mobile-category="telematics" class="mobile-product-link flex items-center justify-between p-2 rounded-xl text-sm font-semibold text-slate-800 dark:text-slate-200 hover:bg-slate-50 dark:hover:bg-slate-800/50">
+                <span>Smart Waste <span class="text-xs font-normal text-slate-500 dark:text-slate-400 block">Waste Collection Software</span></span>
+                <span class="mobile-active-green-dot hidden ml-auto shrink-0 w-2 h-2 rounded-full bg-emerald-500 ring-4 ring-emerald-500/20" title="Active Page"></span>
+              </a>
+              <a href="#gridzee" data-mobile-product="gridzee" data-mobile-category="telematics" class="mobile-product-link flex items-center justify-between p-2 rounded-xl text-sm font-semibold text-slate-800 dark:text-slate-200 hover:bg-slate-50 dark:hover:bg-slate-800/50">
+                <span>Gridzee <span class="text-xs font-normal text-slate-500 dark:text-slate-400 block">Indoor Tracking Software</span></span>
+                <span class="mobile-active-green-dot hidden ml-auto shrink-0 w-2 h-2 rounded-full bg-emerald-500 ring-4 ring-emerald-500/20" title="Active Page"></span>
+              </a>
+              <a href="#petzee" data-mobile-product="petzee" data-mobile-category="telematics" class="mobile-product-link flex items-center justify-between p-2 rounded-xl text-sm font-semibold text-slate-800 dark:text-slate-200 hover:bg-slate-50 dark:hover:bg-slate-800/50">
+                <span>Petzee <span class="text-xs font-normal text-slate-500 dark:text-slate-400 block">Smart Pet Tracking Software</span></span>
+                <span class="mobile-active-green-dot hidden ml-auto shrink-0 w-2 h-2 rounded-full bg-emerald-500 ring-4 ring-emerald-500/20" title="Active Page"></span>
+              </a>
+              <a href="#elexee" data-mobile-product="elexee" data-mobile-category="telematics" class="mobile-product-link flex items-center justify-between p-2 rounded-xl text-sm font-semibold text-slate-800 dark:text-slate-200 hover:bg-slate-50 dark:hover:bg-slate-800/50">
+                <span>Elexee <span class="text-xs font-normal text-slate-500 dark:text-slate-400 block">Electric Vehicle Management</span></span>
+                <span class="mobile-active-green-dot hidden ml-auto shrink-0 w-2 h-2 rounded-full bg-emerald-500 ring-4 ring-emerald-500/20" title="Active Page"></span>
+              </a>
+              <a href="#trakzee-mini" data-mobile-product="trakzee-mini" data-mobile-category="telematics" class="mobile-product-link flex items-center justify-between p-2 rounded-xl text-sm font-semibold text-slate-800 dark:text-slate-200 hover:bg-slate-50 dark:hover:bg-slate-800/50">
+                <span>Trakzee Mini <span class="text-xs font-normal text-slate-500 dark:text-slate-400 block">Personal Vehicle Tracking</span></span>
+                <span class="mobile-active-green-dot hidden ml-auto shrink-0 w-2 h-2 rounded-full bg-emerald-500 ring-4 ring-emerald-500/20" title="Active Page"></span>
+              </a>
+              <a href="#trakzee-gsm" data-mobile-product="trakzee-gsm" data-mobile-category="telematics" class="mobile-product-link flex items-center justify-between p-2 rounded-xl text-sm font-semibold text-slate-800 dark:text-slate-200 hover:bg-slate-50 dark:hover:bg-slate-800/50">
+                <span>Trakzee GSM <span class="text-xs font-normal text-slate-500 dark:text-slate-400 block">Sim Based Tracking Software</span></span>
+                <span class="mobile-active-green-dot hidden ml-auto shrink-0 w-2 h-2 rounded-full bg-emerald-500 ring-4 ring-emerald-500/20" title="Active Page"></span>
+              </a>
+            </div>
+          </div>
+          
+          <!-- Sub-Accordion 2: Commute -->
+          <div class="mobile-sub-accordion rounded-2xl border border-slate-200/90 dark:border-slate-800 overflow-hidden bg-slate-50/60 dark:bg-slate-800/40 transition-colors">
+            <button class="mobile-sub-accordion-btn mobile-category-header flex items-center justify-between w-full p-3 text-left transition-colors" data-mobile-category="commute" aria-expanded="false" aria-controls="mobile-sub-commute">
+              <div class="flex items-center gap-2.5">
+                <span class="w-6 h-6 rounded-full bg-indigo-100 dark:bg-indigo-900/60 text-indigo-600 dark:text-indigo-400 flex items-center justify-center shrink-0">
+                  <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 7h12m0 0l-4-4m4 4l-4 4m0 6H4m0 0l4 4m-4-4l4-4"/></svg>
+                </span>
+                <span class="text-xs font-bold uppercase tracking-wider text-slate-800 dark:text-slate-200">Commute</span>
+                <span class="inline-flex items-center justify-center px-1.5 py-0.5 rounded-full text-[10px] font-bold bg-indigo-100 text-indigo-700 dark:bg-indigo-900/60 dark:text-indigo-300">3</span>
+              </div>
+              <svg class="sub-chevron-icon w-4 h-4 text-slate-400 dark:text-slate-500 transition-transform duration-200" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/>
+              </svg>
+            </button>
+            <div id="mobile-sub-commute" class="mobile-sub-accordion-content hidden px-3 pb-3 pt-1 space-y-1 border-t border-slate-100 dark:border-slate-800 bg-white dark:bg-slate-900">
+              <div class="flex items-center justify-between py-1.5 mb-1 border-b border-slate-100 dark:border-slate-800">
+                <span class="text-[11px] font-semibold text-slate-400 dark:text-slate-500 uppercase tracking-wider">3 Products</span>
+                <a href="#commute" class="text-[11px] font-bold text-indigo-600 dark:text-indigo-400 hover:underline flex items-center gap-1">
+                  <span>Explore Commute</span>
+                  <svg class="w-3 h-3" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+                </a>
+              </div>
+              <a href="#smartbus" data-mobile-product="smartbus" data-mobile-category="commute" class="mobile-product-link flex items-center justify-between p-2 rounded-xl text-sm font-semibold text-slate-800 dark:text-slate-200 hover:bg-slate-50 dark:hover:bg-slate-800/50">
+                <span>Smartbus <span class="text-xs font-normal text-slate-500 dark:text-slate-400 block">School Bus Tracking Software</span></span>
+                <span class="mobile-active-green-dot hidden ml-auto shrink-0 w-2 h-2 rounded-full bg-emerald-500 ring-4 ring-emerald-500/20" title="Active Page"></span>
+              </a>
+              <a href="#rosterz" data-mobile-product="rosterz" data-mobile-category="commute" class="mobile-product-link flex items-center justify-between p-2 rounded-xl text-sm font-semibold text-slate-800 dark:text-slate-200 hover:bg-slate-50 dark:hover:bg-slate-800/50">
+                <span>Rosterz <span class="text-xs font-normal text-slate-500 dark:text-slate-400 block">Employee Transportation Software</span></span>
+                <span class="mobile-active-green-dot hidden ml-auto shrink-0 w-2 h-2 rounded-full bg-emerald-500 ring-4 ring-emerald-500/20" title="Active Page"></span>
+              </a>
+              <a href="#smarttranzit" data-mobile-product="smarttranzit" data-mobile-category="commute" class="mobile-product-link flex items-center justify-between p-2 rounded-xl text-sm font-semibold text-slate-800 dark:text-slate-200 hover:bg-slate-50 dark:hover:bg-slate-800/50">
+                <span>SmartTranzit <span class="text-xs font-normal text-slate-500 dark:text-slate-400 block">Public Transportation Software</span></span>
+                <span class="mobile-active-green-dot hidden ml-auto shrink-0 w-2 h-2 rounded-full bg-emerald-500 ring-4 ring-emerald-500/20" title="Active Page"></span>
+              </a>
+            </div>
+          </div>
+
+          <!-- Sub-Accordion 3: IoTech -->
+          <div class="mobile-sub-accordion rounded-2xl border border-slate-200/90 dark:border-slate-800 overflow-hidden bg-slate-50/60 dark:bg-slate-800/40 transition-colors">
+            <button class="mobile-sub-accordion-btn mobile-category-header flex items-center justify-between w-full p-3 text-left transition-colors" data-mobile-category="iotech" aria-expanded="false" aria-controls="mobile-sub-iotech">
+              <div class="flex items-center gap-2.5">
+                <span class="w-6 h-6 rounded-full bg-purple-100 dark:bg-purple-900/60 text-purple-600 dark:text-purple-400 flex items-center justify-center shrink-0">
+                  <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 3v2m6-2v2M9 19v2m6-2v2M5 9H3m2 6H3m18-6h-2m2 6h-2M7 19h10a2 2 0 002-2V7a2 2 0 00-2-2H7a2 2 0 00-2 2v10a2 2 0 002 2zM9 9h6v6H9V9z"/></svg>
+                </span>
+                <span class="text-xs font-bold uppercase tracking-wider text-slate-800 dark:text-slate-200">IoTech</span>
+                <span class="inline-flex items-center justify-center px-1.5 py-0.5 rounded-full text-[10px] font-bold bg-purple-100 text-purple-700 dark:bg-purple-900/60 dark:text-purple-300">2</span>
+              </div>
+              <svg class="sub-chevron-icon w-4 h-4 text-slate-400 dark:text-slate-500 transition-transform duration-200" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/>
+              </svg>
+            </button>
+            <div id="mobile-sub-iotech" class="mobile-sub-accordion-content hidden px-3 pb-3 pt-1 space-y-1 border-t border-slate-100 dark:border-slate-800 bg-white dark:bg-slate-900">
+              <div class="flex items-center justify-between py-1.5 mb-1 border-b border-slate-100 dark:border-slate-800">
+                <span class="text-[11px] font-semibold text-slate-400 dark:text-slate-500 uppercase tracking-wider">2 Products</span>
+                <a href="#iotech" class="text-[11px] font-bold text-purple-600 dark:text-purple-400 hover:underline flex items-center gap-1">
+                  <span>Explore IoTech</span>
+                  <svg class="w-3 h-3" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+                </a>
+              </div>
+              <a href="#taskeye" data-mobile-product="taskeye" data-mobile-category="iotech" class="mobile-product-link flex items-center justify-between p-2 rounded-xl text-sm font-semibold text-slate-800 dark:text-slate-200 hover:bg-slate-50 dark:hover:bg-slate-800/50">
+                <span>Taskeye <span class="text-xs font-normal text-slate-500 dark:text-slate-400 block">Field Employee Tracking Software</span></span>
+                <span class="mobile-active-green-dot hidden ml-auto shrink-0 w-2 h-2 rounded-full bg-emerald-500 ring-4 ring-emerald-500/20" title="Active Page"></span>
+              </a>
+              <a href="#enarzee" data-mobile-product="enarzee" data-mobile-category="iotech" class="mobile-product-link flex items-center justify-between p-2 rounded-xl text-sm font-semibold text-slate-800 dark:text-slate-200 hover:bg-slate-50 dark:hover:bg-slate-800/50">
+                <span>Enarzee <span class="text-xs font-normal text-slate-500 dark:text-slate-400 block">Energy Monitoring System</span></span>
+                <span class="mobile-active-green-dot hidden ml-auto shrink-0 w-2 h-2 rounded-full bg-emerald-500 ring-4 ring-emerald-500/20" title="Active Page"></span>
+              </a>
+            </div>
+          </div>
+
+          <div class="bg-blue-50 dark:bg-slate-800 p-3 rounded-2xl mt-3 border border-blue-100 dark:border-slate-700">
+            <span class="text-xs font-bold text-brand-700 dark:text-blue-400 block">1500+ Compatible Hardware</span>
+            <a href="#" class="text-xs text-brand-600 dark:text-blue-300 underline font-medium">Browse GPS tracker list &rarr;</a>
+          </div>
+        </div>
+      </div>
+
+      <!-- Mobile Accordion 2: Discover -->
+      <div class="border-b border-slate-100 dark:border-slate-800 pb-3">
+        <button class="mobile-accordion-btn flex items-center justify-between w-full font-heading font-bold text-base text-slate-900 dark:text-white py-2" aria-expanded="false" aria-controls="mobile-accordion-discover">
+          <span class="flex items-center gap-2">
+            <span>Discover</span>
+            <span class="px-2 py-0.5 rounded-full text-[11px] font-semibold bg-slate-100 text-slate-600 dark:bg-slate-800 dark:text-slate-300 border border-slate-200/80 dark:border-slate-700">5</span>
+          </span>
+          <svg class="w-4 h-4 text-slate-500 transition-transform duration-200" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/></svg>
+        </button>
+        <div id="mobile-accordion-discover" class="mobile-accordion-content hidden pl-2 pt-2 space-y-2">
+          <a href="#" class="block text-sm text-slate-700 dark:text-slate-300 py-1">About Us</a>
+          <a href="#" class="block text-sm text-slate-700 dark:text-slate-300 py-1">Careers</a>
+          <a href="#" class="block text-sm text-slate-700 dark:text-slate-300 py-1">Exhibitions & Events</a>
+          <a href="#" class="block text-sm text-slate-700 dark:text-slate-300 py-1">Helpdesk & Support</a>
+          <a href="#contact" class="block text-sm text-slate-700 dark:text-slate-300 py-1">Contact Us</a>
+          
+          <div class="p-3 bg-blue-50/60 dark:bg-slate-800/60 rounded-2xl mt-2 border border-blue-100 dark:border-slate-700">
+            <div class="rounded-xl overflow-hidden mb-2 bg-slate-900">
+              <img src="assets/handshake.png" alt="Start your journey with us" class="w-full h-24 object-cover">
+            </div>
+            <h5 class="text-xs font-bold text-slate-900 dark:text-white">Start your journey with us</h5>
+            <p class="text-[11px] text-slate-500 dark:text-slate-400 mt-0.5">Take the first step toward smarter solutions. Explore new features, and opportunities.</p>
+            <a href="#contact" class="text-xs font-semibold text-brand-600 dark:text-blue-400 underline mt-1.5 inline-block">Explore Opportunities &rarr;</a>
+          </div>
+        </div>
+      </div>
+
+      <!-- Mobile Accordion 4: Resource -->
+      <div class="border-b border-slate-100 dark:border-slate-800 pb-3">
+        <button class="mobile-accordion-btn flex items-center justify-between w-full font-heading font-bold text-base text-slate-900 dark:text-white py-2" aria-expanded="false" aria-controls="mobile-accordion-resource">
+          <span class="flex items-center gap-2">
+            <span>Resource</span>
+            <span class="px-2 py-0.5 rounded-full text-[11px] font-semibold bg-slate-100 text-slate-600 dark:bg-slate-800 dark:text-slate-300 border border-slate-200/80 dark:border-slate-700">8</span>
+          </span>
+          <svg class="w-4 h-4 text-slate-500 transition-transform duration-200" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/></svg>
+        </button>
+        <div id="mobile-accordion-resource" class="mobile-accordion-content hidden pl-2 pt-2 space-y-2">
+          <a href="#blog" class="block text-sm text-slate-700 dark:text-slate-300 py-1">Blog</a>
+          <a href="#marketing" class="block text-sm text-slate-700 dark:text-slate-300 py-1">Marketing Material</a>
+          <a href="#industries" class="block text-sm text-slate-700 dark:text-slate-300 py-1">Industries We Serve</a>
+          <a href="#whats-new" class="block text-sm text-slate-700 dark:text-slate-300 py-1">What's New</a>
+          <a href="#uffitalks" class="block text-sm text-slate-700 dark:text-slate-300 py-1">UffiTALKS</a>
+          <a href="#use-cases" class="block text-sm text-slate-700 dark:text-slate-300 py-1">Use Case</a>
+          <a href="#devices" class="block text-sm text-slate-700 dark:text-slate-300 py-1">Integrated Devices</a>
+          <a href="#hardware" class="block text-sm text-slate-700 dark:text-slate-300 py-1">Hardware Manufacturer</a>
+
+          <div class="p-3 bg-indigo-50/60 dark:bg-slate-800/60 rounded-2xl mt-2 border border-indigo-100 dark:border-slate-700">
+            <div class="rounded-xl overflow-hidden mb-2 bg-slate-900">
+              <img src="assets/whats-new.png" alt="What's New" class="w-full h-24 object-cover">
+            </div>
+            <h5 class="text-xs font-bold text-slate-900 dark:text-white">What's New</h5>
+            <p class="text-[11px] text-slate-500 dark:text-slate-400 mt-0.5">Discover the recent enhancements and features in one place.</p>
+            <a href="#whats-new" class="text-xs font-semibold text-brand-600 dark:text-blue-400 underline mt-1.5 inline-block">Latest Updates &rarr;</a>
+          </div>
+        </div>
+      </div>
+
+      <!-- Mobile Accordion 5: Language Selector -->
+      <div class="border-b border-slate-100 dark:border-slate-800 pb-3">
+        <button class="mobile-accordion-btn flex items-center justify-between w-full font-heading font-bold text-base text-slate-900 dark:text-white py-2" aria-expanded="false" aria-controls="mobile-accordion-language">
+          <span class="flex items-center gap-2">
+            <svg class="w-4 h-4 text-slate-500 dark:text-slate-400" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3.055 11H5a2 2 0 012 2v1a2 2 0 002 2 2 2 0 012 2v2.945M8 3.935V5.5A2.5 2.5 0 0010.5 8h.5a2 2 0 012 2 2 2 0 104 0 2 2 0 012-2h1.064M15 20.488V18a2 2 0 012-2h3.064M21 12a9 9 0 11-18 0 9 9 0 0118 0z"/></svg>
+            <span>Language (<span id="mobile-lang-current" class="text-brand-600 dark:text-blue-400 font-bold">EN</span>)</span>
+          </span>
+          <svg class="w-4 h-4 text-slate-500 transition-transform duration-200" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/></svg>
+        </button>
+        <div id="mobile-accordion-language" class="mobile-accordion-content hidden pt-3 grid grid-cols-2 gap-2">
+          <!-- 0. English -->
+          <a href="#lang-en" data-lang-code="EN" class="flex items-center gap-2.5 p-2 rounded-xl border border-slate-200/80 dark:border-slate-800 hover:bg-slate-50 dark:hover:bg-slate-800 text-xs font-medium text-slate-700 dark:text-slate-200 transition-colors">
+            <svg class="w-5 h-5 rounded-full overflow-hidden shrink-0 shadow-xs ring-1 ring-black/10 dark:ring-white/10" viewBox="0 0 32 32">
+              <rect width="32" height="32" fill="#012169"/>
+              <path d="M0 0L32 32M32 0L0 32" stroke="#FFFFFF" stroke-width="5"/>
+              <path d="M0 0L32 32M32 0L0 32" stroke="#C8102E" stroke-width="2.5"/>
+              <path d="M16 0v32M0 16h32" stroke="#FFFFFF" stroke-width="7"/>
+              <path d="M16 0v32M0 16h32" stroke="#C8102E" stroke-width="4.2"/>
+            </svg>
+            <span>English</span>
+          </a>
+
+          <!-- 1. Spanish -->
+          <a href="#lang-es" data-lang-code="ES" class="flex items-center gap-2.5 p-2 rounded-xl border border-slate-200/80 dark:border-slate-800 hover:bg-slate-50 dark:hover:bg-slate-800 text-xs font-medium text-slate-700 dark:text-slate-200 transition-colors">
+            <svg class="w-5 h-5 rounded-full overflow-hidden shrink-0 shadow-xs ring-1 ring-black/10 dark:ring-white/10" viewBox="0 0 32 32">
+              <rect width="10.67" height="32" fill="#006847"/>
+              <rect x="10.67" width="10.66" height="32" fill="#FFFFFF"/>
+              <rect x="21.33" width="10.67" height="32" fill="#CE1126"/>
+              <circle cx="16" cy="16" r="3.2" fill="#8B5E3C"/>
+              <path d="M14 17.5c1 1 3 1 4 0M15 14.5l1-1 1 1M16 13v3" stroke="#4A3525" stroke-width="0.7" fill="none"/>
+              <path d="M13.5 16.5c0 1.5 1.5 2.5 2.5 2.5s2.5-1 2.5-2.5" stroke="#2E7D32" stroke-width="0.6" fill="none"/>
+            </svg>
+            <span>Spanish</span>
+          </a>
+
+          <!-- 2. Portuguese -->
+          <a href="#lang-pt" data-lang-code="PT" class="flex items-center gap-2.5 p-2 rounded-xl border border-slate-200/80 dark:border-slate-800 hover:bg-slate-50 dark:hover:bg-slate-800 text-xs font-medium text-slate-700 dark:text-slate-200 transition-colors">
+            <svg class="w-5 h-5 rounded-full overflow-hidden shrink-0 shadow-xs ring-1 ring-black/10 dark:ring-white/10" viewBox="0 0 32 32">
+              <rect width="13" height="32" fill="#046A38"/>
+              <rect x="13" width="19" height="32" fill="#DA291C"/>
+              <circle cx="13" cy="16" r="5" fill="#FFC72C"/>
+              <circle cx="13" cy="16" r="4.2" fill="none" stroke="#B28800" stroke-width="0.6"/>
+              <path d="M11 13.5h4v3.5c0 1.5-2 3-2 3s-2-1.5-2-3v-3.5z" fill="#FFFFFF"/>
+              <path d="M11 13.5h4v3.5c0 1.5-2 3-2 3s-2-1.5-2-3v-3.5z" fill="none" stroke="#DA291C" stroke-width="0.7"/>
+              <circle cx="13" cy="15.5" r="0.8" fill="#003399"/>
+            </svg>
+            <span>Portuguese</span>
+          </a>
+
+          <!-- 3. Turkish -->
+          <a href="#lang-tr" data-lang-code="TR" class="flex items-center gap-2.5 p-2 rounded-xl border border-slate-200/80 dark:border-slate-800 hover:bg-slate-50 dark:hover:bg-slate-800 text-xs font-medium text-slate-700 dark:text-slate-200 transition-colors">
+            <svg class="w-5 h-5 rounded-full overflow-hidden shrink-0 shadow-xs ring-1 ring-black/10 dark:ring-white/10" viewBox="0 0 32 32">
+              <rect width="32" height="32" fill="#E30A17"/>
+              <circle cx="13" cy="16" r="6" fill="#FFFFFF"/>
+              <circle cx="14.8" cy="16" r="4.8" fill="#E30A17"/>
+              <polygon points="19.5,13.5 20.3,15.2 22.2,15.2 20.7,16.3 21.2,18.1 19.5,17 17.8,18.1 18.3,16.3 16.8,15.2 18.7,15.2" fill="#FFFFFF"/>
+            </svg>
+            <span>Turkish</span>
+          </a>
+
+          <!-- 4. Indonesian -->
+          <a href="#lang-id" data-lang-code="ID" class="flex items-center gap-2.5 p-2 rounded-xl border border-slate-200/80 dark:border-slate-800 hover:bg-slate-50 dark:hover:bg-slate-800 text-xs font-medium text-slate-700 dark:text-slate-200 transition-colors">
+            <svg class="w-5 h-5 rounded-full overflow-hidden shrink-0 shadow-xs ring-1 ring-black/10 dark:ring-white/10" viewBox="0 0 32 32">
+              <rect width="32" height="16" fill="#CE1126"/>
+              <rect y="16" width="32" height="16" fill="#FFFFFF"/>
+            </svg>
+            <span>Indonesian</span>
+          </a>
+
+          <!-- 5. Thai -->
+          <a href="#lang-th" data-lang-code="TH" class="flex items-center gap-2.5 p-2 rounded-xl border border-slate-200/80 dark:border-slate-800 hover:bg-slate-50 dark:hover:bg-slate-800 text-xs font-medium text-slate-700 dark:text-slate-200 transition-colors">
+            <svg class="w-5 h-5 rounded-full overflow-hidden shrink-0 shadow-xs ring-1 ring-black/10 dark:ring-white/10" viewBox="0 0 32 32">
+              <rect width="32" height="32" fill="#A51931"/>
+              <rect y="5.33" width="32" height="21.34" fill="#FFFFFF"/>
+              <rect y="10.67" width="32" height="10.66" fill="#2D2A4A"/>
+            </svg>
+            <span>Thai</span>
+          </a>
+
+          <!-- 6. French -->
+          <a href="#lang-fr" data-lang-code="FR" class="flex items-center gap-2.5 p-2 rounded-xl border border-slate-200/80 dark:border-slate-800 hover:bg-slate-50 dark:hover:bg-slate-800 text-xs font-medium text-slate-700 dark:text-slate-200 transition-colors">
+            <svg class="w-5 h-5 rounded-full overflow-hidden shrink-0 shadow-xs ring-1 ring-black/10 dark:ring-white/10" viewBox="0 0 32 32">
+              <rect width="10.67" height="32" fill="#002395"/>
+              <rect x="10.67" width="10.66" height="32" fill="#FFFFFF"/>
+              <rect x="21.33" width="10.67" height="32" fill="#ED2939"/>
+            </svg>
+            <span>French</span>
+          </a>
+
+          <!-- 7. Arabic -->
+          <a href="#lang-ar" data-lang-code="AR" class="flex items-center gap-2.5 p-2 rounded-xl border border-slate-200/80 dark:border-slate-800 hover:bg-slate-50 dark:hover:bg-slate-800 text-xs font-medium text-slate-700 dark:text-slate-200 transition-colors">
+            <svg class="w-5 h-5 rounded-full overflow-hidden shrink-0 shadow-xs ring-1 ring-black/10 dark:ring-white/10" viewBox="0 0 32 32">
+              <rect width="32" height="32" fill="#006C35"/>
+              <path d="M7 13.5h18M8 12h3M13 12h6M21 12h3M9 15h14" stroke="#FFFFFF" stroke-width="1" stroke-linecap="round"/>
+              <path d="M7 18.5h18M7 17.5v2M9 17.5v2" stroke="#FFFFFF" stroke-width="0.9" stroke-linecap="round"/>
+            </svg>
+            <span>Arabic</span>
+          </a>
+
+          <!-- 8. German -->
+          <a href="#lang-de" data-lang-code="DE" class="flex items-center gap-2.5 p-2 rounded-xl border border-slate-200/80 dark:border-slate-800 hover:bg-slate-50 dark:hover:bg-slate-800 text-xs font-medium text-slate-700 dark:text-slate-200 transition-colors">
+            <svg class="w-5 h-5 rounded-full overflow-hidden shrink-0 shadow-xs ring-1 ring-black/10 dark:ring-white/10" viewBox="0 0 32 32">
+              <rect width="32" height="10.67" fill="#000000"/>
+              <rect y="10.67" width="32" height="10.66" fill="#DD0000"/>
+              <rect y="21.33" width="32" height="10.67" fill="#FFCC00"/>
+            </svg>
+            <span>German</span>
+          </a>
+
+          <!-- 9. Italian -->
+          <a href="#lang-it" data-lang-code="IT" class="flex items-center gap-2.5 p-2 rounded-xl border border-slate-200/80 dark:border-slate-800 hover:bg-slate-50 dark:hover:bg-slate-800 text-xs font-medium text-slate-700 dark:text-slate-200 transition-colors">
+            <svg class="w-5 h-5 rounded-full overflow-hidden shrink-0 shadow-xs ring-1 ring-black/10 dark:ring-white/10" viewBox="0 0 32 32">
+              <rect width="10.67" height="32" fill="#009246"/>
+              <rect x="10.67" width="10.66" height="32" fill="#FFFFFF"/>
+              <rect x="21.33" width="10.67" height="32" fill="#CE2B37"/>
+            </svg>
+            <span>Italian</span>
+          </a>
+        </div>
+      </div>
+
+      <!-- Mobile CTAs -->
+      <div class="pt-4">
+        <a href="#contact" class="btn-uffizio-contact justify-between w-full py-2.5 pl-6 pr-2 shadow-md">
+          <span class="text-base">Contact Us</span>
+          <span class="arrow-badge !w-9 !h-9">
+            <svg class="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M7 17L17 7M17 7H9M17 7V15" />
+            </svg>
+          </span>
+        </a>
+      </div>
+    </div>
+  </header>
+
+  <!-- ================= HERO SECTION (FOR PREVIEW CONTEXT) ================= -->
+  <main class="flex-grow">
+    <section id="home" class="relative overflow-hidden pt-12 pb-24 lg:pt-20 lg:pb-32 bg-gradient-to-b from-white via-blue-50/40 to-slate-50 dark:from-slate-950 dark:via-slate-900 dark:to-slate-950 transition-colors scroll-mt-20">
+      <div class="max-w-[1440px] mx-auto px-4 sm:px-6 lg:px-[50px] relative z-10 text-center">
+        
+        <div class="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-brand-50 dark:bg-slate-900 border border-brand-200/60 dark:border-slate-800 text-brand-700 dark:text-blue-400 text-xs font-semibold mb-6 shadow-sm">
+          <span class="w-2 h-2 rounded-full bg-emerald-500 animate-pulse"></span>
+          Trusted in 80+ Countries across 1,500+ Hardware Models
+        </div>
+
+        <h1 class="font-heading font-extrabold text-4xl sm:text-5xl lg:text-6xl text-slate-900 dark:text-white tracking-tight max-w-4xl mx-auto leading-tight">
+          Next-Gen <span class="bg-gradient-to-r from-brand-600 to-blue-500 dark:from-blue-400 dark:to-cyan-400 bg-clip-text text-transparent">Telematics & Fleet Management</span> Software
+        </h1>
+
+        <p class="mt-6 text-base sm:text-lg text-slate-600 dark:text-slate-300 max-w-2xl mx-auto leading-relaxed">
+          Empowering GPS service providers, logistics operators, and enterprises with customizable, white-label telematics and IoT tracking solutions.
+        </p>
+
+        <div class="mt-8 flex flex-wrap justify-center gap-4">
+          <a href="#demo" class="px-7 py-3.5 rounded-full bg-brand-600 hover:bg-brand-700 text-white font-semibold text-sm shadow-lg shadow-brand-600/30 transition-all">
+            Get a Free 14-Day Demo
+          </a>
+          <a href="#" class="px-7 py-3.5 rounded-full bg-white dark:bg-slate-900 hover:bg-slate-50 dark:hover:bg-slate-800 text-slate-800 dark:text-slate-200 font-semibold text-sm border border-slate-300 dark:border-slate-700 shadow-sm transition-all flex items-center gap-2">
+            <span>Explore 1500+ Devices</span>
+            <svg class="w-4 h-4 text-slate-500 dark:text-slate-400" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"/></svg>
+          </a>
+        </div>
+
+        <!-- Metrics Preview Banner -->
+        <div class="mt-16 grid grid-cols-2 md:grid-cols-4 gap-6 max-w-4xl mx-auto pt-8 border-t border-slate-200/80 dark:border-slate-800">
+          <div class="bg-white/50 dark:bg-slate-900/50 p-5 rounded-2xl border border-slate-200/50 dark:border-slate-800">
+            <div class="font-heading font-extrabold text-3xl text-slate-900 dark:text-white">1,500+</div>
+            <div class="text-xs text-slate-500 dark:text-slate-400 font-medium mt-1">Supported GPS Devices</div>
+          </div>
+          <div class="bg-white/50 dark:bg-slate-900/50 p-5 rounded-2xl border border-slate-200/50 dark:border-slate-800">
+            <div class="font-heading font-extrabold text-3xl text-slate-900 dark:text-white">80+</div>
+            <div class="text-xs text-slate-500 dark:text-slate-400 font-medium mt-1">Countries Deployed</div>
+          </div>
+          <div class="bg-white/50 dark:bg-slate-900/50 p-5 rounded-2xl border border-slate-200/50 dark:border-slate-800">
+            <div class="font-heading font-extrabold text-3xl text-slate-900 dark:text-white">99.9%</div>
+            <div class="text-xs text-slate-500 dark:text-slate-400 font-medium mt-1">Cloud Uptime SLA</div>
+          </div>
+          <div class="bg-white/50 dark:bg-slate-900/50 p-5 rounded-2xl border border-slate-200/50 dark:border-slate-800">
+            <div class="font-heading font-extrabold text-3xl text-slate-900 dark:text-white">100%</div>
+            <div class="text-xs text-slate-500 dark:text-slate-400 font-medium mt-1">White-Label Ready</div>
+          </div>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- ================= 1. TELEMATICS CATEGORY LANDING SECTION ================= -->
+    <section id="telematics" class="py-16 bg-white dark:bg-slate-900 border-t border-slate-200/80 dark:border-slate-800 transition-colors">
+      <div class="max-w-[1440px] mx-auto px-4 sm:px-6 lg:px-[50px]">
+        <div class="flex flex-col md:flex-row md:items-end justify-between mb-10 pb-4 border-b border-slate-200 dark:border-slate-800">
+          <div>
+            <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-blue-50 dark:bg-blue-950/60 border border-blue-200 dark:border-blue-800 text-blue-700 dark:text-blue-400 text-xs font-bold uppercase tracking-wider mb-2">
+              Category Overview Page
+            </div>
+            <h2 class="text-3xl font-heading font-extrabold text-slate-900 dark:text-white">Telematics Software Suite</h2>
+            <p class="text-sm text-slate-500 dark:text-slate-400 mt-1 max-w-2xl">Complete end-to-end fleet monitoring, asset safety, EV optimization, and waste logistics powered by Uffizio.</p>
+          </div>
+          <div class="mt-4 md:mt-0">
+            <span class="text-xs font-semibold px-3.5 py-1.5 rounded-full bg-slate-100 dark:bg-slate-800 text-slate-600 dark:text-slate-300">7 Products in Category</span>
+          </div>
+        </div>
+
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+          <div id="trakzee" class="p-6 rounded-3xl border border-slate-200 dark:border-slate-800 bg-slate-50/60 dark:bg-slate-800/40 hover:shadow-md transition-all scroll-mt-24">
+            <div class="w-11 h-11 rounded-2xl bg-red-100 dark:bg-red-950/50 flex items-center justify-center text-red-600 mb-3 font-bold text-lg">T</div>
+            <h3 class="font-heading font-bold text-lg text-slate-900 dark:text-white">Trakzee</h3>
+            <p class="text-xs font-semibold text-brand-600 dark:text-blue-400 mb-2">Fleet Management</p>
+            <p class="text-xs text-slate-500 dark:text-slate-400 leading-relaxed mb-4">Complete fleet intelligence: live tracking, driving behavior, fuel theft prevention, and maintenance scheduling.</p>
+            <a href="#trakzee" class="inline-flex items-center gap-1 px-3 py-1.5 rounded-full text-xs font-semibold bg-slate-200/70 dark:bg-slate-800 text-slate-800 dark:text-slate-200 hover:bg-brand-600 hover:text-white dark:hover:bg-brand-600 dark:hover:text-white transition-all">Direct Product Page &rarr;</a>
+          </div>
+
+          <div id="smart-waste" class="p-6 rounded-3xl border border-slate-200 dark:border-slate-800 bg-slate-50/60 dark:bg-slate-800/40 hover:shadow-md transition-all scroll-mt-24">
+            <div class="w-11 h-11 rounded-2xl bg-emerald-100 dark:bg-emerald-950/50 flex items-center justify-center text-emerald-600 mb-3 font-bold text-lg">W</div>
+            <h3 class="font-heading font-bold text-lg text-slate-900 dark:text-white">Smart Waste</h3>
+            <p class="text-xs font-semibold text-emerald-600 dark:text-emerald-400 mb-2">Waste Collection Software</p>
+            <p class="text-xs text-slate-500 dark:text-slate-400 leading-relaxed mb-4">Bin fill-level sensor telemetry, municipal route compliance, citizen complaint redressal, and weighbridge logging.</p>
+            <a href="#smart-waste" class="inline-flex items-center gap-1 px-3 py-1.5 rounded-full text-xs font-semibold bg-slate-200/70 dark:bg-slate-800 text-slate-800 dark:text-slate-200 hover:bg-brand-600 hover:text-white dark:hover:bg-brand-600 dark:hover:text-white transition-all">Direct Product Page &rarr;</a>
+          </div>
+
+          <div id="gridzee" class="p-6 rounded-3xl border border-slate-200 dark:border-slate-800 bg-slate-50/60 dark:bg-slate-800/40 hover:shadow-md transition-all scroll-mt-24">
+            <div class="w-11 h-11 rounded-2xl bg-amber-100 dark:bg-amber-950/50 flex items-center justify-center text-amber-600 mb-3 font-bold text-lg">G</div>
+            <h3 class="font-heading font-bold text-lg text-slate-900 dark:text-white">Gridzee</h3>
+            <p class="text-xs font-semibold text-amber-600 dark:text-amber-400 mb-2">Indoor Tracking Software</p>
+            <p class="text-xs text-slate-500 dark:text-slate-400 leading-relaxed mb-4">BLE beacon & Wi-Fi indoor asset tracking inside multi-floor warehouses, hospitals, and high-security zones.</p>
+            <a href="#gridzee" class="inline-flex items-center gap-1 px-3 py-1.5 rounded-full text-xs font-semibold bg-slate-200/70 dark:bg-slate-800 text-slate-800 dark:text-slate-200 hover:bg-brand-600 hover:text-white dark:hover:bg-brand-600 dark:hover:text-white transition-all">Direct Product Page &rarr;</a>
+          </div>
+
+          <div id="petzee" class="p-6 rounded-3xl border border-slate-200 dark:border-slate-800 bg-slate-50/60 dark:bg-slate-800/40 hover:shadow-md transition-all scroll-mt-24">
+            <div class="w-11 h-11 rounded-2xl bg-blue-100 dark:bg-blue-950/50 flex items-center justify-center text-blue-600 mb-3 font-bold text-lg">P</div>
+            <h3 class="font-heading font-bold text-lg text-slate-900 dark:text-white">Petzee</h3>
+            <p class="text-xs font-semibold text-blue-600 dark:text-blue-400 mb-2">Smart Pet Tracking Software</p>
+            <p class="text-xs text-slate-500 dark:text-slate-400 leading-relaxed mb-4">Collar-mounted GPS tracking with safe geofencing, activity metrics, temperature alerts, and instant escape alarms.</p>
+            <a href="#petzee" class="inline-flex items-center gap-1 px-3 py-1.5 rounded-full text-xs font-semibold bg-slate-200/70 dark:bg-slate-800 text-slate-800 dark:text-slate-200 hover:bg-brand-600 hover:text-white dark:hover:bg-brand-600 dark:hover:text-white transition-all">Direct Product Page &rarr;</a>
+          </div>
+
+          <div id="elexee" class="p-6 rounded-3xl border border-slate-200 dark:border-slate-800 bg-slate-50/60 dark:bg-slate-800/40 hover:shadow-md transition-all scroll-mt-24">
+            <div class="w-11 h-11 rounded-2xl bg-teal-100 dark:bg-teal-950/50 flex items-center justify-center text-teal-600 mb-3 font-bold text-lg">E</div>
+            <h3 class="font-heading font-bold text-lg text-slate-900 dark:text-white">Elexee</h3>
+            <p class="text-xs font-semibold text-teal-600 dark:text-teal-400 mb-2">Electric Vehicle Management</p>
+            <p class="text-xs text-slate-500 dark:text-slate-400 leading-relaxed mb-4">Dedicated EV fleet analytics, State of Charge (SoC) monitoring, battery health (SoH), and charging station planning.</p>
+            <a href="#elexee" class="inline-flex items-center gap-1 px-3 py-1.5 rounded-full text-xs font-semibold bg-slate-200/70 dark:bg-slate-800 text-slate-800 dark:text-slate-200 hover:bg-brand-600 hover:text-white dark:hover:bg-brand-600 dark:hover:text-white transition-all">Direct Product Page &rarr;</a>
+          </div>
+
+          <div id="trakzee-mini" class="p-6 rounded-3xl border border-slate-200 dark:border-slate-800 bg-slate-50/60 dark:bg-slate-800/40 hover:shadow-md transition-all scroll-mt-24">
+            <div class="w-11 h-11 rounded-2xl bg-rose-100 dark:bg-rose-950/50 flex items-center justify-center text-rose-600 mb-3 font-bold text-lg">M</div>
+            <h3 class="font-heading font-bold text-lg text-slate-900 dark:text-white">Trakzee Mini</h3>
+            <p class="text-xs font-semibold text-rose-600 dark:text-rose-400 mb-2">Personal Vehicle Tracking</p>
+            <p class="text-xs text-slate-500 dark:text-slate-400 leading-relaxed mb-4">Lightweight tracking app tailored for personal cars, motorbikes, teenage drivers, and family vehicle safety.</p>
+            <a href="#trakzee-mini" class="inline-flex items-center gap-1 px-3 py-1.5 rounded-full text-xs font-semibold bg-slate-200/70 dark:bg-slate-800 text-slate-800 dark:text-slate-200 hover:bg-brand-600 hover:text-white dark:hover:bg-brand-600 dark:hover:text-white transition-all">Direct Product Page &rarr;</a>
+          </div>
+
+          <div id="trakzee-gsm" class="p-6 rounded-3xl border border-slate-200 dark:border-slate-800 bg-slate-50/60 dark:bg-slate-800/40 hover:shadow-md transition-all scroll-mt-24">
+            <div class="w-11 h-11 rounded-2xl bg-indigo-100 dark:bg-indigo-950/50 flex items-center justify-center text-indigo-600 mb-3 font-bold text-lg">S</div>
+            <h3 class="font-heading font-bold text-lg text-slate-900 dark:text-white">Trakzee GSM</h3>
+            <p class="text-xs font-semibold text-indigo-600 dark:text-indigo-400 mb-2">Sim Based Tracking Software</p>
+            <p class="text-xs text-slate-500 dark:text-slate-400 leading-relaxed mb-4">Zero-hardware tracking using cell tower triangulation for ad-hoc long-haul transport and outsourced trucking.</p>
+            <a href="#trakzee-gsm" class="inline-flex items-center gap-1 px-3 py-1.5 rounded-full text-xs font-semibold bg-slate-200/70 dark:bg-slate-800 text-slate-800 dark:text-slate-200 hover:bg-brand-600 hover:text-white dark:hover:bg-brand-600 dark:hover:text-white transition-all">Direct Product Page &rarr;</a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ================= 2. COMMUTE CATEGORY LANDING SECTION ================= -->
+    <section id="commute" class="py-16 bg-slate-50 dark:bg-slate-950 border-t border-slate-200/80 dark:border-slate-800 transition-colors">
+      <div class="max-w-[1440px] mx-auto px-4 sm:px-6 lg:px-[50px]">
+        <div class="flex flex-col md:flex-row md:items-end justify-between mb-10 pb-4 border-b border-slate-200 dark:border-slate-800">
+          <div>
+            <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-indigo-50 dark:bg-indigo-950/60 border border-indigo-200 dark:border-indigo-800 text-indigo-700 dark:text-indigo-400 text-xs font-bold uppercase tracking-wider mb-2">
+              Category Overview Page
+            </div>
+            <h2 class="text-3xl font-heading font-extrabold text-slate-900 dark:text-white">Commute & Passenger Transit Suite</h2>
+            <p class="text-sm text-slate-500 dark:text-slate-400 mt-1 max-w-2xl">Modern passenger logistics for student safety, corporate cab roastering, and municipal city transit fleets.</p>
+          </div>
+          <div class="mt-4 md:mt-0">
+            <span class="text-xs font-semibold px-3.5 py-1.5 rounded-full bg-white dark:bg-slate-800 text-slate-600 dark:text-slate-300">3 Products in Category</span>
+          </div>
+        </div>
+
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+          <div id="smartbus" class="p-6 rounded-3xl border border-slate-200 dark:border-slate-800 bg-white dark:bg-slate-900/60 hover:shadow-md transition-all scroll-mt-24">
+            <div class="w-11 h-11 rounded-2xl bg-yellow-100 dark:bg-yellow-950/50 flex items-center justify-center text-yellow-600 mb-3 font-bold text-lg">🚌</div>
+            <h3 class="font-heading font-bold text-lg text-slate-900 dark:text-white">Smartbus</h3>
+            <p class="text-xs font-semibold text-yellow-600 dark:text-yellow-400 mb-2">School Bus Tracking Software</p>
+            <p class="text-xs text-slate-500 dark:text-slate-400 leading-relaxed mb-4">Dedicated parent mobile application, student RFID attendance card swipe notifications, speed limiting alerts, and automated delay notifications.</p>
+            <a href="#smartbus" class="inline-flex items-center gap-1 px-3 py-1.5 rounded-full text-xs font-semibold bg-slate-200/70 dark:bg-slate-800 text-slate-800 dark:text-slate-200 hover:bg-brand-600 hover:text-white dark:hover:bg-brand-600 dark:hover:text-white transition-all">Direct Product Page &rarr;</a>
+          </div>
+
+          <div id="rosterz" class="p-6 rounded-3xl border border-slate-200 dark:border-slate-800 bg-white dark:bg-slate-900/60 hover:shadow-md transition-all scroll-mt-24">
+            <div class="w-11 h-11 rounded-2xl bg-blue-100 dark:bg-blue-950/50 flex items-center justify-center text-blue-600 mb-3 font-bold text-lg">👥</div>
+            <h3 class="font-heading font-bold text-lg text-slate-900 dark:text-white">Rosterz</h3>
+            <p class="text-xs font-semibold text-blue-600 dark:text-blue-400 mb-2">Employee Transportation Software</p>
+            <p class="text-xs text-slate-500 dark:text-slate-400 leading-relaxed mb-4">Automated shift rostering, female employee night safety features with emergency SOS button, vendor billing automation, and driver rating.</p>
+            <a href="#rosterz" class="inline-flex items-center gap-1 px-3 py-1.5 rounded-full text-xs font-semibold bg-slate-200/70 dark:bg-slate-800 text-slate-800 dark:text-slate-200 hover:bg-brand-600 hover:text-white dark:hover:bg-brand-600 dark:hover:text-white transition-all">Direct Product Page &rarr;</a>
+          </div>
+
+          <div id="smarttranzit" class="p-6 rounded-3xl border border-slate-200 dark:border-slate-800 bg-white dark:bg-slate-900/60 hover:shadow-md transition-all scroll-mt-24">
+            <div class="w-11 h-11 rounded-2xl bg-cyan-100 dark:bg-cyan-950/50 flex items-center justify-center text-cyan-600 mb-3 font-bold text-lg">🚎</div>
+            <h3 class="font-heading font-bold text-lg text-slate-900 dark:text-white">SmartTranzit</h3>
+            <p class="text-xs font-semibold text-cyan-600 dark:text-cyan-400 mb-2">Public Transportation Software</p>
+            <p class="text-xs text-slate-500 dark:text-slate-400 leading-relaxed mb-4">GTFS feeds integration, digital passenger information display (PIDS), route deviation enforcement, and passenger count camera sensors.</p>
+            <a href="#smarttranzit" class="inline-flex items-center gap-1 px-3 py-1.5 rounded-full text-xs font-semibold bg-slate-200/70 dark:bg-slate-800 text-slate-800 dark:text-slate-200 hover:bg-brand-600 hover:text-white dark:hover:bg-brand-600 dark:hover:text-white transition-all">Direct Product Page &rarr;</a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ================= 3. IOTECH CATEGORY LANDING SECTION ================= -->
+    <section id="iotech" class="py-16 bg-white dark:bg-slate-900 border-t border-slate-200/80 dark:border-slate-800 transition-colors">
+      <div class="max-w-[1440px] mx-auto px-4 sm:px-6 lg:px-[50px]">
+        <div class="flex flex-col md:flex-row md:items-end justify-between mb-10 pb-4 border-b border-slate-200 dark:border-slate-800">
+          <div>
+            <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-purple-50 dark:bg-purple-950/60 border border-purple-200 dark:border-purple-800 text-purple-700 dark:text-purple-400 text-xs font-bold uppercase tracking-wider mb-2">
+              Category Overview Page
+            </div>
+            <h2 class="text-3xl font-heading font-extrabold text-slate-900 dark:text-white">IoTech & Automation Platform</h2>
+            <p class="text-sm text-slate-500 dark:text-slate-400 mt-1 max-w-2xl">Connect sensors, automate on-ground staff attendance, and optimize industrial energy consumption.</p>
+          </div>
+          <div class="mt-4 md:mt-0">
+            <span class="text-xs font-semibold px-3.5 py-1.5 rounded-full bg-slate-100 dark:bg-slate-800 text-slate-600 dark:text-slate-300">2 Products in Category</span>
+          </div>
+        </div>
+
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+          <div id="taskeye" class="p-6 rounded-3xl border border-slate-200 dark:border-slate-800 bg-slate-50/60 dark:bg-slate-800/40 hover:shadow-md transition-all scroll-mt-24">
+            <div class="w-11 h-11 rounded-2xl bg-purple-100 dark:bg-purple-950/50 flex items-center justify-center text-purple-600 mb-3 font-bold text-lg">📋</div>
+            <h3 class="font-heading font-bold text-lg text-slate-900 dark:text-white">Taskeye</h3>
+            <p class="text-xs font-semibold text-purple-600 dark:text-purple-400 mb-2">Field Employee Tracking Software</p>
+            <p class="text-xs text-slate-500 dark:text-slate-400 leading-relaxed mb-4">Location-verified selfie attendance, client visit punch-in/out, travel allowance reimbursement calculations, and field task distribution.</p>
+            <a href="#taskeye" class="inline-flex items-center gap-1 px-3 py-1.5 rounded-full text-xs font-semibold bg-slate-200/70 dark:bg-slate-800 text-slate-800 dark:text-slate-200 hover:bg-brand-600 hover:text-white dark:hover:bg-brand-600 dark:hover:text-white transition-all">Direct Product Page &rarr;</a>
+          </div>
+
+          <div id="enarzee" class="p-6 rounded-3xl border border-slate-200 dark:border-slate-800 bg-slate-50/60 dark:bg-slate-800/40 hover:shadow-md transition-all scroll-mt-24">
+            <div class="w-11 h-11 rounded-2xl bg-teal-100 dark:bg-teal-950/50 flex items-center justify-center text-teal-600 mb-3 font-bold text-lg">⚡</div>
+            <h3 class="font-heading font-bold text-lg text-slate-900 dark:text-white">Enarzee</h3>
+            <p class="text-xs font-semibold text-teal-600 dark:text-teal-400 mb-2">Energy Monitoring System</p>
+            <p class="text-xs text-slate-500 dark:text-slate-400 leading-relaxed mb-4">Real-time generator fuel monitoring, sub-meter electric consumption telemetry, phase imbalance alerts, and carbon footprint reporting.</p>
+            <a href="#enarzee" class="inline-flex items-center gap-1 px-3 py-1.5 rounded-full text-xs font-semibold bg-slate-200/70 dark:bg-slate-800 text-slate-800 dark:text-slate-200 hover:bg-brand-600 hover:text-white dark:hover:bg-brand-600 dark:hover:text-white transition-all">Direct Product Page &rarr;</a>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <!-- ================= FOOTER ================= -->
+  <footer class="bg-slate-900 dark:bg-slate-950 text-slate-400 py-8 border-t border-slate-800 text-center text-xs">
+    <p>© 2026 Uffizio. All rights reserved. Mega Menu Redesign Prototype.</p>
+  </footer>
+
+  <!-- Custom Logic & Event Listeners -->
+  <script src="script.js"></script>
+</body>
+</html>
