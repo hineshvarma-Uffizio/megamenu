@@ -67,8 +67,6 @@ document.addEventListener('DOMContentLoaded', () => {
       dropdown.classList.add('is-active');
       if (button) button.setAttribute('aria-expanded', 'true');
       activeDropdown = dropdown;
-      document.body.classList.add('has-megamenu-open');
-      document.body.setAttribute('data-active-menu', dropdownId);
     }
   }
 
@@ -86,8 +84,6 @@ document.addEventListener('DOMContentLoaded', () => {
     const anyOpen = document.querySelector('.mega-menu.is-active');
     if (!anyOpen) {
       activeDropdown = null;
-      document.body.classList.remove('has-megamenu-open');
-      document.body.removeAttribute('data-active-menu');
     }
   }
 
@@ -155,14 +151,7 @@ document.addEventListener('DOMContentLoaded', () => {
     }
   });
 
-  // Clicking backdrop or outside header closes all open menus
-  const megaMenuBackdrop = document.getElementById('megamenu-backdrop');
-  if (megaMenuBackdrop) {
-    megaMenuBackdrop.addEventListener('click', () => {
-      navItemsWithDropdown.forEach(closeDropdown);
-    });
-  }
-
+  // Clicking outside header closes all open menus
   document.addEventListener('click', (e) => {
     if (!e.target.closest('#site-header')) {
       navItemsWithDropdown.forEach(closeDropdown);
