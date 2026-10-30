@@ -68,11 +68,12 @@ html {
   transform: translateY(0) !important;
 }
 
-/* Full-width Mega Menu (Products & Software) spans left-0 to right-0 */
+/* Mega Menu (Products & Software): Previous compact width (1340px) aligned with Contact Us button on right */
 #products-dropdown {
-  left: 0 !important;
+  left: auto !important;
   right: 0 !important;
-  width: 100% !important;
+  width: 1340px !important;
+  max-width: 100% !important;
   transform: translateY(6px) !important;
 }
 
