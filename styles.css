@@ -53,18 +53,18 @@ html {
 }
 
 /* ================= UFFIZIO MEGA MENU FLOATING GAP FADED BLUR ================= */
-/* Fills the gap with a soft frosted glass blur that feathers seamlessly at the left & right curves */
+/* Fills the gap with a rich frosted glass blur that feathers seamlessly at the left & right curves */
 .mega-menu::before {
   content: '';
   position: absolute;
-  top: -2px;
+  top: -4px;
   left: 0;
   right: 0;
-  height: 22px;
+  height: 26px;
   border-radius: 24px 24px 0 0;
-  background: linear-gradient(to bottom, rgba(255, 255, 255, 0.45) 0%, rgba(248, 250, 252, 0.2) 65%, transparent 100%);
-  backdrop-filter: blur(20px) saturate(180%);
-  -webkit-backdrop-filter: blur(20px) saturate(180%);
+  background: linear-gradient(to bottom, rgba(255, 255, 255, 0.58) 0%, rgba(248, 250, 252, 0.3) 65%, transparent 100%);
+  backdrop-filter: blur(40px) saturate(190%);
+  -webkit-backdrop-filter: blur(40px) saturate(190%);
   -webkit-mask-image: linear-gradient(
     to right,
     transparent 0px,
@@ -94,9 +94,9 @@ html {
 }
 
 .dark .mega-menu::before {
-  background: linear-gradient(to bottom, rgba(2, 6, 23, 0.45) 0%, rgba(15, 23, 42, 0.2) 65%, transparent 100%);
-  backdrop-filter: blur(20px) saturate(180%);
-  -webkit-backdrop-filter: blur(20px) saturate(180%);
+  background: linear-gradient(to bottom, rgba(2, 6, 23, 0.55) 0%, rgba(15, 23, 42, 0.3) 65%, transparent 100%);
+  backdrop-filter: blur(40px) saturate(190%);
+  -webkit-backdrop-filter: blur(40px) saturate(190%);
   border: none !important;
   outline: none !important;
 }
