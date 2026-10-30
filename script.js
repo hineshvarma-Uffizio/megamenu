@@ -68,6 +68,7 @@ document.addEventListener('DOMContentLoaded', () => {
       if (button) button.setAttribute('aria-expanded', 'true');
       activeDropdown = dropdown;
       document.body.classList.add('has-megamenu-open');
+      document.body.setAttribute('data-active-menu', dropdownId);
     }
   }
 
@@ -86,6 +87,7 @@ document.addEventListener('DOMContentLoaded', () => {
     if (!anyOpen) {
       activeDropdown = null;
       document.body.classList.remove('has-megamenu-open');
+      document.body.removeAttribute('data-active-menu');
     }
   }
 

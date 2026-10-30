@@ -52,19 +52,20 @@ html {
   box-shadow: 0 4px 24px -2px rgba(0, 0, 0, 0.3);
 }
 
-/* ================= UFFIZIO MEGA MENU FLOATING GAP PURE OPTICAL BLUR ================= */
-/* Zero color tint (100% transparent), heavy 48px optical blur, strictly in the card gap area */
-.mega-menu::before {
+/* ================= PATH 1: SEAMLESS HEADER BLUR EXTENSION INTO THE GAP ================= */
+/* Header's own frosted glass blur extends 12px down into the 8px gap */
+#site-header::after {
   content: '';
   position: absolute;
-  top: 0;
-  left: 0;
-  right: 0;
-  height: 14px;
+  top: 100%;
+  right: 60px;
+  width: 1340px;
+  max-width: calc(100vw - 120px);
+  height: 12px;
   border-radius: 24px 24px 0 0;
-  background: transparent !important;
-  backdrop-filter: blur(48px) saturate(180%);
-  -webkit-backdrop-filter: blur(48px) saturate(180%);
+  backdrop-filter: blur(28px) saturate(180%);
+  -webkit-backdrop-filter: blur(28px) saturate(180%);
+  background-color: rgba(255, 255, 255, 0.75);
   -webkit-mask-image: linear-gradient(
     to right,
     transparent 0px,
@@ -87,20 +88,27 @@ html {
     rgba(0, 0, 0, 0.3) calc(100% - 14px),
     transparent 100%
   );
-  border: none !important;
-  border-top: none !important;
-  outline: none !important;
-  box-shadow: none !important;
   pointer-events: none;
-  z-index: 1;
+  opacity: 0;
+  visibility: hidden;
+  transition: opacity 0.22s cubic-bezier(0.16, 1, 0.3, 1),
+              visibility 0.22s ease;
+  z-index: 10;
 }
 
-.dark .mega-menu::before {
-  background: transparent !important;
-  backdrop-filter: blur(48px) saturate(180%);
-  -webkit-backdrop-filter: blur(48px) saturate(180%);
-  border: none !important;
-  outline: none !important;
+.dark #site-header::after {
+  background-color: rgba(2, 6, 23, 0.72);
+}
+
+body.has-megamenu-open #site-header::after {
+  opacity: 1 !important;
+  visibility: visible !important;
+}
+
+/* Adjust extension width for 55rem menus (Discover & Resource) */
+body[data-active-menu="discover-dropdown"] #site-header::after,
+body[data-active-menu="resource-dropdown"] #site-header::after {
+  width: 55rem !important;
 }
 
 .mega-menu > div {
@@ -111,8 +119,8 @@ html {
 /* Header enhancement when mega menu is open - seamless, no bottom outline */
 body.has-megamenu-open #site-header {
   background-color: rgba(255, 255, 255, 0.75) !important;
-  backdrop-filter: blur(20px) saturate(180%) !important;
-  -webkit-backdrop-filter: blur(20px) saturate(180%) !important;
+  backdrop-filter: blur(28px) saturate(180%) !important;
+  -webkit-backdrop-filter: blur(28px) saturate(180%) !important;
   box-shadow: none !important;
   border: none !important;
   border-bottom: none !important;
@@ -121,28 +129,25 @@ body.has-megamenu-open #site-header {
 
 .dark body.has-megamenu-open #site-header {
   background-color: rgba(2, 6, 23, 0.72) !important;
-  backdrop-filter: blur(20px) saturate(180%) !important;
-  -webkit-backdrop-filter: blur(20px) saturate(180%) !important;
+  backdrop-filter: blur(28px) saturate(180%) !important;
+  -webkit-backdrop-filter: blur(28px) saturate(180%) !important;
   box-shadow: none !important;
   border: none !important;
   border-bottom: none !important;
   outline: none !important;
 }
 
-/* Mega Menu Dropdown Visibility & Animations */
+/* Mega Menu Dropdown Visibility & Animations (Pure Opacity to protect Backdrop Filter) */
 .mega-menu {
-  transition: opacity 0.25s cubic-bezier(0.16, 1, 0.3, 1),
-              transform 0.25s cubic-bezier(0.16, 1, 0.3, 1),
-              visibility 0.25s ease;
-  transform: translateY(6px);
-  will-change: opacity, transform;
+  transition: opacity 0.22s cubic-bezier(0.16, 1, 0.3, 1),
+              visibility 0.22s ease;
+  will-change: opacity;
 }
 
 .mega-menu.is-active {
   opacity: 1 !important;
   visibility: visible !important;
   pointer-events: auto !important;
-  transform: translateY(0) !important;
 }
 
 /* Mega Menu (Products & Software): Previous compact width (1340px) aligned with Contact Us button on right */
@@ -151,11 +156,6 @@ body.has-megamenu-open #site-header {
   right: 0 !important;
   width: 1340px !important;
   max-width: 100% !important;
-  transform: translateY(6px) !important;
-}
-
-#products-dropdown.is-active {
-  transform: translateY(0) !important;
 }
 
 /* Right-aligned dropdown menus (for Discover & Resource) flush with Contact Us button */
