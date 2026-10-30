@@ -362,10 +362,32 @@ html {
 
 /* ================= ACTIVE STATE INDICATORS ================= */
 
-/* 1. Top Nav Trigger Active State */
+/* 1. Top Nav Trigger Active State & Size Matching Contact Us (40px) */
 .nav-link {
+  height: 40px !important;
+  box-sizing: border-box !important;
+  display: inline-flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  padding: 0 1.25rem !important; /* Matches Contact Us horizontal padding */
   border-radius: 9999px !important;
+  font-family: 'Inter', sans-serif !important;
+  font-size: 0.875rem !important; /* 14px */
+  font-weight: 600 !important;
+  line-height: 1 !important;
+  white-space: nowrap !important;
 }
+
+.nav-item.is-active .nav-link {
+  color: #2563eb !important;
+  background-color: rgba(37, 99, 235, 0.08) !important;
+}
+
+.dark .nav-item.is-active .nav-link {
+  color: #60a5fa !important;
+  background-color: rgba(30, 41, 59, 0.8) !important;
+}
+
 .nav-link.is-current-page {
   color: #2563eb !important;
   background-color: rgba(37, 99, 235, 0.08) !important;
