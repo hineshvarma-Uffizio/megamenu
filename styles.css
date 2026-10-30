@@ -97,7 +97,22 @@ html {
   transform: translateY(0) !important;
 }
 
-/* ================= UFFIZIO SIGNATURE SHINING CARD BORDER ================= */
+/* ================= UFFIZIO SIGNATURE TRAVELING BORDER BEAM (SHINING EFFECT) ================= */
+@property --beam-angle {
+  syntax: '<angle>';
+  inherits: false;
+  initial-value: 0deg;
+}
+
+@keyframes megaBeamRotate {
+  0% {
+    --beam-angle: 0deg;
+  }
+  100% {
+    --beam-angle: 360deg;
+  }
+}
+
 .mega-menu > div,
 #lang-dropdown > div {
   position: relative;
@@ -110,41 +125,116 @@ html {
 
 .dark .mega-menu > div,
 .dark #lang-dropdown > div {
-  border: 1px solid rgba(147, 197, 253, 0.32) !important;
-  box-shadow: 0 0 0 1px rgba(96, 165, 250, 0.2),
-              0 0 25px -4px rgba(37, 99, 235, 0.3),
-              0 25px 60px -15px rgba(2, 6, 23, 0.9) !important;
+  border: 1px solid rgba(147, 197, 253, 0.16) !important;
+  box-shadow: 0 25px 65px -15px rgba(2, 6, 23, 0.95),
+              0 0 20px -5px rgba(15, 23, 42, 0.8) !important;
 }
 
-/* Shining Glow when Active / Hovered */
+/* Subtle clean border when active (not statically highlighted) */
 .mega-menu.is-active > div {
-  border-color: rgba(0, 82, 204, 0.45) !important;
-  box-shadow: 0 0 0 1px rgba(0, 82, 204, 0.25),
-              0 0 25px -2px rgba(0, 82, 204, 0.2),
-              0 20px 50px -10px rgba(0, 0, 0, 0.12) !important;
+  border-color: rgba(203, 213, 225, 0.9) !important;
+  box-shadow: 0 20px 50px -10px rgba(0, 82, 204, 0.08),
+              0 10px 25px -5px rgba(0, 0, 0, 0.06) !important;
 }
 
 .dark .mega-menu.is-active > div {
-  border: 1px solid rgba(191, 219, 254, 0.58) !important;
-  box-shadow: 0 0 0 1px rgba(147, 197, 253, 0.38),
-              0 0 35px -2px rgba(59, 130, 246, 0.5),
-              0 25px 65px -15px rgba(2, 6, 23, 0.95) !important;
-  animation: megaBorderPulse 3s ease-in-out infinite alternate;
+  border: 1px solid rgba(147, 197, 253, 0.2) !important;
+  box-shadow: 0 25px 65px -15px rgba(2, 6, 23, 0.98),
+              0 0 30px -10px rgba(2, 6, 23, 0.9) !important;
 }
 
-@keyframes megaBorderPulse {
-  0% {
-    border-color: rgba(147, 197, 253, 0.42);
-    box-shadow: 0 0 0 1px rgba(147, 197, 253, 0.28),
-                0 0 25px -3px rgba(59, 130, 246, 0.38),
-                0 25px 65px -15px rgba(2, 6, 23, 0.95);
-  }
-  100% {
-    border-color: rgba(224, 242, 254, 0.7);
-    box-shadow: 0 0 0 1px rgba(186, 230, 253, 0.48),
-                0 0 42px 0px rgba(59, 130, 246, 0.6),
-                0 25px 65px -15px rgba(2, 6, 23, 0.98);
-  }
+/* Traveling Light Beam on the Border Perimeter */
+.mega-menu.is-active > div::before,
+#lang-selector-group:hover #lang-dropdown > div::before,
+#lang-selector-group:focus-within #lang-dropdown > div::before {
+  content: '';
+  position: absolute;
+  inset: -1.5px;
+  border-radius: inherit;
+  padding: 1.5px;
+  background: conic-gradient(
+    from var(--beam-angle, 0deg),
+    transparent 0deg,
+    transparent 260deg,
+    rgba(0, 82, 204, 0.15) 285deg,
+    rgba(37, 99, 235, 0.6) 310deg,
+    rgba(59, 130, 246, 0.95) 330deg,
+    #60a5fa 342deg,
+    #93c5fd 346deg,
+    rgba(59, 130, 246, 0.8) 354deg,
+    transparent 360deg
+  );
+  -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+  -webkit-mask-composite: xor;
+  mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+  mask-composite: exclude;
+  pointer-events: none;
+  animation: megaBeamRotate 4s linear infinite;
+  z-index: 20;
+}
+
+/* In Dark Mode: Sparkling Diamond-White Core + Luminous Cyan/Electric Blue Trail */
+.dark .mega-menu.is-active > div::before,
+.dark #lang-selector-group:hover #lang-dropdown > div::before,
+.dark #lang-selector-group:focus-within #lang-dropdown > div::before {
+  background: conic-gradient(
+    from var(--beam-angle, 0deg),
+    transparent 0deg,
+    transparent 250deg,
+    rgba(37, 99, 235, 0.25) 280deg,
+    rgba(56, 189, 248, 0.7) 310deg,
+    rgba(147, 197, 253, 0.95) 332deg,
+    #ffffff 342deg,
+    rgba(147, 197, 253, 0.95) 350deg,
+    rgba(56, 189, 248, 0.5) 355deg,
+    transparent 360deg
+  );
+}
+
+/* Traveling Soft Bloom Halo that follows right with the beam tip */
+.mega-menu.is-active > div::after,
+#lang-selector-group:hover #lang-dropdown > div::after,
+#lang-selector-group:focus-within #lang-dropdown > div::after {
+  content: '';
+  position: absolute;
+  inset: -3px;
+  border-radius: inherit;
+  padding: 3px;
+  background: conic-gradient(
+    from var(--beam-angle, 0deg),
+    transparent 0deg,
+    transparent 265deg,
+    rgba(0, 82, 204, 0.2) 295deg,
+    rgba(59, 130, 246, 0.6) 330deg,
+    #60a5fa 342deg,
+    transparent 360deg
+  );
+  -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+  -webkit-mask-composite: xor;
+  mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+  mask-composite: exclude;
+  filter: blur(8px);
+  pointer-events: none;
+  animation: megaBeamRotate 4s linear infinite;
+  z-index: 19;
+  opacity: 0.7;
+}
+
+.dark .mega-menu.is-active > div::after,
+.dark #lang-selector-group:hover #lang-dropdown > div::after,
+.dark #lang-selector-group:focus-within #lang-dropdown > div::after {
+  background: conic-gradient(
+    from var(--beam-angle, 0deg),
+    transparent 0deg,
+    transparent 255deg,
+    rgba(37, 99, 235, 0.35) 290deg,
+    rgba(56, 189, 248, 0.8) 325deg,
+    #ffffff 342deg,
+    rgba(96, 165, 250, 0.8) 350deg,
+    transparent 360deg
+  );
+  filter: blur(8px);
+  opacity: 0.85;
 }
 
 /* Language Dropdown Menu (aligned flush below header, matches Mega Menu animation) */
