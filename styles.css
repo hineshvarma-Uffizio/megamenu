@@ -8,27 +8,89 @@ html {
   scroll-padding-top: 5.5rem;
 }
 
-/* ================= UFFIZIO SIGNATURE BLUR EFFECT HEADER (BORDERLESS) ================= */
+/* ================= APPLE iOS 17/18 PROGRESSIVE GRADIENT BLUR HEADER ================= */
 #site-header {
-  background-color: rgba(248, 250, 252, 0.45) !important; /* Seamless match with bg-slate-50 */
-  backdrop-filter: blur(20px) saturate(160%) !important;
-  -webkit-backdrop-filter: blur(20px) saturate(160%) !important;
+  position: sticky;
+  top: 0;
+  background-color: transparent !important;
+  background: transparent !important;
+  backdrop-filter: none !important;
+  -webkit-backdrop-filter: none !important;
   border: none !important;
   border-bottom: none !important;
   outline: none !important;
-  box-shadow: none;
-  transition: background-color 0.25s cubic-bezier(0.16, 1, 0.3, 1),
-              box-shadow 0.25s cubic-bezier(0.16, 1, 0.3, 1);
+  box-shadow: none !important;
 }
 
-.dark #site-header {
-  /* Exactly matches the website's bg-slate-950 (rgb(2, 6, 23)) with soft opacity so the blur shines through */
-  background-color: rgba(2, 6, 23, 0.38) !important;
-  backdrop-filter: blur(20px) saturate(160%) !important;
-  -webkit-backdrop-filter: blur(20px) saturate(160%) !important;
-  border: none !important;
-  border-bottom: none !important;
-  outline: none !important;
+.apple-progressive-blur {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+  z-index: -1;
+  overflow: hidden;
+}
+
+.apple-progressive-blur > .blur-step,
+.apple-progressive-blur > .blur-tint {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+}
+
+/* Layer 1: Base feather blur (2px) - spans smoothly to bottom */
+.apple-progressive-blur > .blur-step-1 {
+  backdrop-filter: blur(2px);
+  -webkit-backdrop-filter: blur(2px);
+  mask-image: linear-gradient(to bottom, black 0%, black 88%, transparent 100%);
+  -webkit-mask-image: linear-gradient(to bottom, black 0%, black 88%, transparent 100%);
+}
+
+/* Layer 2: Soft depth blur (4px) */
+.apple-progressive-blur > .blur-step-2 {
+  backdrop-filter: blur(4px);
+  -webkit-backdrop-filter: blur(4px);
+  mask-image: linear-gradient(to bottom, black 0%, black 80%, transparent 95%);
+  -webkit-mask-image: linear-gradient(to bottom, black 0%, black 80%, transparent 95%);
+}
+
+/* Layer 3: Medium frosted blur (8px) */
+.apple-progressive-blur > .blur-step-3 {
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+  mask-image: linear-gradient(to bottom, black 0%, black 72%, transparent 90%);
+  -webkit-mask-image: linear-gradient(to bottom, black 0%, black 72%, transparent 90%);
+}
+
+/* Layer 4: Deep frosted blur (16px) */
+.apple-progressive-blur > .blur-step-4 {
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  mask-image: linear-gradient(to bottom, black 0%, black 65%, transparent 84%);
+  -webkit-mask-image: linear-gradient(to bottom, black 0%, black 65%, transparent 84%);
+}
+
+/* Layer 5: Maximum Apple frosted glass (24px + 180% saturation) over buttons */
+.apple-progressive-blur > .blur-step-5 {
+  backdrop-filter: blur(24px) saturate(180%);
+  -webkit-backdrop-filter: blur(24px) saturate(180%);
+  mask-image: linear-gradient(to bottom, black 0%, black 58%, transparent 78%);
+  -webkit-mask-image: linear-gradient(to bottom, black 0%, black 58%, transparent 78%);
+}
+
+/* Tint Layer: Soft translucent surface color */
+.apple-progressive-blur > .blur-tint {
+  background: linear-gradient(to bottom, rgba(248, 250, 252, 0.68) 0%, rgba(248, 250, 252, 0.52) 65%, rgba(248, 250, 252, 0.18) 86%, transparent 100%);
+  mask-image: linear-gradient(to bottom, black 0%, black 72%, transparent 100%);
+  -webkit-mask-image: linear-gradient(to bottom, black 0%, black 72%, transparent 100%);
+  transition: background 0.25s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.dark .apple-progressive-blur > .blur-tint {
+  background: linear-gradient(to bottom, rgba(2, 6, 23, 0.65) 0%, rgba(2, 6, 23, 0.48) 65%, rgba(2, 6, 23, 0.15) 86%, transparent 100%);
 }
 
 #site-header:focus,
@@ -36,20 +98,13 @@ html {
   outline: none !important;
 }
 
-#site-header.scrolled {
-  background-color: rgba(248, 250, 252, 0.65) !important;
-  border: none !important;
-  border-bottom: none !important;
-  outline: none !important;
-  box-shadow: 0 4px 20px -2px rgba(0, 0, 0, 0.04);
+/* Scrolled state: slightly richer density for active page scrolling */
+#site-header.scrolled .apple-progressive-blur > .blur-tint {
+  background: linear-gradient(to bottom, rgba(248, 250, 252, 0.86) 0%, rgba(248, 250, 252, 0.68) 65%, rgba(248, 250, 252, 0.22) 86%, transparent 100%);
 }
 
-.dark #site-header.scrolled {
-  background-color: rgba(2, 6, 23, 0.58) !important;
-  border: none !important;
-  border-bottom: none !important;
-  outline: none !important;
-  box-shadow: 0 4px 24px -2px rgba(0, 0, 0, 0.3);
+.dark #site-header.scrolled .apple-progressive-blur > .blur-tint {
+  background: linear-gradient(to bottom, rgba(2, 6, 23, 0.82) 0%, rgba(2, 6, 23, 0.64) 65%, rgba(2, 6, 23, 0.2) 86%, transparent 100%);
 }
 
 /* Mega Menu Dropdown Visibility & Animations */

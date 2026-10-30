@@ -54,7 +54,17 @@
 
   <!-- ================= MAIN HEADER & NAVIGATION ================= -->
   <header id="site-header" class="sticky top-0 z-50 transition-all duration-300">
-    <div class="w-full px-4 sm:px-6 lg:px-[60px]">
+    <!-- Apple iOS 17/18 Style Progressive Gradient Blur Engine -->
+    <div class="apple-progressive-blur absolute inset-0 w-full h-full pointer-events-none -z-10 overflow-hidden" aria-hidden="true">
+      <div class="blur-step blur-step-1"></div>
+      <div class="blur-step blur-step-2"></div>
+      <div class="blur-step blur-step-3"></div>
+      <div class="blur-step blur-step-4"></div>
+      <div class="blur-step blur-step-5"></div>
+      <div class="blur-tint"></div>
+    </div>
+
+    <div class="w-full px-4 sm:px-6 lg:px-[60px] relative z-10">
       <div class="flex items-center justify-between h-16 relative">
         
         <!-- Brand Logo -->
