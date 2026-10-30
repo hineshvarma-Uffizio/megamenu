@@ -48,7 +48,7 @@
     }
   </script>
   <!-- Custom Stylesheet with cache-buster -->
-  <link rel="stylesheet" href="styles.css?v=20261030-explore-clean">
+  <link rel="stylesheet" href="styles.css?v=20261030-gap-fix">
 </head>
 <body class="bg-slate-50 dark:bg-slate-950 text-slate-800 dark:text-slate-100 antialiased font-sans min-h-screen flex flex-col transition-colors duration-200">
 
@@ -91,12 +91,12 @@
             </button>
 
             <!-- ================= MEGA MENU CONTAINER: 3-COL + 1 FEATURED CARD ================= -->
-            <div id="products-dropdown" class="mega-menu absolute left-auto right-0 top-full w-[1340px] max-w-full pt-2 pointer-events-none opacity-0 invisible transition-all duration-200">
+            <div id="products-dropdown" class="mega-menu absolute left-auto right-0 top-full w-[1360px] max-w-[calc(100vw-2rem)] pt-2 pointer-events-none opacity-0 invisible transition-all duration-200">
               <div class="bg-white dark:bg-slate-900 rounded-3xl shadow-2xl border border-slate-200/90 dark:border-slate-800 pointer-events-auto">
                 <div class="p-6 lg:p-8 grid grid-cols-12 gap-8">
                 
                 <!-- COLUMN 1: Uffizio Group (White-Label & Hardware Platform Showcase) -->
-                <div class="col-span-3 flex flex-col h-full border-r border-slate-100 dark:border-slate-800 pr-3">
+                <div class="col-span-3 flex flex-col h-full border-r border-slate-100 dark:border-slate-800 pr-8">
                   <div class="category-header-wrap flex items-center justify-between pb-2 mb-3 border-b border-slate-100 dark:border-slate-800 group/catheader" data-category="uffizio-group">
                     <a href="#home" class="flex items-center gap-2 group-hover/catheader:text-brand-600 dark:group-hover/catheader:text-blue-400 transition-colors" title="Uffizio Group Corporate Overview">
                       <span class="w-6 h-6 rounded-full bg-blue-100 dark:bg-blue-900/50 text-brand-600 dark:text-blue-400 flex items-center justify-center">
@@ -164,7 +164,7 @@
                 </div>
 
                 <!-- COLUMN 2: Telematics (3 Columns wide) -->
-                <div class="col-span-3 space-y-3 border-r border-slate-100 dark:border-slate-800 pr-3">
+                <div class="col-span-3 space-y-3 border-r border-slate-100 dark:border-slate-800 pr-8">
                   <div class="category-header-wrap flex items-center justify-between pb-2 border-b border-slate-100 dark:border-slate-800 group/catheader" data-category="telematics">
                     <a href="#telematics" class="flex items-center gap-2 group-hover/catheader:text-brand-600 dark:group-hover/catheader:text-blue-400 transition-colors" title="Go to Telematics Category Page">
                       <span class="w-6 h-6 rounded-full bg-blue-100 dark:bg-blue-900/50 text-brand-600 dark:text-blue-400 flex items-center justify-center">
@@ -309,7 +309,7 @@
                 </div>
 
                 <!-- COLUMN 2: Commute (3 Columns wide) -->
-                <div class="col-span-3 space-y-3 border-r border-slate-100 dark:border-slate-800 pr-3">
+                <div class="col-span-3 space-y-3 border-r border-slate-100 dark:border-slate-800 pr-8">
                   <div class="category-header-wrap flex items-center justify-between pb-2 border-b border-slate-100 dark:border-slate-800 group/catheader" data-category="commute">
                     <a href="#commute" class="flex items-center gap-2 group-hover/catheader:text-indigo-600 dark:group-hover/catheader:text-indigo-400 transition-colors" title="Go to Commute Category Page">
                       <span class="w-6 h-6 rounded-full bg-indigo-100 dark:bg-indigo-900/50 text-indigo-600 dark:text-indigo-400 flex items-center justify-center">
@@ -459,11 +459,11 @@
             </button>
 
             <!-- Discover Dropdown Menu -->
-            <div id="discover-dropdown" class="mega-menu mega-menu-right absolute right-0 top-full w-[55rem] max-w-[calc(100vw-2rem)] pt-2 pointer-events-none opacity-0 invisible transition-all duration-200">
-              <div class="bg-white dark:bg-slate-900 rounded-3xl shadow-2xl border border-slate-200 dark:border-slate-800 p-6 flex gap-6 pointer-events-auto">
+            <div id="discover-dropdown" class="mega-menu mega-menu-right absolute right-0 top-full w-[58rem] max-w-[calc(100vw-2rem)] pt-2 pointer-events-none opacity-0 invisible transition-all duration-200">
+              <div class="bg-white dark:bg-slate-900 rounded-3xl shadow-2xl border border-slate-200 dark:border-slate-800 p-6 lg:p-8 flex gap-8 pointer-events-auto">
                 
                 <!-- Left Links (2 Columns) -->
-                <div class="flex-1 grid grid-cols-2 gap-5 pr-6 border-r border-slate-100 dark:border-slate-800">
+                <div class="flex-1 grid grid-cols-2 gap-8 pr-8 border-r border-slate-100 dark:border-slate-800">
                   
                   <!-- Column 1 -->
                   <div class="space-y-[14px]">
@@ -583,11 +583,11 @@
             </button>
 
             <!-- Resource Dropdown Menu -->
-            <div id="resource-dropdown" class="mega-menu mega-menu-right absolute right-0 top-full w-[55rem] max-w-[calc(100vw-2rem)] pt-2 pointer-events-none opacity-0 invisible transition-all duration-200">
-              <div class="bg-white dark:bg-slate-900 rounded-3xl shadow-2xl border border-slate-200 dark:border-slate-800 p-6 flex gap-6 pointer-events-auto">
+            <div id="resource-dropdown" class="mega-menu mega-menu-right absolute right-0 top-full w-[58rem] max-w-[calc(100vw-2rem)] pt-2 pointer-events-none opacity-0 invisible transition-all duration-200">
+              <div class="bg-white dark:bg-slate-900 rounded-3xl shadow-2xl border border-slate-200 dark:border-slate-800 p-6 lg:p-8 flex gap-8 pointer-events-auto">
                 
                 <!-- Left Links (2 Columns) -->
-                <div class="flex-1 grid grid-cols-2 gap-5 pr-6 border-r border-slate-100 dark:border-slate-800">
+                <div class="flex-1 grid grid-cols-2 gap-8 pr-8 border-r border-slate-100 dark:border-slate-800">
                   
                   <!-- Column 1 (4 items) -->
                   <div class="space-y-[14px]">
