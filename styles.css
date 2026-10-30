@@ -322,15 +322,15 @@ html {
   margin-top: 14px;
 }
 
-/* Standardized Typography: Title (14px, 500) & Subtitle (13px, 500) */
+/* Standardized Typography: Title (13px, 500) & Subtitle (12px, 500) */
 .mega-item .font-heading {
-  font-size: 14px;
+  font-size: 13px !important;
   font-weight: 500;
 }
 
 .mega-item span.text-slate-500,
 .mega-item span.dark\:text-slate-400 {
-  font-size: 13px;
+  font-size: 12px !important;
   font-weight: 500;
 }
 
