@@ -81,6 +81,31 @@ html {
   transform: translateY(0) !important;
 }
 
+.products-mega-columns {
+  display: grid !important;
+  grid-template-columns: 260px max-content max-content max-content !important;
+  gap: 20px !important;
+  align-items: stretch !important;
+}
+
+.col-uffizio-group {
+  display: flex !important;
+  flex-direction: column !important;
+  height: 100% !important;
+}
+
+.uffizio-showcase-content {
+  display: flex !important;
+  flex-direction: column !important;
+  flex: 1 1 auto !important;
+  justify-content: space-between !important;
+}
+
+.uffizio-bottom-btn-wrap {
+  margin-top: auto !important;
+  padding-top: 1.5rem !important;
+}
+
 /* Right-aligned dropdown menus (for Discover & Resource) flush with Contact Us button */
 .mega-menu-right {
   left: auto !important;
