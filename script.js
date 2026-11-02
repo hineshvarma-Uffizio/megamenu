@@ -521,6 +521,7 @@ document.addEventListener('DOMContentLoaded', () => {
   function openContactModal() {
     if (lcContainer) lcContainer.classList.add('is-open');
     if (lcOverlay) lcOverlay.classList.add('is-active');
+    document.body.classList.add('has-lc-open');
     document.body.style.overflow = 'hidden';
     const firstInput = document.getElementById('lcName');
     if (firstInput) setTimeout(() => firstInput.focus(), 150);
@@ -529,6 +530,7 @@ document.addEventListener('DOMContentLoaded', () => {
   function closeContactModal() {
     if (lcContainer) lcContainer.classList.remove('is-open');
     if (lcOverlay) lcOverlay.classList.remove('is-active');
+    document.body.classList.remove('has-lc-open');
     document.body.style.overflow = '';
   }
 

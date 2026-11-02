@@ -824,9 +824,11 @@ html {
 .lc-side-panel {
   position: fixed;
   bottom: 20px;
-  right: 20px;
+  right: 84px; /* Sits 12px to the left of the WhatsApp button (20px + 52px + 12px = 84px) - zero overlap */
   width: 360px;
-  max-width: calc(100vw - 32px);
+  max-width: calc(100vw - 104px);
+  max-height: calc(100vh - 40px);
+  overflow-y: auto;
   background-color: #ffffff;
   border-radius: 24px;
   box-shadow: 0 25px 60px -15px rgba(0, 0, 0, 0.3), 0 0 0 1px rgba(0, 0, 0, 0.06);
@@ -836,7 +838,7 @@ html {
   opacity: 0;
   visibility: hidden;
   transform: translateY(20px) scale(0.95);
-  transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+  transition: all 0.35s cubic-bezier(0.16, 1, 0.3, 1);
   z-index: 10000;
 }
 
@@ -849,6 +851,12 @@ html {
   opacity: 1;
   visibility: visible;
   transform: translateY(0) scale(1);
+}
+
+/* Pause WhatsApp pulse while Contact Form is open */
+.lc-popup-container.is-open ~ #ufz-wa-btn,
+body.has-lc-open #ufz-wa-btn {
+  animation: none;
 }
 
 .lc-panel-header {
@@ -937,6 +945,16 @@ html {
     left: 16px;
     width: auto;
     max-width: none;
+    max-height: calc(100vh - 32px);
+  }
+  /* On mobile screens, hide WhatsApp while Contact Form is open so there is zero overlap */
+  .lc-popup-container.is-open ~ #ufz-wa-btn,
+  body.has-lc-open #ufz-wa-btn {
+    opacity: 0 !important;
+    visibility: hidden !important;
+    pointer-events: none !important;
+    transform: scale(0.7) translateY(12px) !important;
+    transition: opacity 0.25s ease, transform 0.25s ease, visibility 0.25s ease !important;
   }
 }
 
