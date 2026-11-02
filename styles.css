@@ -535,23 +535,39 @@ html {
 }
 
 /* 4. Mobile Drawer Active State: Theme Blue Color + Green Dot, No Box */
+.mobile-product-link {
+  transition: background-color 0.18s ease-in-out, color 0.18s ease-in-out;
+}
+.mobile-product-link:hover .font-heading {
+  color: #0052cc !important;
+}
+.dark .mobile-product-link:hover .font-heading {
+  color: #60a5fa !important;
+}
 .mobile-product-link.is-active {
   background-color: transparent !important;
   border-left: none !important;
   padding-left: 0.25rem !important;
 }
+.mobile-product-link.is-active .font-heading,
 .mobile-product-link.is-active > span:first-child {
   color: #0066FF !important;
   font-weight: 700 !important;
 }
+.dark .mobile-product-link.is-active .font-heading,
 .dark .mobile-product-link.is-active > span:first-child {
   color: #60a5fa !important;
+  font-weight: 700 !important;
 }
 .mobile-product-link .mobile-active-green-dot {
-  display: none;
+  display: inline-flex !important;
+  opacity: 0;
+  visibility: hidden;
+  transition: opacity 0.2s ease;
 }
 .mobile-product-link.is-active .mobile-active-green-dot {
-  display: inline-flex !important;
+  opacity: 1 !important;
+  visibility: visible !important;
 }
 .mobile-category-header.is-active {
   color: #2563eb !important;

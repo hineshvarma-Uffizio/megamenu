@@ -303,9 +303,15 @@ document.addEventListener('DOMContentLoaded', () => {
 
   // ================= 4. ACTIVE STATE SYNCHRONIZATION & SCROLLSPY =================
   const productsNavBtn = document.getElementById('nav-products-btn');
+  const discoverNavBtn = document.getElementById('nav-discover-btn');
+  const resourceNavBtn = document.getElementById('nav-resource-btn');
 
   // List of high-level category pages (including Uffizio Group / Home)
   const categoryList = ['home', 'explore', 'uffizio-group', 'telematics', 'commute', 'iotech'];
+
+  // Discover & Resource menu items for full navigation parity
+  const discoverItems = ['about', 'careers', 'events', 'support', 'contact', 'partner'];
+  const resourceItems = ['blog', 'marketing', 'industries', 'whats-new', 'uffitalks', 'use-cases', 'devices', 'hardware'];
 
   // Mapping from product/category ID to parent category name
   const productToCategoryMap = {
@@ -332,8 +338,12 @@ document.addEventListener('DOMContentLoaded', () => {
   let isProgrammaticScroll = false;
   let scrollTimeout = null;
 
-  // Function to clear active highlights (falls back to Uffizio Group active when on Home)
+  // Function to clear active highlights across all menus and nav triggers
   function clearAllActiveStates() {
+    if (productsNavBtn) productsNavBtn.classList.remove('is-current-page');
+    if (discoverNavBtn) discoverNavBtn.classList.remove('is-current-page');
+    if (resourceNavBtn) resourceNavBtn.classList.remove('is-current-page');
+
     document.querySelectorAll('.mega-item.is-active').forEach((el) => el.classList.remove('is-active'));
     document.querySelectorAll('.category-header-wrap.is-active').forEach((el) => el.classList.remove('is-active'));
     document.querySelectorAll('.mobile-product-link.is-active').forEach((el) => el.classList.remove('is-active'));
@@ -347,18 +357,63 @@ document.addEventListener('DOMContentLoaded', () => {
       targetId = targetId.replace('#', '').toLowerCase();
     }
 
+    // 1. Clear previous active states inside all mega menus and nav buttons
+    clearAllActiveStates();
+
+    // 2. DISCOVER MENU PARITY
+    if (discoverItems.includes(targetId)) {
+      if (discoverNavBtn) discoverNavBtn.classList.add('is-current-page');
+
+      const desktopDiscover = document.querySelector(`.mega-item[data-discover-item="${targetId}"]`);
+      if (desktopDiscover) desktopDiscover.classList.add('is-active');
+
+      const mobileDiscover = document.querySelector(`.mobile-product-link[data-mobile-discover-item="${targetId}"]`);
+      if (mobileDiscover) mobileDiscover.classList.add('is-active');
+
+      // Auto-open mobile discover accordion
+      const mobileDiscoverContent = document.getElementById('mobile-accordion-discover');
+      const mobileDiscoverBtn = mobileDiscoverContent ? mobileDiscoverContent.previousElementSibling : null;
+      if (mobileDiscoverContent && mobileDiscoverBtn) {
+        mobileDiscoverContent.classList.remove('hidden');
+        const chevron = mobileDiscoverBtn.querySelector('svg');
+        if (chevron) chevron.style.transform = 'rotate(180deg)';
+        mobileDiscoverBtn.setAttribute('aria-expanded', 'true');
+      }
+      return;
+    }
+
+    // 3. RESOURCE MENU PARITY
+    if (resourceItems.includes(targetId)) {
+      if (resourceNavBtn) resourceNavBtn.classList.add('is-current-page');
+
+      const desktopResource = document.querySelector(`.mega-item[data-resource-item="${targetId}"]`);
+      if (desktopResource) desktopResource.classList.add('is-active');
+
+      const mobileResource = document.querySelector(`.mobile-product-link[data-mobile-resource-item="${targetId}"]`);
+      if (mobileResource) mobileResource.classList.add('is-active');
+
+      // Auto-open mobile resource accordion
+      const mobileResourceContent = document.getElementById('mobile-accordion-resources');
+      const mobileResourceBtn = mobileResourceContent ? mobileResourceContent.previousElementSibling : null;
+      if (mobileResourceContent && mobileResourceBtn) {
+        mobileResourceContent.classList.remove('hidden');
+        const chevron = mobileResourceBtn.querySelector('svg');
+        if (chevron) chevron.style.transform = 'rotate(180deg)';
+        mobileResourceBtn.setAttribute('aria-expanded', 'true');
+      }
+      return;
+    }
+
+    // 4. PRODUCTS & SOFTWARE MENU (DEFAULT / PRODUCT FLOW)
     const category = productToCategoryMap[targetId] || 'uffizio-group';
     const isCategoryPage = categoryList.includes(targetId);
 
-    // 1. Highlight the Top Nav Trigger Button ("Products & Software")
+    // Highlight the Products Top Nav Trigger Button ("Products & Software")
     if (productsNavBtn) {
       productsNavBtn.classList.add('is-current-page');
     }
 
-    // 2. Clear previous active states inside the mega menu
-    clearAllActiveStates();
-
-    // 3. Activate the matching Category Header (desktop & mobile)
+    // Activate the matching Category Header (desktop & mobile)
     const desktopCatHeader = document.querySelector(`.category-header-wrap[data-category="${category}"]`);
     if (desktopCatHeader) {
       desktopCatHeader.classList.add('is-active');
@@ -368,7 +423,7 @@ document.addEventListener('DOMContentLoaded', () => {
       mobileCatHeader.classList.add('is-active');
     }
 
-    // 4. RULE: When on Category page (e.g. #home, #telematics, #commute, #iotech):
+    // RULE: When on Category page (e.g. #home, #telematics, #commute, #iotech):
     // DO NOT show active / green dot on any product!
     // ONLY show green dot when on a specific Product page!
     if (!isCategoryPage) {
@@ -408,7 +463,7 @@ document.addEventListener('DOMContentLoaded', () => {
         scrollTimeout = setTimeout(() => {
           isProgrammaticScroll = false;
         }, 800);
-      } else if (productToCategoryMap[target]) {
+      } else if (discoverItems.includes(target) || resourceItems.includes(target) || productToCategoryMap[target]) {
         isProgrammaticScroll = true;
         clearTimeout(scrollTimeout);
         setActiveMegaMenuItem(target);
@@ -427,15 +482,18 @@ document.addEventListener('DOMContentLoaded', () => {
     });
   });
 
-  // Listen to hashchange event (e.g. back/forward browser button)
-  window.addEventListener('hashchange', () => {
+  // Helper to handle hash changes or initial hash
+  function handleHashState() {
     const hash = window.location.hash ? window.location.hash.replace('#', '').toLowerCase() : '';
-    if (hash && productToCategoryMap[hash]) {
+    if (hash && (discoverItems.includes(hash) || resourceItems.includes(hash) || productToCategoryMap[hash])) {
       setActiveMegaMenuItem(hash);
     } else {
       setActiveMegaMenuItem('home');
     }
-  });
+  }
+
+  // Listen to hashchange event (e.g. back/forward browser button)
+  window.addEventListener('hashchange', handleHashState);
 
   // IntersectionObserver / ScrollSpy:
   // Observe 'home' (Hero / Uffizio Group) + Category Sections (telematics, commute, iotech)
@@ -487,14 +545,9 @@ document.addEventListener('DOMContentLoaded', () => {
   }
 
   // Initialize on page load:
-  // If URL has a specific product or category hash (e.g. #trakzee), activate it.
+  // If URL has a specific product, category, discover, or resource hash (e.g. #trakzee, #about, #blog), activate it.
   // Otherwise default to Home (Uffizio Group active)!
-  const initialHash = window.location.hash ? window.location.hash.replace('#', '').toLowerCase() : '';
-  if (initialHash && productToCategoryMap[initialHash]) {
-    setActiveMegaMenuItem(initialHash);
-  } else {
-    setActiveMegaMenuItem('home');
-  }
+  handleHashState();
 
   // ================= FLOATING CONTACT FORM MODAL =================
   const lcContainer = document.getElementById('lcContainer');
