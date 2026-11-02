@@ -418,8 +418,8 @@ html {
 }
 
 .dark .nav-item.is-active .nav-link {
-  color: #60a5fa !important;
-  background-color: rgba(30, 41, 59, 0.8) !important;
+  color: #0077ff !important;
+  background-color: rgba(0, 119, 255, 0.15) !important;
 }
 
 .nav-link.is-current-page {
@@ -430,8 +430,8 @@ html {
   border-radius: 9999px !important;
 }
 .dark .nav-link.is-current-page {
-  color: #60a5fa !important;
-  background-color: rgba(30, 41, 59, 0.8) !important;
+  color: #0077ff !important;
+  background-color: rgba(0, 119, 255, 0.15) !important;
 }
 .nav-link::after,
 .nav-link.is-current-page::after {
@@ -460,14 +460,14 @@ html {
 }
 .dark .category-header-wrap.is-active a,
 .dark .category-header-wrap.is-active h3 {
-  color: #60a5fa !important;
+  color: #0077ff !important;
   font-weight: 700 !important;
 }
 .category-header-wrap.is-active .cat-explore-icon {
   color: #0077ff !important;
 }
 .dark .category-header-wrap.is-active .cat-explore-icon {
-  color: #60a5fa !important;
+  color: #0077ff !important;
 }
 
 /* Universal Theme Blue Hover for All Category Headers */
@@ -477,13 +477,13 @@ html {
 }
 .dark .category-header-wrap a:hover,
 .dark .category-header-wrap a:hover h3 {
-  color: #60a5fa !important;
+  color: #0077ff !important;
 }
 .category-header-wrap a:hover .cat-explore-icon {
   color: #0077ff !important;
 }
 .dark .category-header-wrap a:hover .cat-explore-icon {
-  color: #60a5fa !important;
+  color: #0077ff !important;
 }
 
 /* Category header Explore link optical alignment (fixed in place - no movement on hover) */
@@ -504,10 +504,10 @@ html {
   white-space: nowrap;
 }
 .mega-item:hover .font-heading {
-  color: #0052cc !important;
+  color: #0077ff !important;
 }
 .dark .mega-item:hover .font-heading {
-  color: #60a5fa !important;
+  color: #0077ff !important;
 }
 .mega-item.is-active {
   background-color: transparent !important;
@@ -520,7 +520,7 @@ html {
   font-weight: 700 !important;
 }
 .dark .mega-item.is-active .font-heading {
-  color: #60a5fa !important;
+  color: #0077ff !important;
   font-weight: 700 !important;
 }
 .mega-item .active-green-dot {
@@ -539,10 +539,10 @@ html {
   transition: background-color 0.18s ease-in-out, color 0.18s ease-in-out;
 }
 .mobile-product-link:hover .font-heading {
-  color: #0052cc !important;
+  color: #0077ff !important;
 }
 .dark .mobile-product-link:hover .font-heading {
-  color: #60a5fa !important;
+  color: #0077ff !important;
 }
 .mobile-product-link.is-active {
   background-color: transparent !important;
@@ -556,7 +556,7 @@ html {
 }
 .dark .mobile-product-link.is-active .font-heading,
 .dark .mobile-product-link.is-active > span:first-child {
-  color: #60a5fa !important;
+  color: #0077ff !important;
   font-weight: 700 !important;
 }
 .mobile-product-link .mobile-active-green-dot {
@@ -574,7 +574,7 @@ html {
   font-weight: 800 !important;
 }
 .dark .mobile-category-header.is-active {
-  color: #60a5fa !important;
+  color: #0077ff !important;
 }
 .mobile-sub-accordion {
   transition: all 0.2s ease-in-out;
@@ -583,7 +583,7 @@ html {
   background-color: rgba(0, 119, 255, 0.05);
 }
 .dark .mobile-sub-accordion-btn.is-active {
-  background-color: rgba(30, 58, 138, 0.2);
+  background-color: rgba(0, 119, 255, 0.2);
 }
 
 /* Clean custom scrollbar for mobile drawer */
