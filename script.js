@@ -18,12 +18,20 @@ document.addEventListener('DOMContentLoaded', () => {
   function updateThemeUI(isDark) {
     if (isDark) {
       document.documentElement.classList.add('dark');
+      document.documentElement.setAttribute('data-theme', 'dark');
+      document.body.classList.remove('uffizio-theme-light');
       if (lightIcon) lightIcon.classList.remove('hidden');
       if (darkIcon) darkIcon.classList.add('hidden');
     } else {
       document.documentElement.classList.remove('dark');
+      document.documentElement.setAttribute('data-theme', 'light');
+      document.body.classList.add('uffizio-theme-light');
       if (lightIcon) lightIcon.classList.add('hidden');
       if (darkIcon) darkIcon.classList.remove('hidden');
+    }
+    if (window.uffizioAI && typeof window.uffizioAI.applyTheme === 'function') {
+      window.uffizioAI.currentTheme = isDark ? 'dark' : 'light';
+      window.uffizioAI.applyTheme(false);
     }
   }
 
