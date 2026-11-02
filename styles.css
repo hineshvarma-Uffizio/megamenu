@@ -413,8 +413,8 @@ html {
 }
 
 .nav-item.is-active .nav-link {
-  color: #2563eb !important;
-  background-color: rgba(37, 99, 235, 0.08) !important;
+  color: #0077ff !important;
+  background-color: rgba(0, 119, 255, 0.08) !important;
 }
 
 .dark .nav-item.is-active .nav-link {
@@ -423,8 +423,8 @@ html {
 }
 
 .nav-link.is-current-page {
-  color: #2563eb !important;
-  background-color: rgba(37, 99, 235, 0.08) !important;
+  color: #0077ff !important;
+  background-color: rgba(0, 119, 255, 0.08) !important;
   font-weight: 700 !important;
   position: relative;
   border-radius: 9999px !important;
@@ -455,7 +455,7 @@ html {
 }
 .category-header-wrap.is-active a,
 .category-header-wrap.is-active h3 {
-  color: #0066FF !important;
+  color: #0077ff !important;
   font-weight: 700 !important;
 }
 .dark .category-header-wrap.is-active a,
@@ -464,7 +464,7 @@ html {
   font-weight: 700 !important;
 }
 .category-header-wrap.is-active .cat-explore-icon {
-  color: #0066FF !important;
+  color: #0077ff !important;
 }
 .dark .category-header-wrap.is-active .cat-explore-icon {
   color: #60a5fa !important;
@@ -473,14 +473,14 @@ html {
 /* Universal Theme Blue Hover for All Category Headers */
 .category-header-wrap a:hover,
 .category-header-wrap a:hover h3 {
-  color: #0066FF !important;
+  color: #0077ff !important;
 }
 .dark .category-header-wrap a:hover,
 .dark .category-header-wrap a:hover h3 {
   color: #60a5fa !important;
 }
 .category-header-wrap a:hover .cat-explore-icon {
-  color: #0066FF !important;
+  color: #0077ff !important;
 }
 .dark .category-header-wrap a:hover .cat-explore-icon {
   color: #60a5fa !important;
@@ -516,7 +516,7 @@ html {
   transform: none !important;
 }
 .mega-item.is-active .font-heading {
-  color: #0066FF !important;
+  color: #0077ff !important;
   font-weight: 700 !important;
 }
 .dark .mega-item.is-active .font-heading {
@@ -551,7 +551,7 @@ html {
 }
 .mobile-product-link.is-active .font-heading,
 .mobile-product-link.is-active > span:first-child {
-  color: #0066FF !important;
+  color: #0077ff !important;
   font-weight: 700 !important;
 }
 .dark .mobile-product-link.is-active .font-heading,
@@ -570,7 +570,7 @@ html {
   visibility: visible !important;
 }
 .mobile-category-header.is-active {
-  color: #2563eb !important;
+  color: #0077ff !important;
   font-weight: 800 !important;
 }
 .dark .mobile-category-header.is-active {
@@ -580,7 +580,7 @@ html {
   transition: all 0.2s ease-in-out;
 }
 .mobile-sub-accordion-btn.is-active {
-  background-color: rgba(37, 99, 235, 0.05);
+  background-color: rgba(0, 119, 255, 0.05);
 }
 .dark .mobile-sub-accordion-btn.is-active {
   background-color: rgba(30, 58, 138, 0.2);
@@ -683,9 +683,9 @@ html {
   box-shadow: 0 6px 20px rgba(0, 102, 255, 0.25);
 }
 .dark .btn-uffizio-contact .arrow-badge {
-  background-color: #0066FF;
+  background-color: #0077ff;
   color: #ffffff;
-  box-shadow: 0 3px 10px rgba(0, 102, 255, 0.4);
+  box-shadow: 0 3px 10px rgba(0, 119, 255, 0.4);
 }
 .dark .btn-uffizio-contact:hover .arrow-badge {
   background-color: #0052cc;
@@ -710,7 +710,7 @@ html {
 
 /* ================= ACCESSIBILITY: WCAG 2.1 AA FOCUS-VISIBLE ================= */
 :focus-visible {
-  outline: 2px solid #0066FF !important;
+  outline: 2px solid #0077ff !important;
   outline-offset: 2px !important;
 }
 
@@ -720,19 +720,19 @@ html {
 #mobile-toggle:focus-visible,
 #lang-btn:focus-visible,
 .mobile-accordion-btn:focus-visible {
-  outline: 2px solid #0066FF !important;
+  outline: 2px solid #0077ff !important;
   outline-offset: 2px !important;
   border-radius: 9999px;
 }
 
 .mega-item:focus-visible {
-  outline: 2px solid #0066FF !important;
+  outline: 2px solid #0077ff !important;
   outline-offset: 2px !important;
   border-radius: 1rem;
 }
 
 .category-header-wrap a:focus-visible {
-  outline: 2px solid #0066FF !important;
+  outline: 2px solid #0077ff !important;
   outline-offset: 2px !important;
   border-radius: 0.5rem;
 }
