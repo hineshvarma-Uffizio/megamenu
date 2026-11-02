@@ -653,4 +653,292 @@ html {
   outline-color: #60a5fa !important;
 }
 
+/* ========================================================
+   FLOATING ACTION BUTTONS: CONTACT FORM & WHATSAPP
+   Matching https://uffizio.com/ exactly
+   ======================================================== */
+
+/* Suppress redundant Ask Zio floating launcher to prevent overlap */
+#uffizio-ai-launcher {
+  display: none !important;
+}
+
+/* WhatsApp Floating Button */
+#ufz-wa-btn {
+  position: fixed;
+  bottom: 20px;
+  right: 20px;
+  z-index: 9999;
+  width: 52px;
+  height: 52px;
+  border-radius: 50%;
+  background-color: #25D366;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #ffffff;
+  text-decoration: none;
+  box-shadow: 0 4px 16px rgba(37, 211, 102, 0.45);
+  transition: transform 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275), box-shadow 0.3s ease;
+  animation: ufz-wa-pulse 2s infinite;
+}
+
+#ufz-wa-btn:hover {
+  transform: scale(1.08);
+  box-shadow: 0 6px 20px rgba(37, 211, 102, 0.6);
+}
+
+#ufz-wa-btn svg {
+  width: 30px;
+  height: 30px;
+  fill: #ffffff;
+}
+
+#ufz-wa-badge {
+  position: absolute;
+  top: -2px;
+  right: -2px;
+  width: 20px;
+  height: 20px;
+  border-radius: 50%;
+  background-color: #ff0000;
+  color: #ffffff;
+  font-size: 11px;
+  font-weight: 700;
+  font-family: inherit;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border: 2px solid #ffffff;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.25);
+  pointer-events: none;
+}
+
+@keyframes ufz-wa-pulse {
+  0% {
+    box-shadow: 0 0 0 0 rgba(37, 211, 102, 0.6), 0 4px 16px rgba(37, 211, 102, 0.45);
+  }
+  70% {
+    box-shadow: 0 0 0 14px rgba(37, 211, 102, 0), 0 4px 16px rgba(37, 211, 102, 0.45);
+  }
+  100% {
+    box-shadow: 0 0 0 0 rgba(37, 211, 102, 0), 0 4px 16px rgba(37, 211, 102, 0.45);
+  }
+}
+
+/* Contact Form / Let's Connect Floating Button */
+.lc-popup-container {
+  position: fixed;
+  bottom: 20px;
+  right: 84px; /* Sits exactly 12px to the left of the 52px WhatsApp button (20 + 52 + 12 = 84px) */
+  z-index: 9999;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+}
+
+.lc-tab-btn {
+  position: relative;
+  width: 52px;
+  height: 52px;
+  background-color: #0077FF;
+  border-radius: 50px;
+  border: none;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  padding: 0 6px 0 0;
+  box-shadow: 0 4px 16px rgba(0, 119, 255, 0.45);
+  transition: width 0.35s cubic-bezier(0.16, 1, 0.3, 1), transform 0.3s ease, box-shadow 0.3s ease;
+  overflow: hidden;
+}
+
+.lc-tab-btn:hover {
+  width: 175px;
+  box-shadow: 0 6px 20px rgba(0, 119, 255, 0.55);
+}
+
+.lc-btn-text {
+  position: absolute;
+  left: 20px;
+  color: #ffffff;
+  font-size: 14px;
+  font-weight: 600;
+  white-space: nowrap;
+  opacity: 0;
+  transform: translateX(10px);
+  transition: opacity 0.25s ease 0.05s, transform 0.3s ease 0.05s;
+  font-family: inherit;
+  pointer-events: none;
+}
+
+.lc-tab-btn:hover .lc-btn-text {
+  opacity: 1;
+  transform: translateX(0);
+}
+
+.lc-btn-circle {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  background-color: #ffffff;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  z-index: 2;
+  transition: transform 0.3s ease, background-color 0.3s ease;
+}
+
+.lc-tab-btn:hover .lc-btn-circle {
+  transform: rotate(45deg);
+}
+
+.lc-popup-container.is-open .lc-tab-btn {
+  opacity: 0;
+  visibility: hidden;
+  transform: scale(0.8);
+  pointer-events: none;
+}
+
+/* Background overlay when Contact Form panel is open */
+.lc-overlay {
+  position: fixed;
+  inset: 0;
+  background-color: rgba(15, 23, 42, 0.45);
+  backdrop-filter: blur(4px);
+  -webkit-backdrop-filter: blur(4px);
+  z-index: 9998;
+  opacity: 0;
+  visibility: hidden;
+  transition: opacity 0.3s ease, visibility 0.3s ease;
+}
+
+.lc-overlay.is-active {
+  opacity: 1;
+  visibility: visible;
+}
+
+/* Contact Form Slide-in Panel */
+.lc-side-panel {
+  position: fixed;
+  bottom: 20px;
+  right: 20px;
+  width: 360px;
+  max-width: calc(100vw - 32px);
+  background-color: #ffffff;
+  border-radius: 24px;
+  box-shadow: 0 25px 60px -15px rgba(0, 0, 0, 0.3), 0 0 0 1px rgba(0, 0, 0, 0.06);
+  padding: 22px 20px 20px 20px;
+  display: flex;
+  flex-direction: column;
+  opacity: 0;
+  visibility: hidden;
+  transform: translateY(20px) scale(0.95);
+  transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+  z-index: 10000;
+}
+
+.dark .lc-side-panel {
+  background-color: #0f172a;
+  box-shadow: 0 25px 60px -15px rgba(0, 0, 0, 0.7), 0 0 0 1px rgba(255, 255, 255, 0.1);
+}
+
+.lc-popup-container.is-open .lc-side-panel {
+  opacity: 1;
+  visibility: visible;
+  transform: translateY(0) scale(1);
+}
+
+.lc-panel-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 12px;
+  padding-bottom: 12px;
+  border-bottom: 1px solid #f1f5f9;
+}
+
+.dark .lc-panel-header {
+  border-bottom-color: #1e293b;
+}
+
+.lc-panel-title {
+  font-size: 15px;
+  font-weight: 700;
+  color: #0f172a;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.dark .lc-panel-title {
+  color: #f8fafc;
+}
+
+.lc-panel-close {
+  width: 32px;
+  height: 32px;
+  border-radius: 50%;
+  background-color: #f1f5f9;
+  color: #64748b;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  border: none;
+  transition: all 0.2s ease;
+}
+
+.dark .lc-panel-close {
+  background-color: #1e293b;
+  color: #94a3b8;
+}
+
+.lc-panel-close:hover {
+  background-color: #e2e8f0;
+  color: #0f172a;
+  transform: rotate(90deg);
+}
+
+.dark .lc-panel-close:hover {
+  background-color: #334155;
+  color: #ffffff;
+}
+
+/* Mobile responsive adjustments */
+@media (max-width: 640px) {
+  #ufz-wa-btn {
+    bottom: 16px;
+    right: 16px;
+    width: 48px;
+    height: 48px;
+  }
+  #ufz-wa-btn svg {
+    width: 26px;
+    height: 26px;
+  }
+  .lc-popup-container {
+    bottom: 16px;
+    right: 74px;
+  }
+  .lc-tab-btn {
+    width: 48px;
+    height: 48px;
+  }
+  .lc-btn-circle {
+    width: 36px;
+    height: 36px;
+  }
+  .lc-side-panel {
+    bottom: 16px;
+    right: 16px;
+    left: 16px;
+    width: auto;
+    max-width: none;
+  }
+}
+
+
 

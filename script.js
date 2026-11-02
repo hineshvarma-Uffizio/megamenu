@@ -509,4 +509,60 @@ document.addEventListener('DOMContentLoaded', () => {
   } else {
     clearAllActiveStates();
   }
+
+  // ================= FLOATING CONTACT FORM MODAL =================
+  const lcContainer = document.getElementById('lcContainer');
+  const lcOverlay = document.getElementById('lcOverlay');
+  const lcTabBtn = document.getElementById('lcTabBtn');
+  const lcCloseBtn = document.getElementById('lcClose');
+  const lcForm = document.getElementById('lcContactForm');
+  const lcSuccessMsg = document.getElementById('lcSuccessMsg');
+
+  function openContactModal() {
+    if (lcContainer) lcContainer.classList.add('is-open');
+    if (lcOverlay) lcOverlay.classList.add('is-active');
+    document.body.style.overflow = 'hidden';
+    const firstInput = document.getElementById('lcName');
+    if (firstInput) setTimeout(() => firstInput.focus(), 150);
+  }
+
+  function closeContactModal() {
+    if (lcContainer) lcContainer.classList.remove('is-open');
+    if (lcOverlay) lcOverlay.classList.remove('is-active');
+    document.body.style.overflow = '';
+  }
+
+  if (lcTabBtn) {
+    lcTabBtn.addEventListener('click', openContactModal);
+  }
+  if (lcCloseBtn) {
+    lcCloseBtn.addEventListener('click', closeContactModal);
+  }
+  if (lcOverlay) {
+    lcOverlay.addEventListener('click', closeContactModal);
+  }
+
+  // Handle ESC key to dismiss modal
+  document.addEventListener('keydown', (e) => {
+    if (e.key === 'Escape' && lcContainer && lcContainer.classList.contains('is-open')) {
+      closeContactModal();
+    }
+  });
+
+  // Handle Contact Form Submission with graceful feedback
+  if (lcForm) {
+    lcForm.addEventListener('submit', (e) => {
+      e.preventDefault();
+      lcForm.classList.add('hidden');
+      if (lcSuccessMsg) lcSuccessMsg.classList.remove('hidden');
+      setTimeout(() => {
+        closeContactModal();
+        setTimeout(() => {
+          lcForm.reset();
+          lcForm.classList.remove('hidden');
+          if (lcSuccessMsg) lcSuccessMsg.classList.add('hidden');
+        }, 500);
+      }, 2500);
+    });
+  }
 });
