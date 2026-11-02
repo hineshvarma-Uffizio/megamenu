@@ -304,11 +304,14 @@ document.addEventListener('DOMContentLoaded', () => {
   // ================= 4. ACTIVE STATE SYNCHRONIZATION & SCROLLSPY =================
   const productsNavBtn = document.getElementById('nav-products-btn');
 
-  // List of high-level category pages
-  const categoryList = ['telematics', 'commute', 'iotech'];
+  // List of high-level category pages (including Uffizio Group / Home)
+  const categoryList = ['home', 'explore', 'uffizio-group', 'telematics', 'commute', 'iotech'];
 
   // Mapping from product/category ID to parent category name
   const productToCategoryMap = {
+    'home': 'uffizio-group',
+    'explore': 'uffizio-group',
+    'uffizio-group': 'uffizio-group',
     'telematics': 'telematics',
     'trakzee': 'telematics',
     'smart-waste': 'telematics',
@@ -329,11 +332,8 @@ document.addEventListener('DOMContentLoaded', () => {
   let isProgrammaticScroll = false;
   let scrollTimeout = null;
 
-  // Function to completely clear all active highlights (used when on Home or outside product/category pages)
+  // Function to clear active highlights (falls back to Uffizio Group active when on Home)
   function clearAllActiveStates() {
-    if (productsNavBtn) {
-      productsNavBtn.classList.remove('is-current-page');
-    }
     document.querySelectorAll('.mega-item.is-active').forEach((el) => el.classList.remove('is-active'));
     document.querySelectorAll('.category-header-wrap.is-active').forEach((el) => el.classList.remove('is-active'));
     document.querySelectorAll('.mobile-product-link.is-active').forEach((el) => el.classList.remove('is-active'));
@@ -341,18 +341,13 @@ document.addEventListener('DOMContentLoaded', () => {
   }
 
   function setActiveMegaMenuItem(targetId) {
-    if (!targetId || targetId === 'home' || targetId === '#') {
-      clearAllActiveStates();
-      return;
-    }
-    targetId = targetId.replace('#', '').toLowerCase();
-
-    const category = productToCategoryMap[targetId];
-    if (!category) {
-      clearAllActiveStates();
-      return; // not a product or category in the mega menu
+    if (!targetId || targetId === '#' || targetId === 'home') {
+      targetId = 'home';
+    } else {
+      targetId = targetId.replace('#', '').toLowerCase();
     }
 
+    const category = productToCategoryMap[targetId] || 'uffizio-group';
     const isCategoryPage = categoryList.includes(targetId);
 
     // 1. Highlight the Top Nav Trigger Button ("Products & Software")
@@ -361,10 +356,7 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 
     // 2. Clear previous active states inside the mega menu
-    document.querySelectorAll('.mega-item.is-active').forEach((el) => el.classList.remove('is-active'));
-    document.querySelectorAll('.category-header-wrap.is-active').forEach((el) => el.classList.remove('is-active'));
-    document.querySelectorAll('.mobile-product-link.is-active').forEach((el) => el.classList.remove('is-active'));
-    document.querySelectorAll('.mobile-category-header.is-active').forEach((el) => el.classList.remove('is-active'));
+    clearAllActiveStates();
 
     // 3. Activate the matching Category Header (desktop & mobile)
     const desktopCatHeader = document.querySelector(`.category-header-wrap[data-category="${category}"]`);
@@ -376,7 +368,7 @@ document.addEventListener('DOMContentLoaded', () => {
       mobileCatHeader.classList.add('is-active');
     }
 
-    // 4. RULE: When on Category page (e.g. #telematics, #commute, #iotech):
+    // 4. RULE: When on Category page (e.g. #home, #telematics, #commute, #iotech):
     // DO NOT show active / green dot on any product!
     // ONLY show green dot when on a specific Product page!
     if (!isCategoryPage) {
@@ -407,11 +399,11 @@ document.addEventListener('DOMContentLoaded', () => {
       const href = el.getAttribute('href');
       const target = href ? href.replace('#', '').toLowerCase() : '';
 
-      if (!target || target === 'home') {
+      if (!target || target === 'home' || target === 'explore') {
         // User clicked Home / Logo / Top / Uffizio Group redirect
         isProgrammaticScroll = true;
         clearTimeout(scrollTimeout);
-        clearAllActiveStates();
+        setActiveMegaMenuItem('home');
         window.scrollTo({ top: 0, behavior: 'smooth' });
         scrollTimeout = setTimeout(() => {
           isProgrammaticScroll = false;
@@ -428,7 +420,6 @@ document.addEventListener('DOMContentLoaded', () => {
         // Any other non-product anchor link (e.g. #demo, #contact)
         isProgrammaticScroll = true;
         clearTimeout(scrollTimeout);
-        clearAllActiveStates();
         scrollTimeout = setTimeout(() => {
           isProgrammaticScroll = false;
         }, 800);
@@ -442,15 +433,14 @@ document.addEventListener('DOMContentLoaded', () => {
     if (hash && productToCategoryMap[hash]) {
       setActiveMegaMenuItem(hash);
     } else {
-      clearAllActiveStates();
+      setActiveMegaMenuItem('home');
     }
   });
 
   // IntersectionObserver / ScrollSpy:
-  // Observe 'home' (Hero Section) + Category Sections (telematics, commute, iotech)
-  // When scrolling onto 'home', clear all active highlights!
-  // When scrolling into a category section, activate that Category (with NO product active)!
-  const observedSectionIds = ['home', ...categoryList];
+  // Observe 'home' (Hero / Uffizio Group) + Category Sections (telematics, commute, iotech)
+  // When scrolling into any section, activate that Category!
+  const observedSectionIds = ['home', 'telematics', 'commute', 'iotech'];
   const observedSections = observedSectionIds
     .map((id) => document.getElementById(id))
     .filter(Boolean);
@@ -460,26 +450,22 @@ document.addEventListener('DOMContentLoaded', () => {
       if (isProgrammaticScroll) return; // Prevent scrollspy conflict during click scrolling
       entries.forEach((entry) => {
         if (entry.isIntersecting) {
-          if (entry.target.id === 'home') {
-            clearAllActiveStates();
-          } else {
-            setActiveMegaMenuItem(entry.target.id);
-          }
+          setActiveMegaMenuItem(entry.target.id);
         }
       });
     }, {
-      rootMargin: '-15% 0px -55% 0px',
+      rootMargin: '-20% 0px -50% 0px',
       threshold: 0
     });
 
     observedSections.forEach((sec) => observer.observe(sec));
   }
 
-  // Smooth scroll listener fallback: when scrolled near top, ensure Home state has no active selection
+  // Smooth scroll listener fallback: when scrolled near top, ensure Uffizio Group is active
   window.addEventListener('scroll', () => {
     if (isProgrammaticScroll) return;
     if (window.scrollY < 120) {
-      clearAllActiveStates();
+      setActiveMegaMenuItem('home');
     }
   }, { passive: true });
 
@@ -502,12 +488,12 @@ document.addEventListener('DOMContentLoaded', () => {
 
   // Initialize on page load:
   // If URL has a specific product or category hash (e.g. #trakzee), activate it.
-  // When on Uffizio Home (no hash or #home): NO product or category should be selected!
+  // Otherwise default to Home (Uffizio Group active)!
   const initialHash = window.location.hash ? window.location.hash.replace('#', '').toLowerCase() : '';
   if (initialHash && productToCategoryMap[initialHash]) {
     setActiveMegaMenuItem(initialHash);
   } else {
-    clearAllActiveStates();
+    setActiveMegaMenuItem('home');
   }
 
   // ================= FLOATING CONTACT FORM MODAL =================
