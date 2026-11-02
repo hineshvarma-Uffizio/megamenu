@@ -317,9 +317,10 @@ html {
   margin-top: 6px;
 }
 
-/* Standardized 30px Text-to-Text spacing between mega items (8px padding + 14px gap + 8px padding = 30px) */
+/* Standardized spacing between mega items (8px padding + 5px gap + 8px padding = 21px text-to-text) */
+.space-y-\[5px\] > * + *,
 .space-y-\[14px\] > * + * {
-  margin-top: 14px;
+  margin-top: 5px !important;
 }
 
 /* Standardized Typography: Title (13px, 500) & Subtitle (12px, 500) */
