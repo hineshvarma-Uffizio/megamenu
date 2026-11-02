@@ -68,12 +68,12 @@ html {
   transform: translateY(0) !important;
 }
 
-/* Mega Menu (Products & Software): Previous compact width (1340px) aligned with Contact Us button on right */
+/* Mega Menu (Products & Software): Fit content width based on maximum line of product links */
 #products-dropdown {
   left: auto !important;
   right: 0 !important;
-  width: 1340px !important;
-  max-width: 100% !important;
+  width: max-content !important;
+  max-width: calc(100vw - 2rem) !important;
   transform: translateY(6px) !important;
 }
 
@@ -476,6 +476,7 @@ html {
 /* 3. Mega Item (Product Link) Active State: Theme Blue Color + Green Dot, No Box */
 .mega-item {
   position: relative;
+  white-space: nowrap;
 }
 .mega-item.is-active {
   background-color: transparent !important;
@@ -492,10 +493,14 @@ html {
   font-weight: 700 !important;
 }
 .mega-item .active-green-dot {
-  display: none;
+  display: inline-flex !important;
+  opacity: 0;
+  visibility: hidden;
+  transition: opacity 0.2s ease;
 }
 .mega-item.is-active .active-green-dot {
-  display: inline-flex !important;
+  opacity: 1 !important;
+  visibility: visible !important;
 }
 
 /* 4. Mobile Drawer Active State: Theme Blue Color + Green Dot, No Box */

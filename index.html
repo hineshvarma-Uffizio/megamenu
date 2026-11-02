@@ -52,7 +52,7 @@
   <!-- 1. Header માં (CSS) - Ask-Uffizio AI Chatbot -->
   <link rel="stylesheet" href="https://hineshvarma-uffizio.github.io/Ask-Uffizio-Chatbot/uffizio-ai-chat.css">
   <!-- Custom Stylesheet with cache-buster -->
-  <link rel="stylesheet" href="styles.css?v=20261102-gap-20px">
+  <link rel="stylesheet" href="styles.css?v=20261102-fit-content-cols">
 </head>
 <body class="bg-slate-50 dark:bg-slate-950 text-slate-800 dark:text-slate-100 antialiased font-sans min-h-screen flex flex-col transition-colors duration-200">
 
@@ -95,12 +95,12 @@
             </button>
 
             <!-- ================= MEGA MENU CONTAINER: 3-COL + 1 FEATURED CARD ================= -->
-            <div id="products-dropdown" class="mega-menu absolute left-auto right-0 top-full w-[1360px] max-w-[calc(100vw-2rem)] pt-2 pointer-events-none opacity-0 invisible transition-all duration-200">
+            <div id="products-dropdown" class="mega-menu absolute left-auto right-0 top-full w-max max-w-[calc(100vw-2rem)] pt-2 pointer-events-none opacity-0 invisible transition-all duration-200">
               <div class="bg-white dark:bg-slate-900 rounded-3xl shadow-2xl border border-slate-200/90 dark:border-slate-800 pointer-events-auto">
-                <div class="p-6 lg:p-8 grid grid-cols-12 gap-5">
+                <div class="p-6 lg:p-8 flex items-stretch gap-5">
                 
                 <!-- COLUMN 1: Uffizio Group (White-Label & Hardware Platform Showcase) -->
-                <div class="col-span-3 flex flex-col h-full border-r border-slate-100 dark:border-slate-800 pr-5">
+                <div class="w-[260px] shrink-0 flex flex-col h-full border-r border-slate-100 dark:border-slate-800 pr-5">
                   <div class="category-header-wrap flex items-center pb-2 mb-3 border-b border-slate-100 dark:border-slate-800 group/catheader" data-category="uffizio-group">
                     <a href="#home" class="inline-flex items-center text-slate-800 dark:text-slate-200 hover:text-brand-600 dark:hover:text-blue-400 transition-colors group/catlink" title="Explore Uffizio Group Corporate Overview">
                       <h3 class="font-heading font-bold text-xs uppercase tracking-wider leading-none">Uffizio Group</h3>
@@ -141,8 +141,8 @@
                   </div>
                 </div>
 
-                <!-- COLUMN 2: Telematics (3 Columns wide) -->
-                <div class="col-span-3 space-y-3 border-r border-slate-100 dark:border-slate-800 pr-5">
+                <!-- COLUMN 2: Telematics (Width fit to longest item) -->
+                <div class="w-max shrink-0 space-y-3 border-r border-slate-100 dark:border-slate-800 pr-5">
                   <div class="category-header-wrap flex items-center pb-2 border-b border-slate-100 dark:border-slate-800 group/catheader" data-category="telematics">
                     <a href="#telematics" class="inline-flex items-center text-slate-800 dark:text-slate-200 hover:text-brand-600 dark:hover:text-blue-400 transition-colors group/catlink" title="Explore Telematics Category Page">
                       <h3 class="font-heading font-bold text-xs uppercase tracking-wider leading-none">Telematics</h3>
@@ -280,8 +280,8 @@
                   </ul>
                 </div>
 
-                <!-- COLUMN 3: Commute (3 Columns wide) -->
-                <div class="col-span-3 space-y-3 border-r border-slate-100 dark:border-slate-800 pr-5">
+                <!-- COLUMN 3: Commute (Width fit to longest item) -->
+                <div class="w-max shrink-0 space-y-3 border-r border-slate-100 dark:border-slate-800 pr-5">
                   <div class="category-header-wrap flex items-center pb-2 border-b border-slate-100 dark:border-slate-800 group/catheader" data-category="commute">
                     <a href="#commute" class="inline-flex items-center text-slate-800 dark:text-slate-200 hover:text-brand-600 dark:hover:text-blue-400 transition-colors group/catlink" title="Explore Commute Category Page">
                       <h3 class="font-heading font-bold text-xs uppercase tracking-wider leading-none">Commute</h3>
@@ -352,8 +352,8 @@
                   </ul>
                 </div>
 
-                <!-- COLUMN 4: IoTech (3 Columns wide) -->
-                <div class="col-span-3 space-y-3">
+                <!-- COLUMN 4: IoTech (Width fit to longest item) -->
+                <div class="w-max shrink-0 space-y-3">
                   <div class="category-header-wrap flex items-center pb-2 border-b border-slate-100 dark:border-slate-800 group/catheader" data-category="iotech">
                     <a href="#iotech" class="inline-flex items-center text-slate-800 dark:text-slate-200 hover:text-brand-600 dark:hover:text-blue-400 transition-colors group/catlink" title="Explore IoTech Category Page">
                       <h3 class="font-heading font-bold text-xs uppercase tracking-wider leading-none">IoTech</h3>
