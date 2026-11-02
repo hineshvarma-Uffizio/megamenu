@@ -498,10 +498,16 @@ html {
   transform: none !important;
 }
 
-/* 3. Mega Item (Product Link) Active State: Theme Blue Color + Green Dot, No Box */
+/* 3. Mega Item (Product Link) Hover & Active States: Theme Blue Color, No Box */
 .mega-item {
   position: relative;
   white-space: nowrap;
+}
+.mega-item:hover .font-heading {
+  color: #0052cc !important;
+}
+.dark .mega-item:hover .font-heading {
+  color: #60a5fa !important;
 }
 .mega-item.is-active {
   background-color: transparent !important;
