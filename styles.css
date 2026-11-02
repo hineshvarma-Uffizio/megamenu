@@ -461,12 +461,16 @@ html {
   color: #60a5fa !important;
 }
 
-/* Category header Explore link optical alignment */
+/* Category header Explore link optical alignment (fixed in place - no movement on hover) */
 .cat-explore-icon {
   position: relative;
   top: -1px;
   flex-shrink: 0;
   vertical-align: middle;
+  transform: none !important;
+}
+.category-header-wrap a:hover .cat-explore-icon {
+  transform: none !important;
 }
 
 /* 3. Mega Item (Product Link) Active State: Green Dot Only, No Box */
