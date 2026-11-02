@@ -473,7 +473,7 @@ html {
   transform: none !important;
 }
 
-/* 3. Mega Item (Product Link) Active State: Green Dot Only, No Box */
+/* 3. Mega Item (Product Link) Active State: Theme Blue Color + Green Dot, No Box */
 .mega-item {
   position: relative;
 }
@@ -484,11 +484,12 @@ html {
   transform: none !important;
 }
 .mega-item.is-active .font-heading {
-  color: #0f172a !important;
+  color: #0066FF !important;
   font-weight: 700 !important;
 }
 .dark .mega-item.is-active .font-heading {
-  color: #f8fafc !important;
+  color: #60a5fa !important;
+  font-weight: 700 !important;
 }
 .mega-item .active-green-dot {
   display: none;
@@ -497,11 +498,18 @@ html {
   display: inline-flex !important;
 }
 
-/* 4. Mobile Drawer Active State: Green Dot Only, No Box */
+/* 4. Mobile Drawer Active State: Theme Blue Color + Green Dot, No Box */
 .mobile-product-link.is-active {
   background-color: transparent !important;
   border-left: none !important;
   padding-left: 0.25rem !important;
+}
+.mobile-product-link.is-active > span:first-child {
+  color: #0066FF !important;
+  font-weight: 700 !important;
+}
+.dark .mobile-product-link.is-active > span:first-child {
+  color: #60a5fa !important;
 }
 .mobile-product-link .mobile-active-green-dot {
   display: none;
