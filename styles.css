@@ -746,17 +746,69 @@ html {
 .dark .mobile-accordion-btn:focus-visible,
 .dark .mega-item:focus-visible,
 .dark .category-header-wrap a:focus-visible {
-  outline-color: #60a5fa !important;
+  outline-color: #0077ff !important;
 }
 
 /* ========================================================
-   FLOATING ACTION BUTTONS: CONTACT FORM & WHATSAPP
-   Matching https://uffizio.com/ exactly
+   FLOATING ACTION BUTTONS: THEME TOGGLE, CONTACT FORM & WHATSAPP
    ======================================================== */
 
 /* Suppress redundant Ask Zio floating launcher to prevent overlap */
 #uffizio-ai-launcher {
   display: none !important;
+}
+
+/* Floating Dark / Light Mode Reference Toggle (Fixed Bottom Left) */
+#theme-toggle {
+  position: fixed !important;
+  bottom: 20px !important;
+  left: 20px !important;
+  z-index: 9999 !important;
+  width: 44px !important;
+  height: 44px !important;
+  border-radius: 50% !important;
+  display: flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  background-color: rgba(255, 255, 255, 0.95) !important;
+  color: #1e293b !important;
+  border: 1px solid rgba(226, 232, 240, 0.9) !important;
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.12) !important;
+  backdrop-filter: blur(8px) !important;
+  -webkit-backdrop-filter: blur(8px) !important;
+  cursor: pointer !important;
+  padding: 0 !important;
+  transition: transform 0.25s cubic-bezier(0.16, 1, 0.3, 1), box-shadow 0.25s ease, background-color 0.2s ease, border-color 0.2s ease, color 0.2s ease !important;
+}
+
+.dark #theme-toggle {
+  background-color: rgba(15, 23, 42, 0.9) !important;
+  color: #f1f5f9 !important;
+  border: 1px solid rgba(51, 65, 85, 0.85) !important;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.45) !important;
+}
+
+#theme-toggle:hover {
+  transform: scale(1.08) !important;
+  color: #0077ff !important;
+  border-color: #0077ff !important;
+  box-shadow: 0 6px 20px rgba(0, 119, 255, 0.25) !important;
+}
+
+.dark #theme-toggle:hover {
+  color: #0077ff !important;
+  border-color: #0077ff !important;
+  box-shadow: 0 6px 22px rgba(0, 119, 255, 0.35) !important;
+}
+
+#theme-toggle svg {
+  width: 20px !important;
+  height: 20px !important;
+  transition: transform 0.25s ease !important;
+}
+
+#theme-toggle:hover svg {
+  transform: rotate(15deg) !important;
 }
 
 /* WhatsApp Floating Button */
@@ -1013,6 +1065,16 @@ body.has-lc-open #ufz-wa-btn {
 
 /* Mobile responsive adjustments */
 @media (max-width: 640px) {
+  #theme-toggle {
+    bottom: 16px !important;
+    left: 16px !important;
+    width: 40px !important;
+    height: 40px !important;
+  }
+  #theme-toggle svg {
+    width: 18px !important;
+    height: 18px !important;
+  }
   #ufz-wa-btn {
     bottom: 16px;
     right: 16px;
@@ -1043,9 +1105,11 @@ body.has-lc-open #ufz-wa-btn {
     max-width: none;
     max-height: calc(100vh - 32px);
   }
-  /* On mobile screens, hide WhatsApp while Contact Form is open so there is zero overlap */
+  /* On mobile screens, hide floating buttons while Contact Form is open so there is zero overlap */
   .lc-popup-container.is-open ~ #ufz-wa-btn,
-  body.has-lc-open #ufz-wa-btn {
+  body.has-lc-open #ufz-wa-btn,
+  .lc-popup-container.is-open ~ #theme-toggle,
+  body.has-lc-open #theme-toggle {
     opacity: 0 !important;
     visibility: hidden !important;
     pointer-events: none !important;
