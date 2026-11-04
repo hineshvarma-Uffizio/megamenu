@@ -1267,7 +1267,7 @@ body.has-lc-open #ufz-wa-btn {
 
 .uffizio-readmore-btn:hover .circle-arrow svg,
 .card-box:hover .uffizio-readmore-btn .circle-arrow svg {
-  transform: rotate(-45deg);
+  transform: rotate(45deg);
 }
 
 
