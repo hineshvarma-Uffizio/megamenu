@@ -1216,5 +1216,60 @@ body.has-lc-open #ufz-wa-btn {
   opacity: 0.85;
 }
 
+/* =================================================
+   ECOSYSTEM CARD "EXPLORE MORE" CTA BUTTON (Exact Uffizio Style)
+================================================= */
+.uffizio-readmore-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  color: #ccd2d9;
+  text-decoration: none;
+  font-size: 14px;
+  font-weight: 600;
+  line-height: 1;
+  transition: color 0.25s ease;
+}
+
+.uffizio-readmore-btn:hover {
+  color: #ffffff;
+}
+
+.uffizio-readmore-btn .circle-arrow {
+  width: 24px;
+  height: 24px;
+  border-radius: 50%;
+  background-color: #0077ff;
+  border: 1px solid rgba(255, 255, 255, 0.85);
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.3);
+  transition: background-color 0.25s ease, border-color 0.25s ease, box-shadow 0.25s ease;
+}
+
+.uffizio-readmore-btn:hover .circle-arrow,
+.card-box:hover .uffizio-readmore-btn .circle-arrow {
+  background-color: #0066ee;
+  border-color: #ffffff;
+  box-shadow: 0 0 10px rgba(0, 119, 255, 0.5);
+}
+
+.uffizio-readmore-btn .circle-arrow svg {
+  width: 12px;
+  height: 12px;
+  color: #ffffff;
+  transform-origin: center center;
+  transform: rotate(0deg);
+  transition: transform 0.35s cubic-bezier(0.165, 0.84, 0.44, 1);
+}
+
+.uffizio-readmore-btn:hover .circle-arrow svg,
+.card-box:hover .uffizio-readmore-btn .circle-arrow svg {
+  transform: rotate(-45deg);
+}
+
+
 
 
