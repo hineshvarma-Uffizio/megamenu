@@ -1217,12 +1217,12 @@ body.has-lc-open #ufz-wa-btn {
 }
 
 /* =================================================
-   ECOSYSTEM CARD "EXPLORE MORE" CTA BUTTON (Exact Uffizio Style)
+   ECOSYSTEM CARD "EXPLORE MORE" CTA BUTTON (Exact Uffizio Live Site Style)
 ================================================= */
 .uffizio-readmore-btn {
   display: inline-flex;
   align-items: center;
-  gap: 10px;
+  gap: 12px;
   color: #ccd2d9;
   text-decoration: none;
   font-size: 14px;
@@ -1236,33 +1236,46 @@ body.has-lc-open #ufz-wa-btn {
 }
 
 .uffizio-readmore-btn .circle-arrow {
-  width: 24px;
-  height: 24px;
+  width: 25px;
+  height: 25px;
   border-radius: 50%;
-  background-color: #0077ff;
-  border: 1px solid rgba(255, 255, 255, 0.85);
+  background:
+    radial-gradient(78.86% 97.78% at 48.89% 2.22%,
+      rgba(255, 255, 255, 0.12) 0%,
+      rgba(0, 0, 0, 0) 100%),
+    linear-gradient(0deg, #0057FF 0%, #0057FF 100%);
+  border: 0.75px solid rgba(255, 255, 255, 0.8);
+  box-shadow:
+    0px 12px 24px -6px rgba(10, 124, 255, 0.48),
+    0px 3px 6px 0px rgba(10, 124, 255, 0.12),
+    0px 1.5px 4.5px 0px rgba(10, 124, 255, 0.24),
+    0px 0.75px 2.25px 0px rgba(10, 124, 255, 0.24),
+    0.75px 0.75px 1.5px 0px rgba(255, 255, 255, 0.24) inset;
+  position: relative;
   display: inline-flex;
   align-items: center;
   justify-content: center;
+  overflow: hidden !important;
   flex-shrink: 0;
-  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.3);
-  transition: background-color 0.25s ease, border-color 0.25s ease, box-shadow 0.25s ease;
+  transition: all 0.3s ease;
 }
 
 .uffizio-readmore-btn:hover .circle-arrow,
 .card-box:hover .uffizio-readmore-btn .circle-arrow {
-  background-color: #0066ee;
+  box-shadow:
+    0px 16px 28px -4px rgba(10, 124, 255, 0.65),
+    0px 4px 8px 0px rgba(10, 124, 255, 0.2),
+    0.75px 0.75px 1.5px 0px rgba(255, 255, 255, 0.4) inset;
   border-color: #ffffff;
-  box-shadow: 0 0 10px rgba(0, 119, 255, 0.5);
 }
 
 .uffizio-readmore-btn .circle-arrow svg {
-  width: 12px;
-  height: 12px;
+  width: 10px;
+  height: 10px;
   color: #ffffff;
   transform-origin: center center;
   transform: rotate(0deg);
-  transition: transform 0.35s cubic-bezier(0.165, 0.84, 0.44, 1);
+  transition: transform 0.3s cubic-bezier(0.165, 0.84, 0.44, 1);
 }
 
 .uffizio-readmore-btn:hover .circle-arrow svg,
