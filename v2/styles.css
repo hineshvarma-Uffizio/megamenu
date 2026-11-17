@@ -641,13 +641,13 @@ html {
 }
 
 /* ==========================================================================
-   VARIATION 2: ACTIVE COLUMN BOX (NO SEPARATOR LINES)
+   VARIATION 2: ACTIVE COLUMN BOX (NO SEPARATOR LINES, NO HEADER PILLS)
    ========================================================================== */
 
 /* 1. Remove separator lines between columns and adjust column card layout */
 .variation-column-box .products-mega-columns .mega-column {
   border-right: none !important;
-  padding: 16px 16px 18px 16px !important;
+  padding: 16px 16px 20px 16px !important;
   border-radius: 20px !important;
   border: 1px solid transparent !important;
   background-color: transparent !important;
@@ -658,20 +658,20 @@ html {
   gap: 16px !important;
 }
 
-/* 2. Active Column Box (Encloses the entire active column) */
+/* 2. Active Column Box (Encloses the entire active column in a soft blue card) */
 .variation-column-box .products-mega-columns .mega-column.is-active {
   background-color: rgba(0, 119, 255, 0.05) !important;
-  border: 1px solid rgba(0, 119, 255, 0.25) !important;
+  border: 1px solid rgba(0, 119, 255, 0.28) !important;
   border-radius: 20px !important;
 }
 
 .dark .variation-column-box .products-mega-columns .mega-column.is-active {
   background-color: rgba(0, 119, 255, 0.08) !important;
-  border: 1px solid rgba(0, 119, 255, 0.32) !important;
+  border: 1px solid rgba(0, 119, 255, 0.35) !important;
   border-radius: 20px !important;
 }
 
-/* 3. Non-Active Column Hover effect in Variation 2 */
+/* 3. Non-Active Column Hover effect in Variation 2 (Clean subtle glass, No Blue) */
 .variation-column-box .products-mega-columns .mega-column:not(.is-active):hover {
   background-color: rgba(0, 0, 0, 0.025) !important;
   border: 1px solid rgba(0, 0, 0, 0.06) !important;
@@ -679,15 +679,16 @@ html {
 
 .dark .variation-column-box .products-mega-columns .mega-column:not(.is-active):hover {
   background-color: rgba(255, 255, 255, 0.035) !important;
-  border: 1px solid rgba(255, 255, 255, 0.08) !important;
+  border: 1px solid rgba(255, 255, 255, 0.09) !important;
 }
 
-/* 4. Category Header Spacing & Height inside Variation 2 (Proper Spacing & 44px Height) */
+/* 4. Category Header: REMOVE PILL BADGE COMPLETELY IN OPTION 2 */
 .variation-column-box .category-header-wrap {
   width: 100% !important;
-  margin-bottom: 12px !important;
+  margin-bottom: 10px !important;
   border: none !important;
   box-shadow: none !important;
+  background: transparent !important;
 }
 
 .variation-column-box .category-header-wrap a.group\/catlink,
@@ -696,25 +697,27 @@ html {
   align-items: center !important;
   justify-content: space-between !important;
   width: 100% !important;
-  min-height: 44px !important;
-  height: 44px !important;
-  padding: 0 16px !important;
-  border-radius: 12px !important;
-  box-sizing: border-box !important;
+  height: auto !important;
+  min-height: auto !important;
+  padding: 4px 4px 10px 4px !important;
+  border-radius: 0 !important;
+  border: none !important;
+  background: transparent !important;
+  background-color: transparent !important;
   box-shadow: none !important;
   text-decoration: none !important;
-  transition: all 0.22s cubic-bezier(0.16, 1, 0.3, 1) !important;
+  transition: color 0.2s ease, opacity 0.2s ease !important;
 }
 
 .variation-column-box .category-header-wrap a.group\/catlink h3,
 .variation-column-box .category-header-wrap .cat-tab-badge h3 {
   margin: 0 !important;
   padding: 0 !important;
-  line-height: 1 !important;
+  line-height: 1.2 !important;
   display: flex !important;
   align-items: center !important;
   font-size: 12px !important;
-  letter-spacing: 0.05em !important;
+  letter-spacing: 0.06em !important;
   text-transform: uppercase !important;
 }
 
@@ -728,97 +731,124 @@ html {
   height: 14px !important;
   margin-left: 8px !important;
   transform: none !important;
+  transition: color 0.2s ease, opacity 0.2s ease !important;
 }
 
-/* Variation 2: Default / Non-Active Category Header Pill */
-.variation-column-box .category-header-wrap:not(.is-active) a.group\/catlink,
-.variation-column-box .category-header-wrap:not(.is-active) .cat-tab-badge {
-  color: #64748b !important;
-  background-color: transparent !important;
-  border: 1px solid transparent !important;
-}
-.variation-column-box .category-header-wrap:not(.is-active) a.group\/catlink h3,
-.variation-column-box .category-header-wrap:not(.is-active) .cat-tab-badge h3 {
-  color: #64748b !important;
-  font-weight: 700 !important;
-}
-.variation-column-box .category-header-wrap:not(.is-active) .cat-explore-icon {
-  color: #94a3b8 !important;
-  opacity: 0.75 !important;
-}
+/* 5. COLOR LOGIC: Blue ONLY when Active; White everywhere else */
 
-.dark .variation-column-box .category-header-wrap:not(.is-active) a.group\/catlink,
-.dark .variation-column-box .category-header-wrap:not(.is-active) .cat-tab-badge {
-  color: #94a3b8 !important;
-  background-color: transparent !important;
-  border: 1px solid transparent !important;
-}
-.dark .variation-column-box .category-header-wrap:not(.is-active) a.group\/catlink h3,
-.dark .variation-column-box .category-header-wrap:not(.is-active) .cat-tab-badge h3 {
-  color: #94a3b8 !important;
-  font-weight: 700 !important;
-}
-.dark .variation-column-box .category-header-wrap:not(.is-active) .cat-explore-icon {
-  color: #64748b !important;
-  opacity: 0.8 !important;
-}
-
-/* Variation 2: Hover on Non-Active Category Header Pill */
-.variation-column-box .category-header-wrap:not(.is-active):hover a.group\/catlink,
-.variation-column-box .category-header-wrap:not(.is-active):hover .cat-tab-badge {
-  color: #0f172a !important;
-  background-color: rgba(0, 119, 255, 0.06) !important;
-  border-color: rgba(0, 119, 255, 0.25) !important;
-}
-.variation-column-box .category-header-wrap:not(.is-active):hover h3 {
-  color: #0f172a !important;
-}
-
-.dark .variation-column-box .category-header-wrap:not(.is-active):hover a.group\/catlink,
-.dark .variation-column-box .category-header-wrap:not(.is-active):hover .cat-tab-badge {
-  color: #ffffff !important;
-  background-color: rgba(255, 255, 255, 0.08) !important;
-  border-color: rgba(255, 255, 255, 0.18) !important;
-}
-.dark .variation-column-box .category-header-wrap:not(.is-active):hover h3,
-.dark .variation-column-box .category-header-wrap:not(.is-active):hover .cat-explore-icon {
-  color: #ffffff !important;
-  opacity: 1 !important;
-}
-
-/* Variation 2: Active Category Header Pill (Inside the Active Column Box) */
+/* A) ACTIVE STATE (Only the active column header gets Blue) */
+.variation-column-box .mega-column.is-active .category-header-wrap a.group\/catlink,
+.variation-column-box .mega-column.is-active .category-header-wrap .cat-tab-badge,
 .variation-column-box .category-header-wrap.is-active a.group\/catlink,
 .variation-column-box .category-header-wrap.is-active .cat-tab-badge {
-  background-color: rgba(0, 119, 255, 0.12) !important;
-  color: #0077ff !important;
-  border: 1px solid rgba(0, 119, 255, 0.32) !important;
+  background: transparent !important;
+  background-color: transparent !important;
+  border: none !important;
   box-shadow: none !important;
 }
+
+.variation-column-box .mega-column.is-active .category-header-wrap a.group\/catlink h3,
+.variation-column-box .mega-column.is-active .category-header-wrap .cat-tab-badge h3,
 .variation-column-box .category-header-wrap.is-active a.group\/catlink h3,
 .variation-column-box .category-header-wrap.is-active .cat-tab-badge h3 {
   color: #0077ff !important;
   font-weight: 800 !important;
 }
+
+.variation-column-box .mega-column.is-active .category-header-wrap .cat-explore-icon,
 .variation-column-box .category-header-wrap.is-active .cat-explore-icon {
   color: #0077ff !important;
   opacity: 1 !important;
 }
 
+/* Dark mode active header */
+.dark .variation-column-box .mega-column.is-active .category-header-wrap a.group\/catlink,
+.dark .variation-column-box .mega-column.is-active .category-header-wrap .cat-tab-badge,
 .dark .variation-column-box .category-header-wrap.is-active a.group\/catlink,
 .dark .variation-column-box .category-header-wrap.is-active .cat-tab-badge {
-  background-color: rgba(0, 119, 255, 0.16) !important;
-  color: #0077ff !important;
-  border: 1px solid rgba(0, 119, 255, 0.38) !important;
+  background: transparent !important;
+  background-color: transparent !important;
+  border: none !important;
   box-shadow: none !important;
 }
+
+.dark .variation-column-box .mega-column.is-active .category-header-wrap a.group\/catlink h3,
+.dark .variation-column-box .mega-column.is-active .category-header-wrap .cat-tab-badge h3,
 .dark .variation-column-box .category-header-wrap.is-active a.group\/catlink h3,
 .dark .variation-column-box .category-header-wrap.is-active .cat-tab-badge h3 {
   color: #0077ff !important;
   font-weight: 800 !important;
 }
+
+.dark .variation-column-box .mega-column.is-active .category-header-wrap .cat-explore-icon,
 .dark .variation-column-box .category-header-wrap.is-active .cat-explore-icon {
   color: #0077ff !important;
   opacity: 1 !important;
+}
+
+/* B) NON-ACTIVE STATE (Must stay PURE WHITE in Dark Mode, Deep Slate in Light Mode) */
+.dark .variation-column-box .mega-column:not(.is-active) .category-header-wrap a.group\/catlink,
+.dark .variation-column-box .mega-column:not(.is-active) .category-header-wrap .cat-tab-badge,
+.dark .variation-column-box .category-header-wrap:not(.is-active) a.group\/catlink,
+.dark .variation-column-box .category-header-wrap:not(.is-active) .cat-tab-badge {
+  background: transparent !important;
+  background-color: transparent !important;
+  border: none !important;
+  box-shadow: none !important;
+}
+
+.dark .variation-column-box .mega-column:not(.is-active) .category-header-wrap a.group\/catlink h3,
+.dark .variation-column-box .mega-column:not(.is-active) .category-header-wrap .cat-tab-badge h3,
+.dark .variation-column-box .category-header-wrap:not(.is-active) a.group\/catlink h3,
+.dark .variation-column-box .category-header-wrap:not(.is-active) .cat-tab-badge h3 {
+  color: #ffffff !important; /* PURE WHITE as requested */
+  font-weight: 700 !important;
+}
+
+.dark .variation-column-box .mega-column:not(.is-active) .category-header-wrap .cat-explore-icon,
+.dark .variation-column-box .category-header-wrap:not(.is-active) .cat-explore-icon {
+  color: #ffffff !important; /* PURE WHITE as requested */
+  opacity: 0.8 !important;
+}
+
+/* Light mode non-active */
+.variation-column-box .mega-column:not(.is-active) .category-header-wrap a.group\/catlink h3,
+.variation-column-box .mega-column:not(.is-active) .category-header-wrap .cat-tab-badge h3,
+.variation-column-box .category-header-wrap:not(.is-active) a.group\/catlink h3,
+.variation-column-box .category-header-wrap:not(.is-active) .cat-tab-badge h3 {
+  color: #0f172a !important;
+  font-weight: 700 !important;
+}
+.variation-column-box .mega-column:not(.is-active) .category-header-wrap .cat-explore-icon,
+.variation-column-box .category-header-wrap:not(.is-active) .cat-explore-icon {
+  color: #64748b !important;
+  opacity: 0.8 !important;
+}
+
+/* C) HOVER ON NON-ACTIVE CATEGORY HEADER (Stays WHITE, No Blue) */
+.dark .variation-column-box .category-header-wrap:not(.is-active):hover a.group\/catlink h3,
+.dark .variation-column-box .category-header-wrap:not(.is-active):hover .cat-tab-badge h3 {
+  color: #ffffff !important;
+}
+.dark .variation-column-box .category-header-wrap:not(.is-active):hover .cat-explore-icon {
+  color: #ffffff !important;
+  opacity: 1 !important;
+}
+
+/* D) COLUMN 1 (Uffizio Group) Inactive Fix: Only blue when Uffizio Group is active */
+.dark .variation-column-box .mega-column:not(.is-active) .uffizio-showcase-content p.text-\[\#0077ff\] {
+  color: #ffffff !important;
+  opacity: 0.85 !important;
+}
+.variation-column-box .mega-column:not(.is-active) .uffizio-showcase-content p.text-\[\#0077ff\] {
+  color: #475569 !important;
+}
+.dark .variation-column-box .mega-column.is-active .uffizio-showcase-content p.text-\[\#0077ff\] {
+  color: #0077ff !important;
+  opacity: 1 !important;
+}
+.variation-column-box .mega-column.is-active .uffizio-showcase-content p.text-\[\#0077ff\] {
+  color: #0077ff !important;
 }
 
 /* Column 1 (Uffizio Group) spacing fix in Variation 2 */
