@@ -477,8 +477,9 @@ html {
   align-items: center !important;
   justify-content: space-between !important;
   width: 100% !important;
-  padding: 6px 14px !important;
-  border-radius: 10px !important; /* rounded-xl */
+  min-height: 40px !important;
+  padding: 10px 16px !important;
+  border-radius: 12px !important; /* rounded-xl */
   border: 1px solid transparent !important;
   transition: all 0.22s cubic-bezier(0.16, 1, 0.3, 1) !important;
   text-decoration: none !important;
@@ -583,8 +584,8 @@ html {
   background-color: rgba(0, 119, 255, 0.12) !important;
   color: #0077ff !important;
   border: 1px solid rgba(0, 119, 255, 0.3) !important;
-  border-radius: 10px !important;
-  box-shadow: 0 0 12px rgba(0, 119, 255, 0.14) !important;
+  border-radius: 12px !important;
+  box-shadow: 0 0 14px rgba(0, 119, 255, 0.16) !important;
 }
 .category-header-wrap.is-active a.group\/catlink h3,
 .category-header-wrap.is-active .cat-tab-badge h3 {
@@ -603,7 +604,7 @@ html {
   background-color: rgba(0, 119, 255, 0.15) !important; /* bg-[#0077ff]/15 */
   color: #0077ff !important;                              /* text-[#0077ff] */
   border: 1px solid rgba(0, 119, 255, 0.35) !important; /* border-[#0077ff]/30 */
-  border-radius: 10px !important;
+  border-radius: 12px !important;
   box-shadow: 0 0 18px rgba(0, 119, 255, 0.28) !important;
 }
 .dark .category-header-wrap.is-active a.group\/catlink h3,
