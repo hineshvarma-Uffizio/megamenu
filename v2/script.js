@@ -346,6 +346,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
     document.querySelectorAll('.mega-item.is-active').forEach((el) => el.classList.remove('is-active'));
     document.querySelectorAll('.category-header-wrap.is-active').forEach((el) => el.classList.remove('is-active'));
+    document.querySelectorAll('.mega-column.is-active').forEach((el) => el.classList.remove('is-active'));
     document.querySelectorAll('.mobile-product-link.is-active').forEach((el) => el.classList.remove('is-active'));
     document.querySelectorAll('.mobile-category-header.is-active').forEach((el) => el.classList.remove('is-active'));
   }
@@ -421,6 +422,12 @@ document.addEventListener('DOMContentLoaded', () => {
     const mobileCatHeader = document.querySelector(`.mobile-category-header[data-mobile-category="${category}"]`);
     if (mobileCatHeader) {
       mobileCatHeader.classList.add('is-active');
+    }
+
+    // Activate the matching Column Card (for Variation 2: Column Box)
+    const activeColumn = document.querySelector(`.mega-column[data-column="${category}"]`);
+    if (activeColumn) {
+      activeColumn.classList.add('is-active');
     }
 
     // RULE: When on Category page (e.g. #home, #telematics, #commute, #iotech):
@@ -548,6 +555,63 @@ document.addEventListener('DOMContentLoaded', () => {
   // If URL has a specific product, category, discover, or resource hash (e.g. #trakzee, #about, #blog), activate it.
   // Otherwise default to Home (Uffizio Group active)!
   handleHashState();
+
+  // ================= FLOATING VARIATION SWITCHER LOGIC =================
+  const btnVariationPills = document.getElementById('btn-variation-pills');
+  const btnVariationBox = document.getElementById('btn-variation-box');
+
+  function setMegaMenuVariation(variation) {
+    const isBox = variation === 'box';
+
+    if (isBox) {
+      document.body.classList.add('variation-column-box');
+      if (btnVariationBox) {
+        btnVariationBox.className = 'variation-tab-btn flex items-center gap-1.5 px-3.5 py-1.5 rounded-full text-xs font-bold transition-all duration-200 bg-[#0077ff] text-white shadow-md shadow-[#0077ff]/30 ring-1 ring-[#0077ff]/50';
+      }
+      if (btnVariationPills) {
+        btnVariationPills.className = 'variation-tab-btn flex items-center gap-1.5 px-3.5 py-1.5 rounded-full text-xs font-bold transition-all duration-200 text-slate-300 hover:text-white hover:bg-white/10';
+      }
+      try {
+        localStorage.setItem('megamenu_v2_variation', 'box');
+      } catch (e) {}
+    } else {
+      document.body.classList.remove('variation-column-box');
+      if (btnVariationPills) {
+        btnVariationPills.className = 'variation-tab-btn flex items-center gap-1.5 px-3.5 py-1.5 rounded-full text-xs font-bold transition-all duration-200 bg-[#0077ff] text-white shadow-md shadow-[#0077ff]/30 ring-1 ring-[#0077ff]/50';
+      }
+      if (btnVariationBox) {
+        btnVariationBox.className = 'variation-tab-btn flex items-center gap-1.5 px-3.5 py-1.5 rounded-full text-xs font-bold transition-all duration-200 text-slate-300 hover:text-white hover:bg-white/10';
+      }
+      try {
+        localStorage.setItem('megamenu_v2_variation', 'pills');
+      } catch (e) {}
+    }
+  }
+
+  if (btnVariationPills) {
+    btnVariationPills.addEventListener('click', () => setMegaMenuVariation('pills'));
+  }
+  if (btnVariationBox) {
+    btnVariationBox.addEventListener('click', () => setMegaMenuVariation('box'));
+  }
+
+  // Check URL query parameters (e.g. ?style=box or ?variation=box) or localStorage
+  const urlParams = new URLSearchParams(window.location.search);
+  const initialVariationParam = urlParams.get('style') || urlParams.get('variation');
+  let savedVariation = 'pills';
+  try {
+    savedVariation = localStorage.getItem('megamenu_v2_variation') || 'pills';
+  } catch (e) {}
+
+  if (initialVariationParam === 'box' || initialVariationParam === 'column') {
+    setMegaMenuVariation('box');
+  } else if (initialVariationParam === 'pills') {
+    setMegaMenuVariation('pills');
+  } else if (savedVariation === 'box') {
+    setMegaMenuVariation('box');
+  } else {
+    setMegaMenuVariation('pills');
+  }
 
   // ================= FLOATING CONTACT FORM MODAL =================
   const lcContainer = document.getElementById('lcContainer');

@@ -630,6 +630,87 @@ html {
   transform: none !important;
 }
 
+/* ==========================================================================
+   VARIATION 2: ACTIVE COLUMN BOX (NO SEPARATOR LINES)
+   ========================================================================== */
+
+/* 1. Remove separator lines between columns and adjust column card layout */
+.variation-column-box .products-mega-columns .mega-column {
+  border-right: none !important;
+  padding: 14px 16px !important;
+  border-radius: 20px !important;
+  border: 1px solid transparent !important;
+  background-color: transparent !important;
+  transition: all 0.25s cubic-bezier(0.16, 1, 0.3, 1) !important;
+}
+
+.variation-column-box .products-mega-columns {
+  gap: 12px !important;
+}
+
+/* 2. Active Column Box (Encloses the entire active column) */
+.variation-column-box .products-mega-columns .mega-column.is-active {
+  background-color: rgba(0, 119, 255, 0.05) !important;
+  border: 1px solid rgba(0, 119, 255, 0.25) !important;
+  border-radius: 20px !important;
+}
+
+.dark .variation-column-box .products-mega-columns .mega-column.is-active {
+  background-color: rgba(0, 119, 255, 0.08) !important;
+  border: 1px solid rgba(0, 119, 255, 0.32) !important;
+  border-radius: 20px !important;
+}
+
+/* 3. Non-Active Column Hover effect in Variation 2 */
+.variation-column-box .products-mega-columns .mega-column:not(.is-active):hover {
+  background-color: rgba(0, 0, 0, 0.025) !important;
+  border: 1px solid rgba(0, 0, 0, 0.06) !important;
+}
+
+.dark .variation-column-box .products-mega-columns .mega-column:not(.is-active):hover {
+  background-color: rgba(255, 255, 255, 0.035) !important;
+  border: 1px solid rgba(255, 255, 255, 0.08) !important;
+}
+
+/* 4. Category Header styling inside Column Box */
+.variation-column-box .category-header-wrap a.group\/catlink,
+.variation-column-box .category-header-wrap .cat-tab-badge {
+  border: none !important;
+  background-color: transparent !important;
+  box-shadow: none !important;
+  padding: 2px 2px 10px 2px !important;
+  min-height: auto !important;
+  border-radius: 0 !important;
+  border-bottom: 1px solid rgba(148, 163, 184, 0.2) !important;
+  margin-bottom: 8px !important;
+}
+
+.dark .variation-column-box .category-header-wrap a.group\/catlink,
+.dark .variation-column-box .category-header-wrap .cat-tab-badge {
+  border-bottom-color: rgba(255, 255, 255, 0.1) !important;
+}
+
+/* Active Column Header Accent inside Variation 2 */
+.variation-column-box .mega-column.is-active .category-header-wrap a.group\/catlink {
+  border-bottom-color: rgba(0, 119, 255, 0.35) !important;
+}
+.variation-column-box .mega-column.is-active .category-header-wrap a.group\/catlink h3,
+.variation-column-box .mega-column.is-active .category-header-wrap a.group\/catlink .cat-explore-icon {
+  color: #0077ff !important;
+}
+.dark .variation-column-box .mega-column.is-active .category-header-wrap a.group\/catlink {
+  border-bottom-color: rgba(0, 119, 255, 0.4) !important;
+}
+.dark .variation-column-box .mega-column.is-active .category-header-wrap a.group\/catlink h3,
+.dark .variation-column-box .mega-column.is-active .category-header-wrap a.group\/catlink .cat-explore-icon {
+  color: #0077ff !important;
+}
+
+/* Column 1 (Uffizio Group) spacing fix in Variation 2 */
+.variation-column-box .col-uffizio-group {
+  width: 260px !important;
+}
+
 /* 3. Mega Item (Product Link) Hover & Active States: Theme Blue Color, No Box */
 .mega-item {
   position: relative;
