@@ -452,25 +452,37 @@ html {
 }
 
 /* ==========================================================================
-   2. MEGA MENU CATEGORY HEADERS: ACTIVE SOFT PILL BADGE & HOVER GLOW (V2)
+   2. MEGA MENU CATEGORY HEADERS: SINGLE FULL-WIDTH PILL BADGE & HOVER (V2)
    ========================================================================== */
 
 .category-header-wrap {
   position: relative;
-  transition: border-color 0.22s cubic-bezier(0.16, 1, 0.3, 1),
-              box-shadow 0.22s cubic-bezier(0.16, 1, 0.3, 1) !important;
+  width: 100%;
+  border-bottom: none !important;
+  box-shadow: none !important;
+}
+.category-header-wrap:not(.is-active):hover {
+  border-bottom-color: transparent !important;
+  box-shadow: none !important;
+}
+.category-header-wrap.is-active {
+  border-bottom-color: transparent !important;
+  box-shadow: none !important;
 }
 
-/* Category Tab Link Base (Soft Pill Shape) */
+/* Single Full-Width Category Tab Pill (Spans Entire Column Width) */
 .category-header-wrap a.group\/catlink,
 .category-header-wrap .cat-tab-badge {
-  display: inline-flex;
-  align-items: center;
-  padding: 4px 12px;
-  border-radius: 8px; /* rounded-lg */
-  border: 1px solid transparent;
+  display: flex !important;
+  align-items: center !important;
+  justify-content: space-between !important;
+  width: 100% !important;
+  padding: 6px 14px !important;
+  border-radius: 10px !important; /* rounded-xl */
+  border: 1px solid transparent !important;
   transition: all 0.22s cubic-bezier(0.16, 1, 0.3, 1) !important;
-  text-decoration: none;
+  text-decoration: none !important;
+  box-sizing: border-box !important;
 }
 
 /* --------------------------------------------------------------------------
@@ -481,6 +493,7 @@ html {
   color: #64748b !important; /* Light mode text-slate-500 */
   background-color: transparent !important;
   border-color: transparent !important;
+  box-shadow: none !important;
 }
 .category-header-wrap:not(.is-active) a.group\/catlink h3,
 .category-header-wrap:not(.is-active) .cat-tab-badge h3 {
@@ -495,12 +508,13 @@ html {
   transition: all 0.22s cubic-bezier(0.16, 1, 0.3, 1) !important;
 }
 
-/* Dark Mode Default / Non-Active (Light Gray text-slate-400 as in reference) */
+/* Dark Mode Default / Non-Active (Light Gray text-slate-400) */
 .dark .category-header-wrap:not(.is-active) a.group\/catlink,
 .dark .category-header-wrap:not(.is-active) .cat-tab-badge {
   color: #94a3b8 !important; /* Light gray text-slate-400 */
   background-color: transparent !important;
   border-color: transparent !important;
+  box-shadow: none !important;
 }
 .dark .category-header-wrap:not(.is-active) a.group\/catlink h3,
 .dark .category-header-wrap:not(.is-active) .cat-tab-badge h3 {
@@ -515,21 +529,19 @@ html {
 
 /* --------------------------------------------------------------------------
    HOVER STATE (Non-Active Headers on Hover):
-   - Text transitions from light gray to Pure White in dark mode (Deep Slate in light)
-   - Bottom border glows light blue
-   - Subtle background tab highlight
+   - One Full-Width Pill Illuminates:
+     * Text turns Pure White in Dark Mode
+     * Soft Blue glowing border around the full pill
+     * Gentle glass background highlight
    -------------------------------------------------------------------------- */
-.category-header-wrap:not(.is-active):hover {
-  border-bottom-color: rgba(0, 119, 255, 0.75) !important;
-  box-shadow: 0 2px 10px -1px rgba(0, 119, 255, 0.5) !important;
-}
 
 /* Hover - Light Mode */
 .category-header-wrap:not(.is-active):hover a.group\/catlink,
 .category-header-wrap:not(.is-active):hover .cat-tab-badge {
   color: #0f172a !important; /* Deep dark slate */
   background-color: rgba(0, 119, 255, 0.06) !important;
-  border-color: rgba(0, 119, 255, 0.18) !important;
+  border-color: rgba(0, 119, 255, 0.3) !important;
+  box-shadow: 0 0 12px rgba(0, 119, 255, 0.15) !important;
 }
 .category-header-wrap:not(.is-active):hover a.group\/catlink h3,
 .category-header-wrap:not(.is-active):hover .cat-tab-badge h3 {
@@ -541,12 +553,13 @@ html {
   opacity: 1 !important;
 }
 
-/* Hover - Dark Mode (Pure White Text + Light Blue Underline Glow) */
+/* Hover - Dark Mode: Pure White Text + Glowing Light Blue Pill Border */
 .dark .category-header-wrap:not(.is-active):hover a.group\/catlink,
 .dark .category-header-wrap:not(.is-active):hover .cat-tab-badge {
   color: #ffffff !important; /* Pure White text */
-  background-color: rgba(255, 255, 255, 0.07) !important;
-  border-color: rgba(255, 255, 255, 0.15) !important;
+  background-color: rgba(255, 255, 255, 0.08) !important;
+  border-color: rgba(0, 119, 255, 0.5) !important;
+  box-shadow: 0 0 16px rgba(0, 119, 255, 0.28) !important;
 }
 .dark .category-header-wrap:not(.is-active):hover a.group\/catlink h3,
 .dark .category-header-wrap:not(.is-active):hover .cat-tab-badge h3 {
@@ -560,14 +573,9 @@ html {
 
 /* --------------------------------------------------------------------------
    ACTIVE STATE (Current Page / Active Category):
-   - Sleek Blue Soft Badge:
-     bg-[#0077ff]/15 text-[#0077ff] border border-[#0077ff]/30 px-3 py-1 rounded-lg
-   - Bottom border solid blue accent with crisp glow
+   - One Full-Width Sleek Blue Soft Pill Tab:
+     bg-[#0077ff]/15 text-[#0077ff] border border-[#0077ff]/35 w-full rounded-xl
    -------------------------------------------------------------------------- */
-.category-header-wrap.is-active {
-  border-bottom-color: #0077ff !important;
-  box-shadow: 0 2px 12px -1px rgba(0, 119, 255, 0.55) !important;
-}
 
 /* Active Soft Pill Tab - Light Mode */
 .category-header-wrap.is-active a.group\/catlink,
@@ -575,9 +583,8 @@ html {
   background-color: rgba(0, 119, 255, 0.12) !important;
   color: #0077ff !important;
   border: 1px solid rgba(0, 119, 255, 0.3) !important;
-  padding: 4px 12px !important;
-  border-radius: 8px !important;
-  box-shadow: 0 0 10px rgba(0, 119, 255, 0.14) !important;
+  border-radius: 10px !important;
+  box-shadow: 0 0 12px rgba(0, 119, 255, 0.14) !important;
 }
 .category-header-wrap.is-active a.group\/catlink h3,
 .category-header-wrap.is-active .cat-tab-badge h3 {
@@ -590,15 +597,14 @@ html {
   opacity: 1 !important;
 }
 
-/* Active Soft Pill Tab - Dark Mode (Exact user specification) */
+/* Active Soft Pill Tab - Dark Mode (Full width matching entire column) */
 .dark .category-header-wrap.is-active a.group\/catlink,
 .dark .category-header-wrap.is-active .cat-tab-badge {
   background-color: rgba(0, 119, 255, 0.15) !important; /* bg-[#0077ff]/15 */
   color: #0077ff !important;                              /* text-[#0077ff] */
-  border: 1px solid rgba(0, 119, 255, 0.32) !important; /* border-[#0077ff]/30 */
-  padding: 4px 12px !important;                          /* px-3 py-1 */
-  border-radius: 8px !important;                         /* rounded-lg */
-  box-shadow: 0 0 16px rgba(0, 119, 255, 0.25) !important;
+  border: 1px solid rgba(0, 119, 255, 0.35) !important; /* border-[#0077ff]/30 */
+  border-radius: 10px !important;
+  box-shadow: 0 0 18px rgba(0, 119, 255, 0.28) !important;
 }
 .dark .category-header-wrap.is-active a.group\/catlink h3,
 .dark .category-header-wrap.is-active .cat-tab-badge h3 {
@@ -614,7 +620,7 @@ html {
 /* Category header Explore link optical alignment */
 .cat-explore-icon {
   position: relative;
-  top: -1px;
+  top: 0px;
   flex-shrink: 0;
   vertical-align: middle;
   transform: none !important;
