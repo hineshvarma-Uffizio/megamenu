@@ -835,20 +835,12 @@ html {
   opacity: 1 !important;
 }
 
-/* D) COLUMN 1 (Uffizio Group) Inactive Fix: Only blue when Uffizio Group is active */
-.dark .variation-column-box .mega-column:not(.is-active) .uffizio-showcase-content p.text-\[\#0077ff\] {
-  color: #ffffff !important;
-  opacity: 0.85 !important;
-}
-.variation-column-box .mega-column:not(.is-active) .uffizio-showcase-content p.text-\[\#0077ff\] {
-  color: #475569 !important;
-}
-.dark .variation-column-box .mega-column.is-active .uffizio-showcase-content p.text-\[\#0077ff\] {
-  color: #0077ff !important;
-  opacity: 1 !important;
-}
-.variation-column-box .mega-column.is-active .uffizio-showcase-content p.text-\[\#0077ff\] {
-  color: #0077ff !important;
+/* D) COLUMN 1 (Uffizio Group) Tagline Color: #94a3b8 */
+.uffizio-showcase-content .uffizio-tagline,
+.dark .uffizio-showcase-content .uffizio-tagline,
+.variation-column-box .uffizio-showcase-content .uffizio-tagline,
+.dark .variation-column-box .uffizio-showcase-content .uffizio-tagline {
+  color: #94a3b8 !important;
 }
 
 /* Column 1 (Uffizio Group) spacing fix in Variation 2 */
