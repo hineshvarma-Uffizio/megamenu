@@ -414,26 +414,28 @@ document.addEventListener('DOMContentLoaded', () => {
       productsNavBtn.classList.add('is-current-page');
     }
 
-    // Activate the matching Category Header (desktop & mobile)
-    const desktopCatHeader = document.querySelector(`.category-header-wrap[data-category="${category}"]`);
-    if (desktopCatHeader) {
-      desktopCatHeader.classList.add('is-active');
-    }
-    const mobileCatHeader = document.querySelector(`.mobile-category-header[data-mobile-category="${category}"]`);
-    if (mobileCatHeader) {
-      mobileCatHeader.classList.add('is-active');
-    }
+    if (isCategoryPage) {
+      // 1. User is on a CATEGORY PAGE (e.g. #home, #telematics, #commute, #iotech):
+      // -> ONLY activate the Category Header & Category Column!
+      // -> DO NOT activate any product (no green dot, no blue product text).
+      const desktopCatHeader = document.querySelector(`.category-header-wrap[data-category="${category}"]`);
+      if (desktopCatHeader) {
+        desktopCatHeader.classList.add('is-active');
+      }
+      const mobileCatHeader = document.querySelector(`.mobile-category-header[data-mobile-category="${category}"]`);
+      if (mobileCatHeader) {
+        mobileCatHeader.classList.add('is-active');
+      }
 
-    // Activate the matching Column Card (for Variation 2: Column Box)
-    const activeColumn = document.querySelector(`.mega-column[data-column="${category}"]`);
-    if (activeColumn) {
-      activeColumn.classList.add('is-active');
-    }
-
-    // RULE: When on Category page (e.g. #home, #telematics, #commute, #iotech):
-    // DO NOT show active / green dot on any product!
-    // ONLY show green dot when on a specific Product page!
-    if (!isCategoryPage) {
+      // Activate the matching Column Card (for Variation 2: Column Box)
+      const activeColumn = document.querySelector(`.mega-column[data-column="${category}"]`);
+      if (activeColumn) {
+        activeColumn.classList.add('is-active');
+      }
+    } else {
+      // 2. User is on a SPECIFIC PRODUCT PAGE (e.g. #trakzee, #smartbus, #gridzee):
+      // -> ONLY activate the specific Product (green dot + blue product text)!
+      // -> DO NOT activate the Category Header (no pill, no blue category title)!
       const desktopProduct = document.querySelector(`.mega-item[data-product="${targetId}"]`);
       if (desktopProduct) {
         desktopProduct.classList.add('is-active');
