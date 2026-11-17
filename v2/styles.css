@@ -1,0 +1,1401 @@
+/* ૧. Google Font: Plus Jakarta Sans */
+@import url('https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap');
+
+/* ========================================================
+   Uffizio Mega Menu - Custom Styles & Micro-Animations
+   Supports: Light Mode & Dark Mode
+   ======================================================== */
+
+html {
+  scroll-behavior: smooth;
+  scroll-padding-top: 5.5rem;
+}
+
+/* ================= UFFIZIO SIGNATURE BLUR EFFECT HEADER (BORDERLESS) ================= */
+#site-header {
+  background-color: rgba(248, 250, 252, 0.45) !important; /* Seamless match with bg-slate-50 */
+  backdrop-filter: blur(20px) saturate(160%) !important;
+  -webkit-backdrop-filter: blur(20px) saturate(160%) !important;
+  border: none !important;
+  border-bottom: none !important;
+  outline: none !important;
+  box-shadow: none;
+  transition: background-color 0.25s cubic-bezier(0.16, 1, 0.3, 1),
+              box-shadow 0.25s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.dark #site-header {
+  /* Exactly matches the website's bg-slate-950 (rgb(2, 6, 23)) with soft opacity so the blur shines through */
+  background-color: rgba(2, 6, 23, 0.38) !important;
+  backdrop-filter: blur(20px) saturate(160%) !important;
+  -webkit-backdrop-filter: blur(20px) saturate(160%) !important;
+  border: none !important;
+  border-bottom: none !important;
+  outline: none !important;
+}
+
+#site-header:focus,
+#site-header:focus-visible {
+  outline: none !important;
+}
+
+#site-header.scrolled {
+  background-color: rgba(248, 250, 252, 0.65) !important;
+  border: none !important;
+  border-bottom: none !important;
+  outline: none !important;
+  box-shadow: 0 4px 20px -2px rgba(0, 0, 0, 0.04);
+}
+
+.dark #site-header.scrolled {
+  background-color: rgba(2, 6, 23, 0.58) !important;
+  border: none !important;
+  border-bottom: none !important;
+  outline: none !important;
+  box-shadow: 0 4px 24px -2px rgba(0, 0, 0, 0.3);
+}
+
+/* Mega Menu Dropdown Visibility & Animations */
+.mega-menu {
+  transition: opacity 0.25s cubic-bezier(0.16, 1, 0.3, 1),
+              transform 0.25s cubic-bezier(0.16, 1, 0.3, 1),
+              visibility 0.25s ease;
+  transform: translateY(6px);
+  will-change: opacity, transform;
+}
+
+.mega-menu.is-active {
+  opacity: 1 !important;
+  visibility: visible !important;
+  pointer-events: auto !important;
+  transform: translateY(0) !important;
+}
+
+/* Mega Menu (Products & Software): Fit content width based on maximum line of product links */
+#products-dropdown {
+  left: auto !important;
+  right: 0 !important;
+  width: max-content !important;
+  max-width: calc(100vw - 2rem) !important;
+  transform: translateY(6px) !important;
+}
+
+#products-dropdown.is-active {
+  transform: translateY(0) !important;
+}
+
+.products-mega-columns {
+  display: grid !important;
+  grid-template-columns: 260px max-content max-content max-content !important;
+  gap: 20px !important;
+  align-items: stretch !important;
+}
+
+.col-uffizio-group {
+  display: flex !important;
+  flex-direction: column !important;
+  height: 100% !important;
+}
+
+.uffizio-showcase-content {
+  display: flex !important;
+  flex-direction: column !important;
+  flex: 1 1 auto !important;
+  justify-content: space-between !important;
+}
+
+.uffizio-bottom-btn-wrap {
+  margin-top: auto !important;
+  padding-top: 1.5rem !important;
+}
+
+/* Right-aligned dropdown menus (for Discover & Resource) flush with Contact Us button */
+.mega-menu-right {
+  left: auto !important;
+  right: 0 !important;
+  width: 55rem !important;
+  max-width: calc(100vw - 2rem) !important;
+  transform: translateY(6px) !important;
+}
+
+.mega-menu-right.is-active {
+  opacity: 1 !important;
+  visibility: visible !important;
+  pointer-events: auto !important;
+  transform: translateY(0) !important;
+}
+
+/* ================= UFFIZIO SIGNATURE TRAVELING BORDER BEAM (SHINING EFFECT) ================= */
+@property --beam-angle {
+  syntax: '<angle>';
+  inherits: false;
+  initial-value: 0deg;
+}
+
+@keyframes megaBeamRotate {
+  0% {
+    --beam-angle: 0deg;
+  }
+  100% {
+    --beam-angle: 360deg;
+  }
+}
+
+@keyframes borderBeamRotate {
+  0% {
+    --beam-angle: 0deg;
+  }
+  100% {
+    --beam-angle: 360deg;
+  }
+}
+
+.mega-menu > div,
+#lang-dropdown > div {
+  position: relative;
+  transition: border-color 0.3s cubic-bezier(0.16, 1, 0.3, 1),
+              box-shadow 0.3s cubic-bezier(0.16, 1, 0.3, 1),
+              transform 0.25s cubic-bezier(0.16, 1, 0.3, 1);
+  border: 1px solid rgba(226, 232, 240, 0.95) !important;
+  box-shadow: 0 10px 30px -5px rgba(0, 0, 0, 0.08), 0 20px 45px -10px rgba(0, 82, 204, 0.08);
+}
+
+.dark .mega-menu > div,
+.dark #lang-dropdown > div {
+  border: 1px solid rgba(147, 197, 253, 0.16) !important;
+  box-shadow: 0 25px 65px -15px rgba(2, 6, 23, 0.95),
+              0 0 20px -5px rgba(15, 23, 42, 0.8) !important;
+}
+
+/* Subtle clean border when active (not statically highlighted) */
+.mega-menu.is-active > div {
+  border-color: rgba(203, 213, 225, 0.9) !important;
+  box-shadow: 0 20px 50px -10px rgba(0, 82, 204, 0.08),
+              0 10px 25px -5px rgba(0, 0, 0, 0.06) !important;
+}
+
+.dark .mega-menu.is-active > div {
+  border: 1px solid rgba(147, 197, 253, 0.2) !important;
+  box-shadow: 0 25px 65px -15px rgba(2, 6, 23, 0.98),
+              0 0 30px -10px rgba(2, 6, 23, 0.9) !important;
+}
+
+/* Traveling Light Beam on the Border Perimeter - 1px width, slow graceful travel */
+.mega-menu.is-active > div::before,
+#lang-selector-group:hover #lang-dropdown > div::before,
+#lang-selector-group:focus-within #lang-dropdown > div::before {
+  content: '';
+  position: absolute;
+  inset: -1px;
+  border-radius: inherit;
+  padding: 1px;
+  background: conic-gradient(
+    from var(--beam-angle, 0deg),
+    transparent 0deg,
+    transparent 260deg,
+    rgba(0, 82, 204, 0.15) 285deg,
+    rgba(37, 99, 235, 0.6) 310deg,
+    rgba(59, 130, 246, 0.95) 330deg,
+    #60a5fa 342deg,
+    #93c5fd 346deg,
+    rgba(59, 130, 246, 0.8) 354deg,
+    transparent 360deg
+  );
+  -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+  -webkit-mask-composite: xor;
+  mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+  mask-composite: exclude;
+  pointer-events: none;
+  animation: megaBeamRotate 8s linear infinite;
+  z-index: 20;
+}
+
+/* In Dark Mode: Sparkling Diamond-White Core + Luminous Cyan/Electric Blue Trail */
+.dark .mega-menu.is-active > div::before,
+.dark #lang-selector-group:hover #lang-dropdown > div::before,
+.dark #lang-selector-group:focus-within #lang-dropdown > div::before {
+  background: conic-gradient(
+    from var(--beam-angle, 0deg),
+    transparent 0deg,
+    transparent 250deg,
+    rgba(37, 99, 235, 0.25) 280deg,
+    rgba(56, 189, 248, 0.7) 310deg,
+    rgba(147, 197, 253, 0.95) 332deg,
+    #ffffff 342deg,
+    rgba(147, 197, 253, 0.95) 350deg,
+    rgba(56, 189, 248, 0.5) 355deg,
+    transparent 360deg
+  );
+}
+
+/* Traveling Soft Bloom Halo that follows right with the beam tip */
+.mega-menu.is-active > div::after,
+#lang-selector-group:hover #lang-dropdown > div::after,
+#lang-selector-group:focus-within #lang-dropdown > div::after {
+  content: '';
+  position: absolute;
+  inset: -1px;
+  border-radius: inherit;
+  padding: 1.5px;
+  background: conic-gradient(
+    from var(--beam-angle, 0deg),
+    transparent 0deg,
+    transparent 265deg,
+    rgba(0, 82, 204, 0.2) 295deg,
+    rgba(59, 130, 246, 0.6) 330deg,
+    #60a5fa 342deg,
+    transparent 360deg
+  );
+  -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+  -webkit-mask-composite: xor;
+  mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+  mask-composite: exclude;
+  filter: blur(4px);
+  pointer-events: none;
+  animation: megaBeamRotate 8s linear infinite;
+  z-index: 19;
+  opacity: 0.6;
+}
+
+.dark .mega-menu.is-active > div::after,
+.dark #lang-selector-group:hover #lang-dropdown > div::after,
+.dark #lang-selector-group:focus-within #lang-dropdown > div::after {
+  background: conic-gradient(
+    from var(--beam-angle, 0deg),
+    transparent 0deg,
+    transparent 255deg,
+    rgba(37, 99, 235, 0.35) 290deg,
+    rgba(56, 189, 248, 0.8) 325deg,
+    #ffffff 342deg,
+    rgba(96, 165, 250, 0.8) 350deg,
+    transparent 360deg
+  );
+  filter: blur(5px);
+  opacity: 0.7;
+}
+
+/* Language Dropdown Menu (aligned flush below header, matches Mega Menu animation) */
+#lang-dropdown {
+  transition: opacity 0.25s cubic-bezier(0.16, 1, 0.3, 1),
+              transform 0.25s cubic-bezier(0.16, 1, 0.3, 1),
+              visibility 0.25s ease;
+  transform: translateY(6px);
+  will-change: opacity, transform;
+}
+
+#lang-selector-group:hover #lang-dropdown,
+#lang-selector-group:focus-within #lang-dropdown {
+  opacity: 1 !important;
+  visibility: visible !important;
+  pointer-events: auto !important;
+  transform: translateY(0) !important;
+}
+
+/* Hover rotation for nav chevron icons */
+.nav-item .chevron-icon,
+#lang-selector-group .chevron-icon {
+  transition: transform 0.28s cubic-bezier(0.16, 1, 0.3, 1), color 0.22s ease !important;
+}
+.nav-item.is-active .chevron-icon,
+.nav-item:hover .chevron-icon,
+#lang-selector-group:hover .chevron-icon,
+#lang-selector-group:focus-within .chevron-icon {
+  transform: rotate(180deg);
+}
+
+/* ================= GLOBAL SILKY-SMOOTH HOVER TRANSITIONS ================= */
+.nav-link,
+.mega-item,
+.category-header-wrap,
+.btn-uffizio-contact,
+.uffizio-group-strip,
+#theme-toggle,
+#lang-btn,
+.mobile-accordion-btn,
+.featured-card-body,
+.promo-cards-col > div {
+  transition: color 0.22s cubic-bezier(0.16, 1, 0.3, 1),
+              background-color 0.22s cubic-bezier(0.16, 1, 0.3, 1),
+              border-color 0.22s cubic-bezier(0.16, 1, 0.3, 1),
+              box-shadow 0.22s cubic-bezier(0.16, 1, 0.3, 1),
+              opacity 0.22s cubic-bezier(0.16, 1, 0.3, 1) !important;
+}
+
+/* Ensure all child icons, text spans, paths, and labels inside items transition in sync */
+.mega-item *,
+.category-header-wrap *,
+.nav-link *,
+.uffizio-group-strip * {
+  transition: color 0.22s cubic-bezier(0.16, 1, 0.3, 1),
+              fill 0.22s cubic-bezier(0.16, 1, 0.3, 1),
+              stroke 0.22s cubic-bezier(0.16, 1, 0.3, 1),
+              background-color 0.22s cubic-bezier(0.16, 1, 0.3, 1),
+              border-color 0.22s cubic-bezier(0.16, 1, 0.3, 1),
+              opacity 0.22s cubic-bezier(0.16, 1, 0.3, 1),
+              transform 0.22s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+/* Mega item hover micro-interaction & Top Alignment */
+.mega-item {
+  transition: background-color 0.18s ease-in-out, color 0.18s ease-in-out;
+  align-items: flex-start !important;
+  transform: none !important;
+}
+
+.mega-item:hover {
+  transform: none !important;
+}
+
+.mega-item > div:first-child {
+  margin-top: 2px;
+}
+
+.mega-item .active-green-dot {
+  margin-top: 6px;
+}
+
+/* Standardized spacing between mega items (8px padding + 5px gap + 8px padding = 21px text-to-text) */
+.space-y-\[5px\] > * + *,
+.space-y-\[14px\] > * + * {
+  margin-top: 5px !important;
+}
+
+/* Ask Zio Header Button Alignment (40px Height matching nav & action buttons) */
+.uffizio-header-ai-btn {
+  height: 40px !important;
+  display: inline-flex !important;
+  align-items: center !important;
+  box-sizing: border-box !important;
+}
+
+/* Standardized Typography: Title (13px, 500) & Subtitle (12px, 500) */
+.mega-item .font-heading {
+  font-size: 13px !important;
+  font-weight: 500;
+}
+
+.mega-item span.text-slate-500,
+.mega-item span.dark\:text-slate-400 {
+  font-size: 12px !important;
+  font-weight: 500;
+}
+
+/* Featured Card Exact Dimensions & Text Alignment: Width 224px, Height 120px */
+.featured-card-body {
+  width: 224px !important;
+  max-width: 224px !important;
+}
+
+.featured-card-img-wrap {
+  width: 224px !important;
+  height: 120px !important;
+}
+
+.featured-card-img {
+  width: 224px !important;
+  height: 120px !important;
+  object-fit: cover !important;
+  object-position: top !important;
+}
+
+/* Products & Software Featured Promo Cards: Exact 20px gap */
+.promo-cards-col {
+  display: flex !important;
+  flex-direction: column !important;
+  justify-content: flex-start !important;
+  gap: 20px !important;
+}
+
+/* ================= ACTIVE STATE INDICATORS ================= */
+
+/* 1. Top Nav Trigger Active State & Size Matching Contact Us (40px) */
+.nav-link {
+  height: 40px !important;
+  box-sizing: border-box !important;
+  display: inline-flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  padding: 0 1.25rem !important; /* Matches Contact Us horizontal padding */
+  border-radius: 9999px !important;
+  font-family: 'Inter', sans-serif !important;
+  font-size: 0.875rem !important; /* 14px */
+  font-weight: 600 !important;
+  line-height: 1 !important;
+  white-space: nowrap !important;
+}
+
+.nav-item.is-active .nav-link {
+  color: #0077ff !important;
+  background-color: rgba(0, 119, 255, 0.08) !important;
+}
+
+.dark .nav-item.is-active .nav-link {
+  color: #0077ff !important;
+  background-color: rgba(0, 119, 255, 0.15) !important;
+}
+
+.nav-link.is-current-page {
+  color: #0077ff !important;
+  background-color: rgba(0, 119, 255, 0.08) !important;
+  font-weight: 700 !important;
+  position: relative;
+  border-radius: 9999px !important;
+}
+.dark .nav-link.is-current-page {
+  color: #0077ff !important;
+  background-color: rgba(0, 119, 255, 0.15) !important;
+}
+.nav-link::after,
+.nav-link.is-current-page::after {
+  display: none !important;
+  content: none !important;
+}
+
+/* ==========================================================================
+   2. MEGA MENU CATEGORY HEADERS: ACTIVE SOFT PILL BADGE & HOVER GLOW (V2)
+   ========================================================================== */
+
+.category-header-wrap {
+  position: relative;
+  transition: border-color 0.22s cubic-bezier(0.16, 1, 0.3, 1),
+              box-shadow 0.22s cubic-bezier(0.16, 1, 0.3, 1) !important;
+}
+
+/* Category Tab Link Base (Soft Pill Shape) */
+.category-header-wrap a.group\/catlink,
+.category-header-wrap .cat-tab-badge {
+  display: inline-flex;
+  align-items: center;
+  padding: 4px 12px;
+  border-radius: 8px; /* rounded-lg */
+  border: 1px solid transparent;
+  transition: all 0.22s cubic-bezier(0.16, 1, 0.3, 1) !important;
+  text-decoration: none;
+}
+
+/* --------------------------------------------------------------------------
+   DEFAULT / NON-ACTIVE STATE (Light Gray Muted)
+   -------------------------------------------------------------------------- */
+.category-header-wrap:not(.is-active) a.group\/catlink,
+.category-header-wrap:not(.is-active) .cat-tab-badge {
+  color: #64748b !important; /* Light mode text-slate-500 */
+  background-color: transparent !important;
+  border-color: transparent !important;
+}
+.category-header-wrap:not(.is-active) a.group\/catlink h3,
+.category-header-wrap:not(.is-active) .cat-tab-badge h3 {
+  color: #64748b !important;
+  font-weight: 700 !important;
+  transition: color 0.22s cubic-bezier(0.16, 1, 0.3, 1) !important;
+}
+.category-header-wrap:not(.is-active) a.group\/catlink .cat-explore-icon,
+.category-header-wrap:not(.is-active) .cat-tab-badge .cat-explore-icon {
+  color: #94a3b8 !important;
+  opacity: 0.75;
+  transition: all 0.22s cubic-bezier(0.16, 1, 0.3, 1) !important;
+}
+
+/* Dark Mode Default / Non-Active (Light Gray text-slate-400 as in reference) */
+.dark .category-header-wrap:not(.is-active) a.group\/catlink,
+.dark .category-header-wrap:not(.is-active) .cat-tab-badge {
+  color: #94a3b8 !important; /* Light gray text-slate-400 */
+  background-color: transparent !important;
+  border-color: transparent !important;
+}
+.dark .category-header-wrap:not(.is-active) a.group\/catlink h3,
+.dark .category-header-wrap:not(.is-active) .cat-tab-badge h3 {
+  color: #94a3b8 !important;
+  font-weight: 700 !important;
+}
+.dark .category-header-wrap:not(.is-active) a.group\/catlink .cat-explore-icon,
+.dark .category-header-wrap:not(.is-active) .cat-tab-badge .cat-explore-icon {
+  color: #64748b !important;
+  opacity: 0.8;
+}
+
+/* --------------------------------------------------------------------------
+   HOVER STATE (Non-Active Headers on Hover):
+   - Text transitions from light gray to Pure White in dark mode (Deep Slate in light)
+   - Bottom border glows light blue
+   - Subtle background tab highlight
+   -------------------------------------------------------------------------- */
+.category-header-wrap:not(.is-active):hover {
+  border-bottom-color: rgba(0, 119, 255, 0.75) !important;
+  box-shadow: 0 2px 10px -1px rgba(0, 119, 255, 0.5) !important;
+}
+
+/* Hover - Light Mode */
+.category-header-wrap:not(.is-active):hover a.group\/catlink,
+.category-header-wrap:not(.is-active):hover .cat-tab-badge {
+  color: #0f172a !important; /* Deep dark slate */
+  background-color: rgba(0, 119, 255, 0.06) !important;
+  border-color: rgba(0, 119, 255, 0.18) !important;
+}
+.category-header-wrap:not(.is-active):hover a.group\/catlink h3,
+.category-header-wrap:not(.is-active):hover .cat-tab-badge h3 {
+  color: #0f172a !important;
+}
+.category-header-wrap:not(.is-active):hover a.group\/catlink .cat-explore-icon,
+.category-header-wrap:not(.is-active):hover .cat-tab-badge .cat-explore-icon {
+  color: #0077ff !important;
+  opacity: 1 !important;
+}
+
+/* Hover - Dark Mode (Pure White Text + Light Blue Underline Glow) */
+.dark .category-header-wrap:not(.is-active):hover a.group\/catlink,
+.dark .category-header-wrap:not(.is-active):hover .cat-tab-badge {
+  color: #ffffff !important; /* Pure White text */
+  background-color: rgba(255, 255, 255, 0.07) !important;
+  border-color: rgba(255, 255, 255, 0.15) !important;
+}
+.dark .category-header-wrap:not(.is-active):hover a.group\/catlink h3,
+.dark .category-header-wrap:not(.is-active):hover .cat-tab-badge h3 {
+  color: #ffffff !important; /* Pure White heading */
+}
+.dark .category-header-wrap:not(.is-active):hover a.group\/catlink .cat-explore-icon,
+.dark .category-header-wrap:not(.is-active):hover .cat-tab-badge .cat-explore-icon {
+  color: #ffffff !important; /* Pure White icon */
+  opacity: 1 !important;
+}
+
+/* --------------------------------------------------------------------------
+   ACTIVE STATE (Current Page / Active Category):
+   - Sleek Blue Soft Badge:
+     bg-[#0077ff]/15 text-[#0077ff] border border-[#0077ff]/30 px-3 py-1 rounded-lg
+   - Bottom border solid blue accent with crisp glow
+   -------------------------------------------------------------------------- */
+.category-header-wrap.is-active {
+  border-bottom-color: #0077ff !important;
+  box-shadow: 0 2px 12px -1px rgba(0, 119, 255, 0.55) !important;
+}
+
+/* Active Soft Pill Tab - Light Mode */
+.category-header-wrap.is-active a.group\/catlink,
+.category-header-wrap.is-active .cat-tab-badge {
+  background-color: rgba(0, 119, 255, 0.12) !important;
+  color: #0077ff !important;
+  border: 1px solid rgba(0, 119, 255, 0.3) !important;
+  padding: 4px 12px !important;
+  border-radius: 8px !important;
+  box-shadow: 0 0 10px rgba(0, 119, 255, 0.14) !important;
+}
+.category-header-wrap.is-active a.group\/catlink h3,
+.category-header-wrap.is-active .cat-tab-badge h3 {
+  color: #0077ff !important;
+  font-weight: 800 !important;
+}
+.category-header-wrap.is-active a.group\/catlink .cat-explore-icon,
+.category-header-wrap.is-active .cat-tab-badge .cat-explore-icon {
+  color: #0077ff !important;
+  opacity: 1 !important;
+}
+
+/* Active Soft Pill Tab - Dark Mode (Exact user specification) */
+.dark .category-header-wrap.is-active a.group\/catlink,
+.dark .category-header-wrap.is-active .cat-tab-badge {
+  background-color: rgba(0, 119, 255, 0.15) !important; /* bg-[#0077ff]/15 */
+  color: #0077ff !important;                              /* text-[#0077ff] */
+  border: 1px solid rgba(0, 119, 255, 0.32) !important; /* border-[#0077ff]/30 */
+  padding: 4px 12px !important;                          /* px-3 py-1 */
+  border-radius: 8px !important;                         /* rounded-lg */
+  box-shadow: 0 0 16px rgba(0, 119, 255, 0.25) !important;
+}
+.dark .category-header-wrap.is-active a.group\/catlink h3,
+.dark .category-header-wrap.is-active .cat-tab-badge h3 {
+  color: #0077ff !important;
+  font-weight: 800 !important;
+}
+.dark .category-header-wrap.is-active a.group\/catlink .cat-explore-icon,
+.dark .category-header-wrap.is-active .cat-tab-badge .cat-explore-icon {
+  color: #0077ff !important;
+  opacity: 1 !important;
+}
+
+/* Category header Explore link optical alignment */
+.cat-explore-icon {
+  position: relative;
+  top: -1px;
+  flex-shrink: 0;
+  vertical-align: middle;
+  transform: none !important;
+}
+.category-header-wrap a:hover .cat-explore-icon {
+  transform: none !important;
+}
+
+/* 3. Mega Item (Product Link) Hover & Active States: Theme Blue Color, No Box */
+.mega-item {
+  position: relative;
+  white-space: nowrap;
+}
+.mega-item:hover .font-heading {
+  color: #0077ff !important;
+}
+.dark .mega-item:hover .font-heading {
+  color: #0077ff !important;
+}
+.mega-item.is-active {
+  background-color: transparent !important;
+  border-color: transparent !important;
+  box-shadow: none !important;
+  transform: none !important;
+}
+.mega-item.is-active .font-heading {
+  color: #0077ff !important;
+  font-weight: 700 !important;
+}
+.dark .mega-item.is-active .font-heading {
+  color: #0077ff !important;
+  font-weight: 700 !important;
+}
+.mega-item .active-green-dot {
+  display: inline-flex !important;
+  opacity: 0;
+  visibility: hidden;
+  transition: opacity 0.2s ease;
+}
+.mega-item.is-active .active-green-dot {
+  opacity: 1 !important;
+  visibility: visible !important;
+}
+
+/* 4. Mobile Drawer Active State: Theme Blue Color + Green Dot, No Box */
+.mobile-product-link {
+  transition: background-color 0.18s ease-in-out, color 0.18s ease-in-out;
+}
+.mobile-product-link:hover .font-heading {
+  color: #0077ff !important;
+}
+.dark .mobile-product-link:hover .font-heading {
+  color: #0077ff !important;
+}
+.mobile-product-link.is-active {
+  background-color: transparent !important;
+  border-left: none !important;
+  padding-left: 0.25rem !important;
+}
+.mobile-product-link.is-active .font-heading,
+.mobile-product-link.is-active > span:first-child {
+  color: #0077ff !important;
+  font-weight: 700 !important;
+}
+.dark .mobile-product-link.is-active .font-heading,
+.dark .mobile-product-link.is-active > span:first-child {
+  color: #0077ff !important;
+  font-weight: 700 !important;
+}
+.mobile-product-link .mobile-active-green-dot {
+  display: inline-flex !important;
+  opacity: 0;
+  visibility: hidden;
+  transition: opacity 0.2s ease;
+}
+.mobile-product-link.is-active .mobile-active-green-dot {
+  opacity: 1 !important;
+  visibility: visible !important;
+}
+.mobile-category-header.is-active {
+  color: #0077ff !important;
+  font-weight: 800 !important;
+}
+.dark .mobile-category-header.is-active {
+  color: #0077ff !important;
+}
+.mobile-sub-accordion {
+  transition: all 0.2s ease-in-out;
+}
+.mobile-sub-accordion-btn.is-active {
+  background-color: rgba(0, 119, 255, 0.05);
+}
+.dark .mobile-sub-accordion-btn.is-active {
+  background-color: rgba(0, 119, 255, 0.2);
+}
+
+/* Clean custom scrollbar for mobile drawer */
+#mobile-drawer::-webkit-scrollbar {
+  width: 5px;
+}
+#mobile-drawer::-webkit-scrollbar-track {
+  background: #f1f5f9;
+}
+#mobile-drawer::-webkit-scrollbar-thumb {
+  background: #cbd5e1;
+  border-radius: 4px;
+}
+#mobile-drawer::-webkit-scrollbar-thumb:hover {
+  background: #94a3b8;
+}
+
+/* Dark mode scrollbars */
+.dark #mobile-drawer::-webkit-scrollbar-track {
+  background: #0f172a;
+}
+.dark #mobile-drawer::-webkit-scrollbar-thumb {
+  background: #334155;
+}
+.dark #mobile-drawer::-webkit-scrollbar-thumb:hover {
+  background: #475569;
+}
+
+/* Accordion expand/collapse transition */
+.mobile-accordion-content {
+  transition: max-height 0.3s ease-out;
+}
+
+/* ================= UFFIZIO SIGNATURE "CONTACT US" PILL BUTTON ================= */
+.btn-uffizio-contact {
+  border-radius: 9999px;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.75rem;
+  height: 40px !important;
+  box-sizing: border-box;
+  padding: 4px 4px 4px 1.25rem;
+  font-family: 'Inter', sans-serif;
+  font-weight: 700;
+  font-size: 0.875rem;
+  line-height: 1.25rem;
+  transition: all 0.25s cubic-bezier(0.16, 1, 0.3, 1);
+  text-decoration: none;
+  user-select: none;
+}
+
+/* Light Mode: Follows existing brand blue theme */
+.btn-uffizio-contact {
+  background-color: #0052cc;
+  color: #ffffff;
+  border: 1px solid transparent;
+  box-shadow: 0 4px 12px rgba(0, 82, 204, 0.25);
+}
+.btn-uffizio-contact:hover {
+  background-color: #0043a8;
+  transform: translateY(-1px);
+  box-shadow: 0 6px 18px rgba(0, 82, 204, 0.35);
+}
+.btn-uffizio-contact .arrow-badge {
+  width: 32px !important;
+  height: 32px !important;
+  border-radius: 9999px;
+  background-color: #ffffff;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #0052cc;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.15);
+  transition: transform 0.25s ease;
+  flex-shrink: 0;
+}
+.btn-uffizio-contact:hover .arrow-badge {
+  transform: scale(1.06);
+}
+.btn-uffizio-contact .arrow-badge svg {
+  transition: transform 0.25s ease;
+}
+.btn-uffizio-contact:hover .arrow-badge svg {
+  transform: translate(1.5px, -1.5px);
+}
+
+/* Dark Mode: Matches exact Uffizio screenshot (White pill on Dark navbar) */
+.dark .btn-uffizio-contact {
+  background-color: #ffffff;
+  color: #0f172a;
+  border: 1px solid transparent;
+  box-shadow: 0 4px 14px rgba(0, 0, 0, 0.35);
+}
+.dark .btn-uffizio-contact:hover {
+  background-color: #f8fafc;
+  transform: translateY(-1px);
+  box-shadow: 0 6px 20px rgba(0, 102, 255, 0.25);
+}
+.dark .btn-uffizio-contact .arrow-badge {
+  background-color: #0077ff;
+  color: #ffffff;
+  box-shadow: 0 3px 10px rgba(0, 119, 255, 0.4);
+}
+.dark .btn-uffizio-contact:hover .arrow-badge {
+  background-color: #0052cc;
+}
+
+/* ================= UFFIZIO GROUP REDIRECT STRIP (~30px Footer) ================= */
+.uffizio-group-strip {
+  min-height: 34px;
+  background-color: #f8fafc;
+  transition: background-color 0.2s ease, border-color 0.2s ease;
+}
+.dark .uffizio-group-strip {
+  background-color: #0b1329;
+  border-color: #1e293b;
+}
+.uffizio-group-strip:hover {
+  background-color: #f1f5f9;
+}
+.dark .uffizio-group-strip:hover {
+  background-color: #0e172e;
+}
+
+/* ================= ACCESSIBILITY: WCAG 2.1 AA FOCUS-VISIBLE ================= */
+:focus-visible {
+  outline: 2px solid #0077ff !important;
+  outline-offset: 2px !important;
+}
+
+.nav-link:focus-visible,
+.btn-uffizio-contact:focus-visible,
+#theme-toggle:focus-visible,
+#mobile-toggle:focus-visible,
+#lang-btn:focus-visible,
+.mobile-accordion-btn:focus-visible {
+  outline: 2px solid #0077ff !important;
+  outline-offset: 2px !important;
+  border-radius: 9999px;
+}
+
+.mega-item:focus-visible {
+  outline: 2px solid #0077ff !important;
+  outline-offset: 2px !important;
+  border-radius: 1rem;
+}
+
+.category-header-wrap a:focus-visible {
+  outline: 2px solid #0077ff !important;
+  outline-offset: 2px !important;
+  border-radius: 0.5rem;
+}
+
+.dark :focus-visible,
+.dark .nav-link:focus-visible,
+.dark .btn-uffizio-contact:focus-visible,
+.dark #theme-toggle:focus-visible,
+.dark #mobile-toggle:focus-visible,
+.dark #lang-btn:focus-visible,
+.dark .mobile-accordion-btn:focus-visible,
+.dark .mega-item:focus-visible,
+.dark .category-header-wrap a:focus-visible {
+  outline-color: #0077ff !important;
+}
+
+/* ========================================================
+   FLOATING ACTION BUTTONS: THEME TOGGLE, CONTACT FORM & WHATSAPP
+   ======================================================== */
+
+/* Suppress redundant Ask Zio floating launcher to prevent overlap */
+#uffizio-ai-launcher {
+  display: none !important;
+}
+
+/* Floating Dark / Light Mode Reference Toggle (Fixed Bottom Left) */
+#theme-toggle {
+  position: fixed !important;
+  bottom: 20px !important;
+  left: 20px !important;
+  z-index: 9999 !important;
+  width: 44px !important;
+  height: 44px !important;
+  border-radius: 50% !important;
+  display: flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  background-color: rgba(255, 255, 255, 0.95) !important;
+  color: #1e293b !important;
+  border: 1px solid rgba(226, 232, 240, 0.9) !important;
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.12) !important;
+  backdrop-filter: blur(8px) !important;
+  -webkit-backdrop-filter: blur(8px) !important;
+  cursor: pointer !important;
+  padding: 0 !important;
+  transition: transform 0.25s cubic-bezier(0.16, 1, 0.3, 1), box-shadow 0.25s ease, background-color 0.2s ease, border-color 0.2s ease, color 0.2s ease !important;
+}
+
+.dark #theme-toggle {
+  background-color: rgba(15, 23, 42, 0.9) !important;
+  color: #f1f5f9 !important;
+  border: 1px solid rgba(51, 65, 85, 0.85) !important;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.45) !important;
+}
+
+#theme-toggle:hover {
+  transform: scale(1.08) !important;
+  color: #0077ff !important;
+  border-color: #0077ff !important;
+  box-shadow: 0 6px 20px rgba(0, 119, 255, 0.25) !important;
+}
+
+.dark #theme-toggle:hover {
+  color: #0077ff !important;
+  border-color: #0077ff !important;
+  box-shadow: 0 6px 22px rgba(0, 119, 255, 0.35) !important;
+}
+
+#theme-toggle svg {
+  width: 20px !important;
+  height: 20px !important;
+  transition: transform 0.25s ease !important;
+}
+
+#theme-toggle:hover svg {
+  transform: rotate(15deg) !important;
+}
+
+/* WhatsApp Floating Button */
+#ufz-wa-btn {
+  position: fixed;
+  bottom: 20px;
+  right: 20px;
+  z-index: 9999;
+  width: 52px;
+  height: 52px;
+  border-radius: 50%;
+  background-color: #25D366;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #ffffff;
+  text-decoration: none;
+  box-shadow: 0 4px 16px rgba(37, 211, 102, 0.45);
+  transition: transform 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275), box-shadow 0.3s ease;
+  animation: ufz-wa-pulse 2s infinite;
+}
+
+#ufz-wa-btn:hover {
+  transform: scale(1.08);
+  box-shadow: 0 6px 20px rgba(37, 211, 102, 0.6);
+}
+
+#ufz-wa-btn svg {
+  width: 30px;
+  height: 30px;
+  fill: #ffffff;
+}
+
+#ufz-wa-badge {
+  position: absolute;
+  top: -2px;
+  right: -2px;
+  width: 20px;
+  height: 20px;
+  border-radius: 50%;
+  background-color: #ff0000;
+  color: #ffffff;
+  font-size: 11px;
+  font-weight: 700;
+  font-family: inherit;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border: 2px solid #ffffff;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.25);
+  pointer-events: none;
+}
+
+@keyframes ufz-wa-pulse {
+  0% {
+    box-shadow: 0 0 0 0 rgba(37, 211, 102, 0.6), 0 4px 16px rgba(37, 211, 102, 0.45);
+  }
+  70% {
+    box-shadow: 0 0 0 14px rgba(37, 211, 102, 0), 0 4px 16px rgba(37, 211, 102, 0.45);
+  }
+  100% {
+    box-shadow: 0 0 0 0 rgba(37, 211, 102, 0), 0 4px 16px rgba(37, 211, 102, 0.45);
+  }
+}
+
+/* Contact Form / Let's Connect Floating Button */
+.lc-popup-container {
+  position: fixed;
+  bottom: 20px;
+  right: 84px; /* Sits exactly 12px to the left of the 52px WhatsApp button (20 + 52 + 12 = 84px) */
+  z-index: 9999;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+}
+
+.lc-tab-btn {
+  position: relative;
+  width: 52px;
+  height: 52px;
+  background-color: #0077FF;
+  border-radius: 50px;
+  border: none;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  padding: 0 6px 0 0;
+  box-shadow: 0 4px 16px rgba(0, 119, 255, 0.45);
+  transition: width 0.35s cubic-bezier(0.16, 1, 0.3, 1), transform 0.3s ease, box-shadow 0.3s ease;
+  overflow: hidden;
+}
+
+.lc-tab-btn:hover {
+  width: 175px;
+  box-shadow: 0 6px 20px rgba(0, 119, 255, 0.55);
+}
+
+.lc-btn-text {
+  position: absolute;
+  left: 20px;
+  color: #ffffff;
+  font-size: 14px;
+  font-weight: 600;
+  white-space: nowrap;
+  opacity: 0;
+  transform: translateX(10px);
+  transition: opacity 0.25s ease 0.05s, transform 0.3s ease 0.05s;
+  font-family: inherit;
+  pointer-events: none;
+}
+
+.lc-tab-btn:hover .lc-btn-text {
+  opacity: 1;
+  transform: translateX(0);
+}
+
+.lc-btn-circle {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  background-color: #ffffff;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  z-index: 2;
+  transition: transform 0.3s ease, background-color 0.3s ease;
+}
+
+.lc-tab-btn:hover .lc-btn-circle {
+  transform: rotate(45deg);
+}
+
+.lc-popup-container.is-open .lc-tab-btn {
+  opacity: 0;
+  visibility: hidden;
+  transform: scale(0.8);
+  pointer-events: none;
+}
+
+/* Background overlay when Contact Form panel is open */
+.lc-overlay {
+  position: fixed;
+  inset: 0;
+  background-color: rgba(15, 23, 42, 0.45);
+  backdrop-filter: blur(4px);
+  -webkit-backdrop-filter: blur(4px);
+  z-index: 9998;
+  opacity: 0;
+  visibility: hidden;
+  transition: opacity 0.3s ease, visibility 0.3s ease;
+}
+
+.lc-overlay.is-active {
+  opacity: 1;
+  visibility: visible;
+}
+
+/* Contact Form Slide-in Panel */
+.lc-side-panel {
+  position: fixed;
+  bottom: 20px;
+  right: 84px; /* Sits 12px to the left of the WhatsApp button (20px + 52px + 12px = 84px) - zero overlap */
+  width: 360px;
+  max-width: calc(100vw - 104px);
+  max-height: calc(100vh - 40px);
+  overflow-y: auto;
+  background-color: #ffffff;
+  border-radius: 24px;
+  box-shadow: 0 25px 60px -15px rgba(0, 0, 0, 0.3), 0 0 0 1px rgba(0, 0, 0, 0.06);
+  padding: 22px 20px 20px 20px;
+  display: flex;
+  flex-direction: column;
+  opacity: 0;
+  visibility: hidden;
+  transform: translateY(20px) scale(0.95);
+  transition: all 0.35s cubic-bezier(0.16, 1, 0.3, 1);
+  z-index: 10000;
+}
+
+.dark .lc-side-panel {
+  background-color: #0f172a;
+  box-shadow: 0 25px 60px -15px rgba(0, 0, 0, 0.7), 0 0 0 1px rgba(255, 255, 255, 0.1);
+}
+
+.lc-popup-container.is-open .lc-side-panel {
+  opacity: 1;
+  visibility: visible;
+  transform: translateY(0) scale(1);
+}
+
+/* Pause WhatsApp pulse while Contact Form is open */
+.lc-popup-container.is-open ~ #ufz-wa-btn,
+body.has-lc-open #ufz-wa-btn {
+  animation: none;
+}
+
+.lc-panel-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 12px;
+  padding-bottom: 12px;
+  border-bottom: 1px solid #f1f5f9;
+}
+
+.dark .lc-panel-header {
+  border-bottom-color: #1e293b;
+}
+
+.lc-panel-title {
+  font-size: 15px;
+  font-weight: 700;
+  color: #0f172a;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.dark .lc-panel-title {
+  color: #f8fafc;
+}
+
+.lc-panel-close {
+  width: 32px;
+  height: 32px;
+  border-radius: 50%;
+  background-color: #f1f5f9;
+  color: #64748b;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  border: none;
+  transition: all 0.2s ease;
+}
+
+.dark .lc-panel-close {
+  background-color: #1e293b;
+  color: #94a3b8;
+}
+
+.lc-panel-close:hover {
+  background-color: #e2e8f0;
+  color: #0f172a;
+  transform: rotate(90deg);
+}
+
+.dark .lc-panel-close:hover {
+  background-color: #334155;
+  color: #ffffff;
+}
+
+/* Mobile responsive adjustments */
+@media (max-width: 640px) {
+  #theme-toggle {
+    bottom: 16px !important;
+    left: 16px !important;
+    width: 40px !important;
+    height: 40px !important;
+  }
+  #theme-toggle svg {
+    width: 18px !important;
+    height: 18px !important;
+  }
+  #ufz-wa-btn {
+    bottom: 16px;
+    right: 16px;
+    width: 48px;
+    height: 48px;
+  }
+  #ufz-wa-btn svg {
+    width: 26px;
+    height: 26px;
+  }
+  .lc-popup-container {
+    bottom: 16px;
+    right: 74px;
+  }
+  .lc-tab-btn {
+    width: 48px;
+    height: 48px;
+  }
+  .lc-btn-circle {
+    width: 36px;
+    height: 36px;
+  }
+  .lc-side-panel {
+    bottom: 16px;
+    right: 16px;
+    left: 16px;
+    width: auto;
+    max-width: none;
+    max-height: calc(100vh - 32px);
+  }
+  /* On mobile screens, hide floating buttons while Contact Form is open so there is zero overlap */
+  .lc-popup-container.is-open ~ #ufz-wa-btn,
+  body.has-lc-open #ufz-wa-btn,
+  .lc-popup-container.is-open ~ #theme-toggle,
+  body.has-lc-open #theme-toggle {
+    opacity: 0 !important;
+    visibility: hidden !important;
+    pointer-events: none !important;
+    transform: scale(0.7) translateY(12px) !important;
+    transition: opacity 0.25s ease, transform 0.25s ease, visibility 0.25s ease !important;
+  }
+}
+
+/* ========================================================
+   UFFIZIO GROUP: 3-CARD ECOSYSTEM SECTION & CARD-BOX HOVER
+   ======================================================== */
+#uffizio-ecosystem {
+  font-family: 'Plus Jakarta Sans', sans-serif;
+}
+
+.card-box {
+  border: 1px solid #1e293b;
+  transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+  transform: scale(1);
+  transform-origin: center center;
+  position: relative;
+}
+
+.card-box:hover {
+  transform: scale(1.008);
+  z-index: 10;
+  border-color: rgba(59, 130, 246, 0.75);
+  box-shadow: 0 20px 45px -10px rgba(37, 99, 235, 0.45);
+}
+
+.card-box::before {
+  content: '';
+  position: absolute;
+  inset: -1px;
+  border-radius: inherit;
+  padding: 1.5px;
+  background: conic-gradient(
+    from var(--beam-angle, 0deg),
+    transparent 0deg,
+    transparent 260deg,
+    rgba(0, 119, 255, 0.2) 285deg,
+    rgba(0, 119, 255, 0.6) 310deg,
+    #0077ff 330deg,
+    #ffffff 342deg,
+    #0077ff 352deg,
+    transparent 360deg
+  );
+  -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+  -webkit-mask-composite: xor;
+  mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+  mask-composite: exclude;
+  pointer-events: none;
+  animation: borderBeamRotate 5s linear infinite;
+  z-index: 25;
+  opacity: 0;
+  transition: opacity 0.4s ease;
+}
+
+.card-box::after {
+  content: '';
+  position: absolute;
+  inset: -2px;
+  border-radius: inherit;
+  padding: 2.5px;
+  background: conic-gradient(
+    from var(--beam-angle, 0deg),
+    transparent 0deg,
+    transparent 265deg,
+    rgba(0, 119, 255, 0.3) 295deg,
+    #0077ff 330deg,
+    #ffffff 342deg,
+    #0077ff 355deg,
+    transparent 360deg
+  );
+  -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+  -webkit-mask-composite: xor;
+  mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+  mask-composite: exclude;
+  filter: blur(6px);
+  pointer-events: none;
+  animation: borderBeamRotate 5s linear infinite;
+  z-index: 24;
+  opacity: 0;
+  transition: opacity 0.4s ease;
+}
+
+.card-box:hover::before {
+  opacity: 1;
+}
+
+.card-box:hover::after {
+  opacity: 0.85;
+}
+
+/* =================================================
+   ECOSYSTEM CARD "EXPLORE MORE" CTA BUTTON (Exact Uffizio Live Site Style)
+================================================= */
+.uffizio-readmore-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 12px;
+  color: #ccd2d9;
+  text-decoration: none;
+  font-size: 14px;
+  font-weight: 600;
+  line-height: 1;
+  transition: color 0.25s ease;
+}
+
+.uffizio-readmore-btn:hover {
+  color: #ffffff;
+}
+
+.uffizio-readmore-btn .circle-arrow {
+  width: 25px;
+  height: 25px;
+  border-radius: 50%;
+  background:
+    radial-gradient(78.86% 97.78% at 48.89% 2.22%,
+      rgba(255, 255, 255, 0.12) 0%,
+      rgba(0, 0, 0, 0) 100%),
+    linear-gradient(0deg, #0057FF 0%, #0057FF 100%);
+  border: 0.75px solid rgba(255, 255, 255, 0.8);
+  box-shadow:
+    0px 12px 24px -6px rgba(10, 124, 255, 0.48),
+    0px 3px 6px 0px rgba(10, 124, 255, 0.12),
+    0px 1.5px 4.5px 0px rgba(10, 124, 255, 0.24),
+    0px 0.75px 2.25px 0px rgba(10, 124, 255, 0.24),
+    0.75px 0.75px 1.5px 0px rgba(255, 255, 255, 0.24) inset;
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden !important;
+  flex-shrink: 0;
+  transition: all 0.3s ease;
+}
+
+.uffizio-readmore-btn:hover .circle-arrow,
+.card-box:hover .uffizio-readmore-btn .circle-arrow {
+  box-shadow:
+    0px 16px 28px -4px rgba(10, 124, 255, 0.65),
+    0px 4px 8px 0px rgba(10, 124, 255, 0.2),
+    0.75px 0.75px 1.5px 0px rgba(255, 255, 255, 0.4) inset;
+  border-color: #ffffff;
+}
+
+.uffizio-readmore-btn .circle-arrow svg {
+  width: 10px;
+  height: 10px;
+  color: #ffffff;
+  transform-origin: center center;
+  transform: rotate(0deg);
+  transition: transform 0.3s cubic-bezier(0.165, 0.84, 0.44, 1);
+}
+
+.uffizio-readmore-btn:hover .circle-arrow svg,
+.card-box:hover .uffizio-readmore-btn .circle-arrow svg {
+  transform: rotate(45deg);
+}
+
+
+
+
