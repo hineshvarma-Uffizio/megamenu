@@ -656,6 +656,7 @@ html {
 
 .variation-column-box .products-mega-columns {
   gap: 16px !important;
+  padding: 16px !important;
 }
 
 /* 2. Active Column Box (Encloses the entire active column in a soft blue card) */
