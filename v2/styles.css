@@ -682,13 +682,29 @@ html {
   border: 1px solid rgba(255, 255, 255, 0.09) !important;
 }
 
-/* 4. Category Header: REMOVE PILL BADGE COMPLETELY IN OPTION 2 */
+/* 4. Category Header: Separator Line below Category in Option 2 */
 .variation-column-box .category-header-wrap {
   width: 100% !important;
-  margin-bottom: 10px !important;
+  padding-bottom: 8px !important;
+  margin-bottom: 12px !important;
   border: none !important;
+  border-bottom: 1px solid rgba(148, 163, 184, 0.2) !important;
   box-shadow: none !important;
   background: transparent !important;
+}
+
+.dark .variation-column-box .category-header-wrap {
+  border-bottom: 1px solid rgba(255, 255, 255, 0.1) !important;
+}
+
+/* Subtle active accent on category separator line when column/category is active */
+.variation-column-box .mega-column.is-active .category-header-wrap,
+.variation-column-box .category-header-wrap.is-active {
+  border-bottom-color: rgba(0, 119, 255, 0.35) !important;
+}
+.dark .variation-column-box .mega-column.is-active .category-header-wrap,
+.dark .variation-column-box .category-header-wrap.is-active {
+  border-bottom-color: rgba(0, 119, 255, 0.4) !important;
 }
 
 .variation-column-box .category-header-wrap a.group\/catlink,
@@ -699,7 +715,7 @@ html {
   width: 100% !important;
   height: auto !important;
   min-height: auto !important;
-  padding: 4px 4px 10px 4px !important;
+  padding: 0 2px !important;
   border-radius: 0 !important;
   border: none !important;
   background: transparent !important;
