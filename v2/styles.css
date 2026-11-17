@@ -659,6 +659,14 @@ html {
   padding: 16px !important;
 }
 
+/* Option 2: Compact 16px Padding for Discover & Resource Dropdowns */
+.variation-column-box #discover-dropdown > div,
+.variation-column-box #resource-dropdown > div,
+.variation-column-box #discover-dropdown .rounded-3xl,
+.variation-column-box #resource-dropdown .rounded-3xl {
+  padding: 16px !important;
+}
+
 /* 2. Active Column Box (Encloses the entire active column in a soft blue card) */
 .variation-column-box .products-mega-columns .mega-column.is-active {
   background-color: rgba(0, 119, 255, 0.05) !important;
