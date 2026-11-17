@@ -683,7 +683,14 @@ html {
 }
 
 /* 4. Category Header: Separator Line below Category in Option 2 */
-.variation-column-box .category-header-wrap {
+.variation-column-box .category-header-wrap,
+.variation-column-box .category-header-wrap:hover,
+.variation-column-box .category-header-wrap.is-active,
+.variation-column-box .category-header-wrap:not(.is-active),
+.dark .variation-column-box .category-header-wrap,
+.dark .variation-column-box .category-header-wrap:hover,
+.dark .variation-column-box .category-header-wrap.is-active,
+.dark .variation-column-box .category-header-wrap:not(.is-active) {
   width: 100% !important;
   padding-bottom: 8px !important;
   margin-bottom: 12px !important;
@@ -691,6 +698,7 @@ html {
   border-bottom: 1px solid rgba(148, 163, 184, 0.2) !important;
   box-shadow: none !important;
   background: transparent !important;
+  background-color: transparent !important;
 }
 
 .dark .variation-column-box .category-header-wrap {
@@ -748,69 +756,55 @@ html {
   transition: color 0.2s ease, opacity 0.2s ease !important;
 }
 
-/* 5. COLOR LOGIC: Blue ONLY when Category Header is Active; White when Inactive */
+/* 5. COLOR LOGIC: Blue ONLY when Category Header is Active; White when Inactive; ZERO Blue Strip in Light Mode */
+
+/* In Option 2, NEVER show any background strip or border around category header in ANY state (Light or Dark Mode) */
+.variation-column-box .category-header-wrap a.group\/catlink,
+.variation-column-box .category-header-wrap .cat-tab-badge,
+.variation-column-box .category-header-wrap a.group\/catlink:hover,
+.variation-column-box .category-header-wrap .cat-tab-badge:hover,
+.variation-column-box .category-header-wrap:hover a.group\/catlink,
+.variation-column-box .category-header-wrap:hover .cat-tab-badge,
+.variation-column-box .category-header-wrap.is-active a.group\/catlink,
+.variation-column-box .category-header-wrap.is-active .cat-tab-badge,
+.variation-column-box .category-header-wrap:not(.is-active) a.group\/catlink,
+.variation-column-box .category-header-wrap:not(.is-active) .cat-tab-badge,
+.variation-column-box .category-header-wrap:not(.is-active):hover a.group\/catlink,
+.variation-column-box .category-header-wrap:not(.is-active):hover .cat-tab-badge,
+.dark .variation-column-box .category-header-wrap a.group\/catlink,
+.dark .variation-column-box .category-header-wrap .cat-tab-badge,
+.dark .variation-column-box .category-header-wrap a.group\/catlink:hover,
+.dark .variation-column-box .category-header-wrap .cat-tab-badge:hover,
+.dark .variation-column-box .category-header-wrap:hover a.group\/catlink,
+.dark .variation-column-box .category-header-wrap:hover .cat-tab-badge,
+.dark .variation-column-box .category-header-wrap.is-active a.group\/catlink,
+.dark .variation-column-box .category-header-wrap.is-active .cat-tab-badge,
+.dark .variation-column-box .category-header-wrap:not(.is-active) a.group\/catlink,
+.dark .variation-column-box .category-header-wrap:not(.is-active) .cat-tab-badge,
+.dark .variation-column-box .category-header-wrap:not(.is-active):hover a.group\/catlink,
+.dark .variation-column-box .category-header-wrap:not(.is-active):hover .cat-tab-badge {
+  background: transparent !important;
+  background-color: transparent !important;
+  border: none !important;
+  box-shadow: none !important;
+}
 
 /* A) ACTIVE STATE (Only when category header itself has .is-active, e.g. on #telematics) */
-.variation-column-box .category-header-wrap.is-active a.group\/catlink,
-.variation-column-box .category-header-wrap.is-active .cat-tab-badge {
-  background: transparent !important;
-  background-color: transparent !important;
-  border: none !important;
-  box-shadow: none !important;
-}
-
 .variation-column-box .category-header-wrap.is-active a.group\/catlink h3,
-.variation-column-box .category-header-wrap.is-active .cat-tab-badge h3 {
-  color: #0077ff !important;
-  font-weight: 800 !important;
-}
-
-.variation-column-box .category-header-wrap.is-active .cat-explore-icon {
-  color: #0077ff !important;
-  opacity: 1 !important;
-}
-
-/* Dark mode active header */
-.dark .variation-column-box .category-header-wrap.is-active a.group\/catlink,
-.dark .variation-column-box .category-header-wrap.is-active .cat-tab-badge {
-  background: transparent !important;
-  background-color: transparent !important;
-  border: none !important;
-  box-shadow: none !important;
-}
-
+.variation-column-box .category-header-wrap.is-active .cat-tab-badge h3,
 .dark .variation-column-box .category-header-wrap.is-active a.group\/catlink h3,
 .dark .variation-column-box .category-header-wrap.is-active .cat-tab-badge h3 {
   color: #0077ff !important;
   font-weight: 800 !important;
 }
 
+.variation-column-box .category-header-wrap.is-active .cat-explore-icon,
 .dark .variation-column-box .category-header-wrap.is-active .cat-explore-icon {
   color: #0077ff !important;
   opacity: 1 !important;
 }
 
-/* B) NON-ACTIVE STATE (Header stays WHITE even if parent column box is active on product page) */
-.dark .variation-column-box .category-header-wrap:not(.is-active) a.group\/catlink,
-.dark .variation-column-box .category-header-wrap:not(.is-active) .cat-tab-badge {
-  background: transparent !important;
-  background-color: transparent !important;
-  border: none !important;
-  box-shadow: none !important;
-}
-
-.dark .variation-column-box .category-header-wrap:not(.is-active) a.group\/catlink h3,
-.dark .variation-column-box .category-header-wrap:not(.is-active) .cat-tab-badge h3 {
-  color: #ffffff !important; /* PURE WHITE as requested */
-  font-weight: 700 !important;
-}
-
-.dark .variation-column-box .category-header-wrap:not(.is-active) .cat-explore-icon {
-  color: #ffffff !important; /* PURE WHITE as requested */
-  opacity: 0.8 !important;
-}
-
-/* Light mode non-active */
+/* B) NON-ACTIVE STATE (Header stays Dark Slate in Light Mode, PURE WHITE in Dark Mode) */
 .variation-column-box .category-header-wrap:not(.is-active) a.group\/catlink h3,
 .variation-column-box .category-header-wrap:not(.is-active) .cat-tab-badge h3 {
   color: #0f172a !important;
@@ -821,7 +815,26 @@ html {
   opacity: 0.8 !important;
 }
 
-/* C) HOVER ON NON-ACTIVE CATEGORY HEADER (Stays WHITE, No Blue) */
+.dark .variation-column-box .category-header-wrap:not(.is-active) a.group\/catlink h3,
+.dark .variation-column-box .category-header-wrap:not(.is-active) .cat-tab-badge h3 {
+  color: #ffffff !important; /* PURE WHITE as requested */
+  font-weight: 700 !important;
+}
+.dark .variation-column-box .category-header-wrap:not(.is-active) .cat-explore-icon {
+  color: #ffffff !important; /* PURE WHITE as requested */
+  opacity: 0.8 !important;
+}
+
+/* C) HOVER ON NON-ACTIVE CATEGORY HEADER (No background strip) */
+.variation-column-box .category-header-wrap:not(.is-active):hover a.group\/catlink h3,
+.variation-column-box .category-header-wrap:not(.is-active):hover .cat-tab-badge h3 {
+  color: #0077ff !important;
+}
+.variation-column-box .category-header-wrap:not(.is-active):hover .cat-explore-icon {
+  color: #0077ff !important;
+  opacity: 1 !important;
+}
+
 .dark .variation-column-box .category-header-wrap:not(.is-active):hover a.group\/catlink h3,
 .dark .variation-column-box .category-header-wrap:not(.is-active):hover .cat-tab-badge h3 {
   color: #ffffff !important;
