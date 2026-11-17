@@ -697,12 +697,10 @@ html {
   border-bottom: 1px solid rgba(255, 255, 255, 0.1) !important;
 }
 
-/* Subtle active accent on category separator line when column/category is active */
-.variation-column-box .mega-column.is-active .category-header-wrap,
+/* Subtle active accent on category separator line only when category header is active */
 .variation-column-box .category-header-wrap.is-active {
   border-bottom-color: rgba(0, 119, 255, 0.35) !important;
 }
-.dark .variation-column-box .mega-column.is-active .category-header-wrap,
 .dark .variation-column-box .category-header-wrap.is-active {
   border-bottom-color: rgba(0, 119, 255, 0.4) !important;
 }
@@ -750,11 +748,9 @@ html {
   transition: color 0.2s ease, opacity 0.2s ease !important;
 }
 
-/* 5. COLOR LOGIC: Blue ONLY when Active; White everywhere else */
+/* 5. COLOR LOGIC: Blue ONLY when Category Header is Active; White when Inactive */
 
-/* A) ACTIVE STATE (Only the active column header gets Blue) */
-.variation-column-box .mega-column.is-active .category-header-wrap a.group\/catlink,
-.variation-column-box .mega-column.is-active .category-header-wrap .cat-tab-badge,
+/* A) ACTIVE STATE (Only when category header itself has .is-active, e.g. on #telematics) */
 .variation-column-box .category-header-wrap.is-active a.group\/catlink,
 .variation-column-box .category-header-wrap.is-active .cat-tab-badge {
   background: transparent !important;
@@ -763,23 +759,18 @@ html {
   box-shadow: none !important;
 }
 
-.variation-column-box .mega-column.is-active .category-header-wrap a.group\/catlink h3,
-.variation-column-box .mega-column.is-active .category-header-wrap .cat-tab-badge h3,
 .variation-column-box .category-header-wrap.is-active a.group\/catlink h3,
 .variation-column-box .category-header-wrap.is-active .cat-tab-badge h3 {
   color: #0077ff !important;
   font-weight: 800 !important;
 }
 
-.variation-column-box .mega-column.is-active .category-header-wrap .cat-explore-icon,
 .variation-column-box .category-header-wrap.is-active .cat-explore-icon {
   color: #0077ff !important;
   opacity: 1 !important;
 }
 
 /* Dark mode active header */
-.dark .variation-column-box .mega-column.is-active .category-header-wrap a.group\/catlink,
-.dark .variation-column-box .mega-column.is-active .category-header-wrap .cat-tab-badge,
 .dark .variation-column-box .category-header-wrap.is-active a.group\/catlink,
 .dark .variation-column-box .category-header-wrap.is-active .cat-tab-badge {
   background: transparent !important;
@@ -788,23 +779,18 @@ html {
   box-shadow: none !important;
 }
 
-.dark .variation-column-box .mega-column.is-active .category-header-wrap a.group\/catlink h3,
-.dark .variation-column-box .mega-column.is-active .category-header-wrap .cat-tab-badge h3,
 .dark .variation-column-box .category-header-wrap.is-active a.group\/catlink h3,
 .dark .variation-column-box .category-header-wrap.is-active .cat-tab-badge h3 {
   color: #0077ff !important;
   font-weight: 800 !important;
 }
 
-.dark .variation-column-box .mega-column.is-active .category-header-wrap .cat-explore-icon,
 .dark .variation-column-box .category-header-wrap.is-active .cat-explore-icon {
   color: #0077ff !important;
   opacity: 1 !important;
 }
 
-/* B) NON-ACTIVE STATE (Must stay PURE WHITE in Dark Mode, Deep Slate in Light Mode) */
-.dark .variation-column-box .mega-column:not(.is-active) .category-header-wrap a.group\/catlink,
-.dark .variation-column-box .mega-column:not(.is-active) .category-header-wrap .cat-tab-badge,
+/* B) NON-ACTIVE STATE (Header stays WHITE even if parent column box is active on product page) */
 .dark .variation-column-box .category-header-wrap:not(.is-active) a.group\/catlink,
 .dark .variation-column-box .category-header-wrap:not(.is-active) .cat-tab-badge {
   background: transparent !important;
@@ -813,29 +799,23 @@ html {
   box-shadow: none !important;
 }
 
-.dark .variation-column-box .mega-column:not(.is-active) .category-header-wrap a.group\/catlink h3,
-.dark .variation-column-box .mega-column:not(.is-active) .category-header-wrap .cat-tab-badge h3,
 .dark .variation-column-box .category-header-wrap:not(.is-active) a.group\/catlink h3,
 .dark .variation-column-box .category-header-wrap:not(.is-active) .cat-tab-badge h3 {
   color: #ffffff !important; /* PURE WHITE as requested */
   font-weight: 700 !important;
 }
 
-.dark .variation-column-box .mega-column:not(.is-active) .category-header-wrap .cat-explore-icon,
 .dark .variation-column-box .category-header-wrap:not(.is-active) .cat-explore-icon {
   color: #ffffff !important; /* PURE WHITE as requested */
   opacity: 0.8 !important;
 }
 
 /* Light mode non-active */
-.variation-column-box .mega-column:not(.is-active) .category-header-wrap a.group\/catlink h3,
-.variation-column-box .mega-column:not(.is-active) .category-header-wrap .cat-tab-badge h3,
 .variation-column-box .category-header-wrap:not(.is-active) a.group\/catlink h3,
 .variation-column-box .category-header-wrap:not(.is-active) .cat-tab-badge h3 {
   color: #0f172a !important;
   font-weight: 700 !important;
 }
-.variation-column-box .mega-column:not(.is-active) .category-header-wrap .cat-explore-icon,
 .variation-column-box .category-header-wrap:not(.is-active) .cat-explore-icon {
   color: #64748b !important;
   opacity: 0.8 !important;
