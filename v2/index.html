@@ -57,7 +57,7 @@
   <!-- 1. Header માં (CSS) - Ask-Uffizio AI Chatbot -->
   <link rel="stylesheet" href="https://hineshvarma-uffizio.github.io/Ask-Uffizio-Chatbot/uffizio-ai-chat.css">
   <!-- Custom Stylesheet with cache-buster -->
-  <link rel="stylesheet" href="styles.css?v=20261117-discover-resource-16px-padding">
+  <link rel="stylesheet" href="styles.css?v=20261119-v5-3d-card-flip">
 </head>
 <body class="bg-slate-50 dark:bg-slate-950 text-slate-800 dark:text-slate-100 antialiased font-sans min-h-screen flex flex-col transition-colors duration-200">
 
@@ -1590,128 +1590,163 @@
       </div>
     </section>
 
-    <!-- ======================================================== -->
-    <!-- MAIN SECTION: EXACT UFFIZIO GROUP 3-CARD SHOWCASE        -->
-    <!-- ======================================================== -->
-    <section id="uffizio-ecosystem" class="w-full py-16 sm:py-24 bg-[#030712] text-slate-100 relative transition-colors">
-      <div class="max-w-[1440px] mx-auto px-4 sm:px-6 lg:px-[50px] relative">
-
-        <!-- Section Header (Left-Aligned with Eyebrow & Real Copy) -->
-        <div class="text-left mb-12 sm:mb-14">
+        <!-- ==================================================================================== -->
+    <!-- MAIN SECTION: UFFIZIO GROUP 3D CARD FLIP SHOWCASE (VARIATION 5)                      -->
+    <!-- ==================================================================================== -->
+    <section id="uffizio-ecosystem" class="relative w-full bg-[#030712] text-white">
+      <!-- Sticky Scroll Runway (260vh provides generous viewing time for front cards before flipping) -->
+      <div id="v5-scroll-track" class="relative w-full h-[260vh]">
+        
+        <!-- Pinned Viewport Container (Centered in 100vh screen while scrolling) -->
+        <div class="sticky top-0 w-full h-screen max-w-[1440px] mx-auto flex flex-col justify-center items-center px-4 sm:px-6 lg:px-[50px]">
           
-          <!-- Eyebrow Tag (Blue Arrow + Uffizio Group) -->
-          <div class="inline-flex items-center gap-2 text-blue-500 font-bold text-sm sm:text-base tracking-wide mb-3">
-            <span class="text-blue-500 font-extrabold text-lg leading-none">&rarr;</span>
-            <span class="text-white font-medium">Uffizio Group</span>
-          </div>
-
-          <!-- Main Heading -->
-          <h2 class="text-4xl sm:text-5xl lg:text-6xl tracking-tight leading-tight">
-            <span class="font-extrabold text-white">Uffizio</span>
-            <span class="font-normal text-slate-400 ml-1">Group</span>
-          </h2>
-
-          <!-- Subheading (Real Uffizio Copy) -->
-          <p class="text-slate-400 text-sm sm:text-base mt-4 max-w-3xl leading-relaxed">
-            From vehicle and asset tracking to specialized operational systems, our products are built to provide clear visibility, better coordination, and improved performance across industries.
-          </p>
-
-        </div>
-
-        <!-- ======================================================== -->
-        <!-- 3 CARDS GRID (TELEMATICS | COMMUTE | IOTECH)             -->
-        <!-- ======================================================== -->
-        <div class="grid grid-cols-1 md:grid-cols-3 gap-6 lg:gap-8 items-stretch">
-
-          <!-- ==================================================== -->
-          <!-- CARD 1: UFFIZIO TELEMATICS (HIGH-RES 837x1024)       -->
-          <!-- ==================================================== -->
-          <div class="card-box rounded-3xl relative group min-h-[540px] sm:min-h-[580px] flex flex-col justify-end bg-cover overflow-hidden" style="background-image: url('../assets/card-telematics.jpg?v=20261104-telematics-v4'); background-position: center bottom;">
+          <div class="w-full relative">
             
-            <!-- Bottom Gradient Overlay with Title, Description & CTA -->
-            <div class="relative z-20 pt-28 pb-7 px-6 sm:px-8 rounded-b-3xl bg-gradient-to-t from-[#040814] via-[#040814]/90 to-transparent">
-              <h3 class="text-[26px] leading-[32px] sm:leading-[36px] font-bold text-white tracking-tight drop-shadow-lg mb-[20px]">
-                Uffizio Telematics
-              </h3>
-              <p class="text-slate-300 text-[16px] leading-[22px]">
-                From vehicle and asset tracking to specialized operational systems, our products are built to provide clear visibility, better coordination, and improved performance across industries.
-              </p>
+            <!-- Ambient Glow Behind -->
+            <div class="absolute -top-32 left-1/2 -translate-x-1/2 w-[700px] h-[350px] bg-blue-600/15 rounded-full blur-3xl pointer-events-none"></div>
 
-              <!-- Explore more CTA with 24px Solid Blue Circular Arrow Button (Exact Uffizio Live Site) -->
-              <div class="mt-6">
-                <a href="https://uffizio-telematics.com" target="_blank" class="uffizio-readmore-btn group/btn">
-                  <span class="text-[14px] font-semibold leading-none">Explore more</span>
-                  <span class="circle-arrow">
-                    <svg class="w-[10px] h-[10px] text-white" viewBox="0 0 7 7" fill="none" stroke="currentColor" stroke-width="1.3" stroke-linecap="round" stroke-linejoin="round">
-                      <path d="M2.01846 0.553749L5.60774 0.499996L5.55399 4.08928M0.500015 5.60603L5.55046 0.55559"></path>
-                    </svg>
+            <!-- Section Header (Uffizio Group Branding with Interactive Flip Controls) -->
+            <div class="text-left max-w-6xl mx-auto mb-6 sm:mb-8 w-full">
+              <div class="inline-flex items-center gap-2 text-blue-500 font-bold text-sm sm:text-base tracking-wide mb-3">
+                <span class="text-blue-500 font-extrabold text-lg leading-none">&rarr;</span>
+                <span class="text-white font-medium">Uffizio Group</span>
+              </div>
+
+              <div class="flex flex-col lg:flex-row lg:items-end lg:justify-between gap-4">
+                <div>
+                  <h2 class="text-4xl sm:text-5xl lg:text-6xl tracking-tight leading-tight">
+                    <span class="font-extrabold text-white">Uffizio</span>
+                    <span class="font-normal text-slate-400 ml-1">Group</span>
+                  </h2>
+
+                  <p class="text-slate-400 text-sm sm:text-base mt-3 max-w-3xl leading-relaxed">
+                    Empowering businesses with unmatched visibility and control, delivering smart solutions across Telematics, Commute, and IoTech.
+                  </p>
+                </div>
+
+                <!-- Interactive Controls (One-Click Flip Toggle Button + Helper Hint) -->
+                <div class="flex items-center gap-3 shrink-0 mb-1">
+                  <button onclick="flipAllV5()" class="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-blue-600/20 hover:bg-blue-600/30 border border-blue-500/40 text-blue-300 hover:text-white text-xs font-semibold transition-all shadow-lg hover:border-blue-400">
+                    <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 4v5h.582m15.356 2A8.001 8.001 0 004.582 9m0 0H9m11 11v-5h-.581m0 0a8.003 8.003 0 01-15.357-2m15.357 2H15"></path></svg>
+                    <span id="v5-flip-btn-text">Flip Cards</span>
+                  </button>
+                  <span class="text-xs text-slate-400 hidden sm:flex items-center gap-1.5">
+                    <svg class="w-3.5 h-3.5 text-blue-400 animate-bounce" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 14l-7 7m0 0l-7-7m7 7V3"></path></svg>
+                    <span>Scroll down or click any card</span>
                   </span>
-                </a>
+                </div>
+              </div>
+            </div>
+
+            <!-- ======================================================== -->
+            <!-- DIRECT 3-CARD FLIP STAGE: 3 SEPARATE CARDS FROM THE START -->
+            <!-- ======================================================== -->
+            <div class="split-stage-container w-full max-w-6xl mx-auto py-2 sm:py-4 relative">
+              <div id="cards-grid-v5" class="flex flex-col md:flex-row items-stretch justify-center gap-6 relative z-10">
+
+                <!-- CARD 1: TELEMATICS (FLIPPER) -->
+                <div class="card-flipper-container v5-container-telematics w-full md:w-1/3 cursor-pointer select-none" onclick="toggleV5Card(1)">
+                  <div id="flipper-v5-1" class="card-inner">
+                    <!-- FRONT FACE -->
+                    <div id="front-v5-1" class="card-face card-front absolute inset-0 bg-cover bg-center p-[20px] text-left flex flex-col items-start" style="background-image: url('../assets/card-telematics-front.jpg?v=20261119'); background-repeat: no-repeat !important; border-radius: 24px; border: 1px solid rgba(51, 65, 85, 0.65); box-shadow: 0 20px 40px -15px rgba(0,0,0,0.6);">
+                      <h3 class="text-[26px] leading-[32px] font-medium text-white tracking-tight">
+                        Uffizio Telematics
+                      </h3>
+                    </div>
+                    <!-- BACK FACE (#CA3629) -->
+                    <div id="back-v5-1" class="card-face card-back v5-card-back absolute inset-0 flex flex-col justify-between p-[20px] text-left overflow-hidden shadow-2xl group/card" style="background-color: #CA3629; border-radius: 24px;">
+                      <div class="flex flex-col items-start text-left">
+                        <h3 class="text-[26px] leading-[32px] font-medium text-white tracking-tight mb-4">
+                          Uffizio Telematics
+                        </h3>
+                        <p class="text-white text-[16px] font-normal leading-[25px]">
+                          From vehicle and asset tracking to specialized operational systems, our products are built to provide clear visibility, better coordination, and improved performance across industries.
+                        </p>
+                      </div>
+                      <div class="pt-6 flex items-start justify-start text-left" onclick="event.stopPropagation()">
+                        <a href="https://uffizio-telematics.com" target="_blank" class="uffizio-readmore-btn group/btn">
+                          <span class="text-[14px] font-semibold leading-none text-white">Explore more</span>
+                          <span class="circle-arrow">
+                            <svg class="w-[11px] h-[11px] text-white" viewBox="0 0 7 7" fill="none" stroke="currentColor" stroke-width="1.35" stroke-linecap="round" stroke-linejoin="round">
+                              <path d="M2.01846 0.553749L5.60774 0.499996L5.55399 4.08928M0.500015 5.60603L5.55046 0.55559"></path>
+                            </svg>
+                          </span>
+                        </a>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+
+                <!-- CARD 2: COMMUTE (FLIPPER) -->
+                <div class="card-flipper-container v5-container-commute w-full md:w-1/3 cursor-pointer select-none" onclick="toggleV5Card(2)">
+                  <div id="flipper-v5-2" class="card-inner">
+                    <!-- FRONT FACE -->
+                    <div id="front-v5-2" class="card-face card-front absolute inset-0 bg-cover bg-center p-[20px] text-left flex flex-col items-start" style="background-image: url('../assets/card-commute-front.jpg?v=20261119'); background-repeat: no-repeat !important; border-radius: 24px; border: 1px solid rgba(51, 65, 85, 0.65); box-shadow: 0 20px 40px -15px rgba(0,0,0,0.6);">
+                      <h3 class="text-[26px] leading-[32px] font-medium text-white tracking-tight">
+                        Uffizio Commute
+                      </h3>
+                    </div>
+                    <!-- BACK FACE (#D78E11) -->
+                    <div id="back-v5-2" class="card-face card-back v5-card-back absolute inset-0 flex flex-col justify-between p-[20px] text-left overflow-hidden shadow-2xl group/card" style="background-color: #D78E11; border-radius: 24px;">
+                      <div class="flex flex-col items-start text-left">
+                        <h3 class="text-[26px] leading-[32px] font-medium text-white tracking-tight mb-4">
+                          Uffizio Commute
+                        </h3>
+                        <p class="text-white text-[16px] font-normal leading-[25px]">
+                          Optimizing every journey, every day. Uffizio Commute streamlines transportation management with data-driven planning and real-time insights while improving punctuality and passenger experience.
+                        </p>
+                      </div>
+                      <div class="pt-6 flex items-start justify-start text-left" onclick="event.stopPropagation()">
+                        <a href="https://uffizio-commute.com" target="_blank" class="uffizio-readmore-btn group/btn">
+                          <span class="text-[14px] font-semibold leading-none text-white">Explore more</span>
+                          <span class="circle-arrow">
+                            <svg class="w-[11px] h-[11px] text-white" viewBox="0 0 7 7" fill="none" stroke="currentColor" stroke-width="1.35" stroke-linecap="round" stroke-linejoin="round">
+                              <path d="M2.01846 0.553749L5.60774 0.499996L5.55399 4.08928M0.500015 5.60603L5.55046 0.55559"></path>
+                            </svg>
+                          </span>
+                        </a>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+
+                <!-- CARD 3: IOTECH (FLIPPER) -->
+                <div class="card-flipper-container v5-container-iotech w-full md:w-1/3 cursor-pointer select-none" onclick="toggleV5Card(3)">
+                  <div id="flipper-v5-3" class="card-inner">
+                    <!-- FRONT FACE -->
+                    <div id="front-v5-3" class="card-face card-front absolute inset-0 bg-cover bg-center p-[20px] text-left flex flex-col items-start" style="background-image: url('../assets/card-iotech-front.jpg?v=20261119'); background-repeat: no-repeat !important; border-radius: 24px; border: 1px solid rgba(51, 65, 85, 0.65); box-shadow: 0 20px 40px -15px rgba(0,0,0,0.6);">
+                      <h3 class="text-[26px] leading-[32px] font-medium text-white tracking-tight">
+                        Uffizio IoTech
+                      </h3>
+                    </div>
+                    <!-- BACK FACE (#138EC7) -->
+                    <div id="back-v5-3" class="card-face card-back v5-card-back absolute inset-0 flex flex-col justify-between p-[20px] text-left overflow-hidden shadow-2xl group/card" style="background-color: #138EC7; border-radius: 24px;">
+                      <div class="flex flex-col items-start text-left">
+                        <h3 class="text-[26px] leading-[32px] font-medium text-white tracking-tight mb-4">
+                          Uffizio IoTech
+                        </h3>
+                        <p class="text-white text-[16px] font-normal leading-[25px]">
+                          Designed for today's evolving business needs, Uffizio IOTech builds smart monitoring and management solutions that help organizations improve performance and grow across industries.
+                        </p>
+                      </div>
+                      <div class="pt-6 flex items-start justify-start text-left" onclick="event.stopPropagation()">
+                        <a href="https://uffizio-iotech.com" target="_blank" class="uffizio-readmore-btn group/btn">
+                          <span class="text-[14px] font-semibold leading-none text-white">Explore more</span>
+                          <span class="circle-arrow">
+                            <svg class="w-[11px] h-[11px] text-white" viewBox="0 0 7 7" fill="none" stroke="currentColor" stroke-width="1.35" stroke-linecap="round" stroke-linejoin="round">
+                              <path d="M2.01846 0.553749L5.60774 0.499996L5.55399 4.08928M0.500015 5.60603L5.55046 0.55559"></path>
+                            </svg>
+                          </span>
+                        </a>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+
               </div>
             </div>
 
           </div>
-
-
-          <!-- ==================================================== -->
-          <!-- CARD 2: UFFIZIO COMMUTE (HIGH-RES 837x1024)          -->
-          <!-- ==================================================== -->
-          <div class="card-box rounded-3xl relative group min-h-[540px] sm:min-h-[580px] flex flex-col justify-end bg-cover overflow-hidden" style="background-image: url('../assets/card-commute.jpg?v=20261104-commute-v3'); background-position: center top;">
-            
-            <!-- Bottom Gradient Overlay with Title, Description & CTA -->
-            <div class="relative z-20 pt-16 sm:pt-20 pb-7 px-6 sm:px-8 rounded-b-3xl bg-gradient-to-t from-[#040814] via-[#040814]/90 to-transparent">
-              <h3 class="text-[26px] leading-[32px] sm:leading-[36px] font-bold text-white tracking-tight drop-shadow-lg mb-[20px]">
-                Uffizio Commute
-              </h3>
-              <p class="text-slate-300 text-[16px] leading-[22px]">
-                Optimizing every journey, every day. Uffizio Commute streamlines transportation management with data-driven planning and real-time insights while improving punctuality and passenger experience.
-              </p>
-
-              <!-- Explore more CTA with 24px Solid Blue Circular Arrow Button (Exact Uffizio Live Site) -->
-              <div class="mt-6">
-                <a href="https://uffizio-commute.com" target="_blank" class="uffizio-readmore-btn group/btn">
-                  <span class="text-[14px] font-semibold leading-none">Explore more</span>
-                  <span class="circle-arrow">
-                    <svg class="w-[10px] h-[10px] text-white" viewBox="0 0 7 7" fill="none" stroke="currentColor" stroke-width="1.3" stroke-linecap="round" stroke-linejoin="round">
-                      <path d="M2.01846 0.553749L5.60774 0.499996L5.55399 4.08928M0.500015 5.60603L5.55046 0.55559"></path>
-                    </svg>
-                  </span>
-                </a>
-              </div>
-            </div>
-
-          </div>
-
-
-          <!-- ==================================================== -->
-          <!-- CARD 3: UFFIZIO IOTECH (HIGH-RES 837x1024)           -->
-          <!-- ==================================================== -->
-          <div class="card-box rounded-3xl relative group min-h-[540px] sm:min-h-[580px] flex flex-col justify-end bg-cover overflow-hidden" style="background-image: url('../assets/card-iotech.jpg?v=20261104-iotech-v2'); background-position: center bottom;">
-            
-            <!-- Bottom Gradient Overlay with Title, Description & CTA -->
-            <div class="relative z-20 pt-28 pb-7 px-6 sm:px-8 rounded-b-3xl bg-gradient-to-t from-[#040814] via-[#040814]/90 to-transparent">
-              <h3 class="text-[26px] leading-[32px] sm:leading-[36px] font-bold text-white tracking-tight drop-shadow-lg mb-[20px]">
-                Uffizio IoTech
-              </h3>
-              <p class="text-slate-300 text-[16px] leading-[22px]">
-                Designed for today's evolving business needs, Uffizio IOTech builds smart monitoring and management solutions that help organizations improve performance and grow across industries.
-              </p>
-
-              <!-- Explore more CTA with 24px Solid Blue Circular Arrow Button (Exact Uffizio Live Site) -->
-              <div class="mt-6">
-                <a href="https://uffizio-iotech.com" target="_blank" class="uffizio-readmore-btn group/btn">
-                  <span class="text-[14px] font-semibold leading-none">Explore more</span>
-                  <span class="circle-arrow">
-                    <svg class="w-[10px] h-[10px] text-white" viewBox="0 0 7 7" fill="none" stroke="currentColor" stroke-width="1.3" stroke-linecap="round" stroke-linejoin="round">
-                      <path d="M2.01846 0.553749L5.60774 0.499996L5.55399 4.08928M0.500015 5.60603L5.55046 0.55559"></path>
-                    </svg>
-                  </span>
-                </a>
-              </div>
-            </div>
-
-          </div>
-
         </div>
 
       </div>
@@ -1983,7 +2018,7 @@
   </div>
 
   <!-- Custom Logic & Event Listeners -->
-  <script src="script.js?v=20261117-product-box-white-header"></script>
+  <script src="script.js?v=20261119-v5-3d-card-flip"></script>
 
   <!-- 2. Footer માં (JS) - Ask-Uffizio AI Chatbot -->
   <script>

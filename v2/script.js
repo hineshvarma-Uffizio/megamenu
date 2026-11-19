@@ -673,3 +673,137 @@ document.addEventListener('DOMContentLoaded', () => {
     });
   }
 });
+
+
+// ========================================================
+// VARIATION 5: DIRECT 3D CARD FLIP SHOWCASE
+// ========================================================
+let v5CardFlipped = { 1: false, 2: false, 3: false };
+
+function toggleV5Card(num) {
+  v5CardFlipped[num] = !v5CardFlipped[num];
+  const flipper = document.getElementById("flipper-v5-" + num);
+  const front = document.getElementById("front-v5-" + num);
+  const back = document.getElementById("back-v5-" + num);
+  if (!flipper) return;
+
+  const rot = v5CardFlipped[num] ? 180 : 0;
+  flipper.style.transform = "rotateY(" + rot + "deg)";
+  if (front && back) {
+    front.style.pointerEvents = rot < 90 ? "auto" : "none";
+    back.style.pointerEvents = rot >= 90 ? "auto" : "none";
+  }
+  updateV5FlipButtonState();
+}
+
+function flipAllV5() {
+  const allFlipped = v5CardFlipped[1] && v5CardFlipped[2] && v5CardFlipped[3];
+  const targetState = !allFlipped;
+
+  [1, 2, 3].forEach((num, index) => {
+    setTimeout(() => {
+      v5CardFlipped[num] = targetState;
+      const flipper = document.getElementById("flipper-v5-" + num);
+      const front = document.getElementById("front-v5-" + num);
+      const back = document.getElementById("back-v5-" + num);
+      if (!flipper) return;
+
+      const rot = targetState ? 180 : 0;
+      flipper.style.transform = "rotateY(" + rot + "deg)";
+      if (front && back) {
+        front.style.pointerEvents = rot < 90 ? "auto" : "none";
+        back.style.pointerEvents = rot >= 90 ? "auto" : "none";
+      }
+    }, index * 120);
+  });
+
+  const btnText = document.getElementById("v5-flip-btn-text");
+  if (btnText) {
+    btnText.innerText = targetState ? "Flip to Front" : "Flip Cards";
+  }
+}
+
+function updateV5FlipButtonState() {
+  const allFlipped = v5CardFlipped[1] && v5CardFlipped[2] && v5CardFlipped[3];
+  const btnText = document.getElementById("v5-flip-btn-text");
+  if (btnText) {
+    btnText.innerText = allFlipped ? "Flip to Front" : "Flip Cards";
+  }
+}
+
+function setV5FlipStage(p) {
+  p = Math.max(0, Math.min(1, p));
+
+  const flipper1 = document.getElementById("flipper-v5-1");
+  const flipper2 = document.getElementById("flipper-v5-2");
+  const flipper3 = document.getElementById("flipper-v5-3");
+
+  const front1 = document.getElementById("front-v5-1");
+  const front2 = document.getElementById("front-v5-2");
+  const front3 = document.getElementById("front-v5-3");
+
+  const back1 = document.getElementById("back-v5-1");
+  const back2 = document.getElementById("back-v5-2");
+  const back3 = document.getElementById("back-v5-3");
+
+  if (!flipper1 || !flipper2 || !flipper3) return;
+
+  const flipStart1 = 0.35;
+  const flipEnd1   = 0.68;
+  const flipStart2 = 0.45;
+  const flipEnd2   = 0.78;
+  const flipStart3 = 0.55;
+  const flipEnd3   = 0.88;
+
+  const rot1 = Math.min(180, Math.max(0, (p - flipStart1) / (flipEnd1 - flipStart1) * 180));
+  const rot2 = Math.min(180, Math.max(0, (p - flipStart2) / (flipEnd2 - flipStart2) * 180));
+  const rot3 = Math.min(180, Math.max(0, (p - flipStart3) / (flipEnd3 - flipStart3) * 180));
+
+  flipper1.style.transform = "rotateY(" + rot1.toFixed(1) + "deg)";
+  flipper2.style.transform = "rotateY(" + rot2.toFixed(1) + "deg)";
+  flipper3.style.transform = "rotateY(" + rot3.toFixed(1) + "deg)";
+
+  if (front1 && back1) {
+    front1.style.pointerEvents = rot1 < 90 ? "auto" : "none";
+    back1.style.pointerEvents = rot1 >= 90 ? "auto" : "none";
+  }
+  if (front2 && back2) {
+    front2.style.pointerEvents = rot2 < 90 ? "auto" : "none";
+    back2.style.pointerEvents = rot2 >= 90 ? "auto" : "none";
+  }
+  if (front3 && back3) {
+    front3.style.pointerEvents = rot3 < 90 ? "auto" : "none";
+    back3.style.pointerEvents = rot3 >= 90 ? "auto" : "none";
+  }
+
+  v5CardFlipped[1] = rot1 >= 90;
+  v5CardFlipped[2] = rot2 >= 90;
+  v5CardFlipped[3] = rot3 >= 90;
+  updateV5FlipButtonState();
+}
+
+function handleV5Scroll() {
+  const track = document.getElementById("v5-scroll-track");
+  if (!track) return;
+
+  const rect = track.getBoundingClientRect();
+  const windowHeight = window.innerHeight;
+
+  if (rect.top > 0) {
+    setV5FlipStage(0);
+    return;
+  }
+
+  const totalScrollable = track.offsetHeight - windowHeight;
+  if (totalScrollable <= 0) return;
+
+  const scrolled = -rect.top;
+  let progress = scrolled / totalScrollable;
+  if (progress < 0) progress = 0;
+  if (progress > 1) progress = 1;
+
+  setV5FlipStage(progress);
+}
+
+window.addEventListener("scroll", handleV5Scroll, { passive: true });
+window.addEventListener("DOMContentLoaded", handleV5Scroll);

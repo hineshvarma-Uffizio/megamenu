@@ -1642,3 +1642,145 @@ body.has-lc-open #ufz-wa-btn {
 
 
 
+
+
+/* ========================================================
+   VARIATION 5: 3D PERSPECTIVE & DIRECT CARD FLIPPER
+   ======================================================== */
+
+.split-stage-container {
+  perspective: 1600px;
+  perspective-origin: center center;
+}
+
+.card-flipper-container {
+  perspective: 1600px;
+}
+
+.card-inner {
+  transform-style: preserve-3d;
+  transition: transform 0.65s cubic-bezier(0.16, 1, 0.3, 1);
+  position: relative;
+  width: 100%;
+  height: 530px;
+}
+
+.card-face {
+  position: absolute !important;
+  inset: 0 !important;
+  top: 0 !important;
+  left: 0 !important;
+  width: 100% !important;
+  height: 100% !important;
+  backface-visibility: hidden !important;
+  -webkit-backface-visibility: hidden !important;
+  border-radius: 24px;
+  overflow: hidden;
+  box-sizing: border-box;
+  transition: box-shadow 0.35s ease;
+}
+
+.card-front {
+  transform: rotateY(0deg) translateZ(1px);
+  border: 1px solid transparent;
+  background-repeat: no-repeat !important;
+  background-position-y: top !important;
+  background-clip: padding-box !important;
+}
+
+.card-back {
+  transform: rotateY(180deg) translateZ(1px);
+  border: 1px solid rgba(51, 65, 85, 0.8) !important;
+  border-radius: 24px !important;
+}
+
+.card-back:hover {
+  box-shadow: 0 30px 60px -12px rgba(0, 102, 255, 0.5) !important;
+  border-color: rgba(59, 130, 246, 0.85) !important;
+}
+
+.v5-card-back {
+  transform: rotateY(180deg) translateZ(1px);
+  border-radius: 24px !important;
+  border: 1px solid rgba(255, 255, 255, 0.22) !important;
+  box-shadow: 0 20px 40px -15px rgba(0, 0, 0, 0.6) !important;
+}
+
+.card-flipper-container:hover .card-front,
+.card-front:hover {
+  box-shadow: 0 30px 60px -12px rgba(0, 102, 255, 0.55) !important;
+  border-color: rgba(59, 130, 246, 0.85) !important;
+}
+
+.card-front h3 {
+  text-shadow: 0 1px 4px rgba(0, 0, 0, 0.25);
+}
+
+.v5-container-telematics:hover #back-v5-1,
+#back-v5-1:hover {
+  box-shadow: 0 30px 60px -12px rgba(202, 54, 41, 0.65) !important;
+  border-color: rgba(202, 54, 41, 0.9) !important;
+}
+
+.v5-container-commute:hover #back-v5-2,
+#back-v5-2:hover {
+  box-shadow: 0 30px 60px -12px rgba(215, 142, 17, 0.65) !important;
+  border-color: rgba(215, 142, 17, 0.9) !important;
+}
+
+.v5-container-iotech:hover #back-v5-3,
+#back-v5-3:hover {
+  box-shadow: 0 30px 60px -12px rgba(19, 142, 199, 0.65) !important;
+  border-color: rgba(19, 142, 199, 0.9) !important;
+}
+
+/* Back Flip Card Button (Translucent Circular Glass Button with Right Arrow) */
+.v5-card-back .uffizio-readmore-btn {
+  color: #ffffff !important;
+  display: inline-flex;
+  align-items: center;
+  gap: 12px;
+  font-size: 15px;
+  font-weight: 600;
+}
+
+.v5-card-back .uffizio-readmore-btn .circle-arrow {
+  width: 32px !important;
+  height: 32px !important;
+  border-radius: 50% !important;
+  background: radial-gradient(75% 75% at 50% 28%, rgba(255, 255, 255, 0.28) 0%, rgba(255, 255, 255, 0.08) 100%) !important;
+  border: 1.25px solid rgba(255, 255, 255, 0.85) !important;
+  box-shadow: 0 4px 14px rgba(0, 0, 0, 0.18), inset 0 1px 2px rgba(255, 255, 255, 0.35) !important;
+  backdrop-filter: blur(6px) !important;
+  -webkit-backdrop-filter: blur(6px) !important;
+  display: inline-flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  flex-shrink: 0 !important;
+  transition: all 0.3s cubic-bezier(0.165, 0.84, 0.44, 1) !important;
+}
+
+.v5-card-back .uffizio-readmore-btn:hover .circle-arrow,
+.v5-card-back:hover .uffizio-readmore-btn .circle-arrow {
+  background: radial-gradient(75% 75% at 50% 28%, rgba(255, 255, 255, 0.42) 0%, rgba(255, 255, 255, 0.16) 100%) !important;
+  border-color: #ffffff !important;
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.28), inset 0 1px 3px rgba(255, 255, 255, 0.55) !important;
+  transform: none !important;
+}
+
+.v5-card-back .uffizio-readmore-btn .circle-arrow svg {
+  width: 11px !important;
+  height: 11px !important;
+  color: #ffffff !important;
+  transform-origin: center center !important;
+  transform: rotate(0deg) !important;
+  transition: transform 0.3s cubic-bezier(0.165, 0.84, 0.44, 1) !important;
+}
+
+.v5-card-back .uffizio-readmore-btn:hover .circle-arrow svg,
+.v5-card-back:hover .uffizio-readmore-btn .circle-arrow svg,
+.v5-container-telematics:hover #back-v5-1 .circle-arrow svg,
+.v5-container-commute:hover #back-v5-2 .circle-arrow svg,
+.v5-container-iotech:hover #back-v5-3 .circle-arrow svg {
+  transform: rotate(45deg) !important;
+}
